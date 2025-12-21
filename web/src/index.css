@@ -1697,62 +1697,55 @@ body[theme-mode='light'] .semi-message {
   font-weight: 500 !important;
 }
 
-/* ==================== 进度条 ==================== */
+/* ==================== 进度条 - iOS 风格 ==================== */
 .semi-progress-track {
-  background: var(--color-bg-sunken) !important;
-  border-radius: 10px !important;
+  background: rgba(120, 120, 128, 0.16) !important;
+  border-radius: 4px !important;
+  height: 4px !important;
   overflow: hidden !important;
 }
 
 .semi-progress-line-bar {
-  background: linear-gradient(
-    90deg,
-    #3b82f6 0%,
-    #8b5cf6 50%,
-    #6366f1 100%
-  ) !important;
-  background-size: 200% 100% !important;
-  animation: progressShine 2s linear infinite !important;
-  border-radius: 10px !important;
-  box-shadow: 0 0 10px rgba(59, 130, 246, 0.4) !important;
-}
-
-@keyframes progressShine {
-  0% {
-    background-position: 200% 0;
-  }
-  100% {
-    background-position: -200% 0;
-  }
+  background: #007aff !important;
+  border-radius: 4px !important;
+  transition: width 0.3s var(--ease-ios) !important;
 }
 
 .semi-progress-circle-track {
-  stroke: var(--color-bg-sunken) !important;
+  stroke: rgba(120, 120, 128, 0.16) !important;
 }
 
 .semi-progress-circle-bar {
-  stroke: url(#progressGradient) !important;
-  filter: drop-shadow(0 0 4px rgba(59, 130, 246, 0.5)) !important;
+  stroke: #007aff !important;
+  transition: stroke-dashoffset 0.3s var(--ease-ios) !important;
 }
 
-/* Slider 滑块增强 */
+/* Slider - iOS 风格 */
 .semi-slider-track {
-  background: var(--color-bg-sunken) !important;
-  border-radius: 10px !important;
+  background: rgba(120, 120, 128, 0.16) !important;
+  border-radius: 4px !important;
+  height: 4px !important;
 }
 
 .semi-slider-track-active {
-  background: linear-gradient(90deg, #3b82f6, #6366f1) !important;
-  border-radius: 10px !important;
+  background: #007aff !important;
+  border-radius: 4px !important;
 }
 
 .semi-slider-handle {
+  width: 28px !important;
+  height: 28px !important;
   background: white !important;
-  border: 3px solid #3b82f6 !important;
+  border: none !important;
+  border-radius: 50% !important;
   box-shadow:
-    0 2px 8px rgba(59, 130, 246, 0.4),
-    0 0 0 4px rgba(59, 130, 246, 0.1) !important;
-  transition: all 0.2s ease !important;
+    0 3px 8px rgba(0, 0, 0, 0.15),
+    0 1px 3px rgba(0, 0, 0, 0.1) !important;
+  transition: all 0.2s var(--ease-ios) !important;
+}
+
+.semi-slider-handle:active {
+  transform: scale(1.1) !important;
 }
 
 .semi-slider-handle:hover {
