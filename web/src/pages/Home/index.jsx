@@ -18,10 +18,13 @@ For commercial licensing, please contact support@quantumnous.com
 */
 
 import {
+    IconBolt,
     IconCopy,
     IconFile,
     IconGithubLogo,
     IconPlay,
+    IconPriceTag,
+    IconServer,
     IconShield
 } from '@douyinfe/semi-icons';
 import {
@@ -151,7 +154,7 @@ const Home = () => {
 
   const features = [
     {
-      icon: <IconThunder style={{ fontSize: 24, color: 'var(--semi-color-primary)' }} />,
+      icon: <IconBolt style={{ fontSize: 24, color: 'var(--semi-color-primary)' }} />,
       title: t('极速响应'),
       desc: t('采用全球CDN加速与优化的路由算法，确保每一次API调用都能获得毫秒级的响应速度。')
     },
