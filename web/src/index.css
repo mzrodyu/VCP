@@ -2986,24 +2986,28 @@ body[theme-mode='dark'] .semi-select-option-list {
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2) !important;
 }
 
-/* Empty 空状态重构 */
+/* Empty - iOS 风格 */
 .semi-empty {
   padding: 60px 24px !important;
+  text-align: center !important;
 }
 
 .semi-empty-image {
-  margin-bottom: 24px !important;
+  margin-bottom: 20px !important;
+  opacity: 0.6 !important;
 }
 
 .semi-empty-title {
-  font-size: 18px !important;
+  font-size: 17px !important;
   font-weight: 600 !important;
   color: var(--color-text-primary) !important;
+  margin-bottom: 8px !important;
 }
 
 .semi-empty-description {
+  font-size: 15px !important;
   color: var(--color-text-muted) !important;
-  margin-top: 8px !important;
+  line-height: 1.5 !important;
 }
 
 /* Skeleton 骨架屏重构 */
