@@ -669,41 +669,7 @@ body[theme-mode='dark'] * {
   background: var(--color-accent-muted) !important;
 }
 
-/* ==================== 卡片样式 ==================== */
-.semi-card {
-  background: var(--color-bg-elevated) !important;
-  border: 1px solid var(--color-border) !important;
-  border-radius: var(--border-radius-lg) !important;
-  box-shadow: var(--shadow-sm) !important;
-  transition: all var(--transition-fast) !important;
-}
-
-.semi-card:hover {
-  border-color: var(--color-border-hover) !important;
-}
-
-.semi-card-header,
-.semi-card-body {
-  padding: 16px !important;
-}
-
-/* ==================== 按钮样式 ==================== */
-.semi-button {
-  border-radius: var(--border-radius-sm) !important;
-  font-weight: 500 !important;
-  transition: all var(--transition-fast) !important;
-}
-
-.semi-button-primary {
-  background: var(--color-accent) !important;
-  border: none !important;
-}
-
-.semi-button-primary:hover {
-  background: var(--color-accent-hover) !important;
-  transform: translateY(-1px);
-}
-
+/* ==================== 按钮基础样式 ==================== */
 .semi-button-tertiary {
   background: transparent !important;
   border: 1px solid var(--color-border) !important;
@@ -2095,35 +2061,6 @@ body[theme-mode='light'] .semi-message {
 .page-container {
   padding: 24px;
   animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-/* Semi Card 全面重构 */
-.semi-card {
-  background: var(--color-bg-elevated) !important;
-  border: 1px solid var(--color-border) !important;
-  border-radius: 16px !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
-  overflow: visible !important;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-}
-
-.semi-card:hover {
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12) !important;
-  transform: translateY(-2px);
-}
-
-.semi-card-header {
-  padding: 20px 24px !important;
-  border-bottom: 1px solid var(--color-border) !important;
-  background: transparent !important;
-}
-
-.semi-card-header-wrapper {
-  padding: 0 !important;
-}
-
-.semi-card-body {
-  padding: 24px !important;
 }
 
 /* CardPro 组件重构 */
