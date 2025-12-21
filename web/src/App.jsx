@@ -37,6 +37,7 @@ import PersonalSetting from './components/settings/PersonalSetting';
 import Chat from './pages/Chat';
 import Chat2Link from './pages/Chat2Link';
 import Log from './pages/Log';
+import ModelPage from './pages/Model';
 import Pricing from './pages/Pricing';
 import Redemption from './pages/Redemption';
 import Setup from './pages/Setup';
