@@ -2243,34 +2243,130 @@ code {
 /* Switch 开关重构 */
 .semi-switch {
   background: var(--color-bg-muted) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.semi-switch:hover {
+  background: var(--color-bg-sunken) !important;
 }
 
 .semi-switch-checked {
   background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.1),
+    0 0 12px rgba(59, 130, 246, 0.4) !important;
+}
+
+.semi-switch-checked:hover {
+  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%) !important;
+}
+
+.semi-switch-knob {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
 /* Checkbox 复选框重构 */
 .semi-checkbox-inner {
   border-radius: 6px !important;
   border: 2px solid var(--color-border) !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.semi-checkbox:hover .semi-checkbox-inner {
+  border-color: var(--color-accent) !important;
 }
 
 .semi-checkbox-checked .semi-checkbox-inner {
-  background: var(--color-accent) !important;
-  border-color: var(--color-accent) !important;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+  border-color: transparent !important;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.4) !important;
 }
 
 /* Radio 单选框重构 */
 .semi-radio-inner {
   border: 2px solid var(--color-border) !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.semi-radio:hover .semi-radio-inner {
+  border-color: var(--color-accent) !important;
 }
 
 .semi-radio-checked .semi-radio-inner {
   border-color: var(--color-accent) !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15) !important;
 }
 
 .semi-radio-checked .semi-radio-inner-display {
-  background: var(--color-accent) !important;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+  transform: scale(1);
+  animation: scaleIn 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Tag 标签重构 */
+.semi-tag {
+  border-radius: 8px !important;
+  font-weight: 500 !important;
+  transition: all 0.2s ease !important;
+}
+
+.semi-tag:hover {
+  transform: translateY(-1px);
+}
+
+.semi-tag-primary {
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.15) 0%,
+    rgba(99, 102, 241, 0.1) 100%
+  ) !important;
+  color: #3b82f6 !important;
+  border: 1px solid rgba(59, 130, 246, 0.3) !important;
+}
+
+.semi-tag-success {
+  background: linear-gradient(
+    135deg,
+    rgba(16, 185, 129, 0.15) 0%,
+    rgba(5, 150, 105, 0.1) 100%
+  ) !important;
+  color: #10b981 !important;
+  border: 1px solid rgba(16, 185, 129, 0.3) !important;
+}
+
+.semi-tag-warning {
+  background: linear-gradient(
+    135deg,
+    rgba(245, 158, 11, 0.15) 0%,
+    rgba(217, 119, 6, 0.1) 100%
+  ) !important;
+  color: #f59e0b !important;
+  border: 1px solid rgba(245, 158, 11, 0.3) !important;
+}
+
+.semi-tag-danger {
+  background: linear-gradient(
+    135deg,
+    rgba(239, 68, 68, 0.15) 0%,
+    rgba(220, 38, 38, 0.1) 100%
+  ) !important;
+  color: #ef4444 !important;
+  border: 1px solid rgba(239, 68, 68, 0.3) !important;
+}
+
+/* Badge 徽章重构 */
+.semi-badge-dot {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
+  box-shadow: 0 0 8px rgba(239, 68, 68, 0.5) !important;
+  animation: pulse 2s ease-in-out infinite !important;
+}
+
+.semi-badge-count {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
+  font-weight: 600 !important;
+  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.4) !important;
 }
 
 /* Toast 提示重构 */
