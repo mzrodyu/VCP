@@ -2000,15 +2000,19 @@ body[theme-mode='light'] .semi-message {
   background: rgba(7, 193, 96, 0.15);
 }
 
-/* 邀请卡片 */
+/* 邀请卡片 - iOS 风格 */
 .invitation-card {
   background: var(--color-bg-elevated) !important;
-  border: 1px solid var(--color-border) !important;
-  border-radius: var(--border-radius-xl) !important;
+  border: none !important;
+  border-radius: 16px !important;
+  overflow: hidden;
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.04),
+    0 4px 12px rgba(0, 0, 0, 0.06) !important;
 }
 
 .invitation-header {
-  background: linear-gradient(135deg, #10b981, #059669);
+  background: linear-gradient(135deg, #34c759 0%, #30d158 100%);
   padding: 24px;
   color: white;
 }
@@ -2018,27 +2022,28 @@ body[theme-mode='light'] .semi-message {
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   padding: 20px 24px;
-  background: linear-gradient(135deg, #10b981, #059669);
+  background: linear-gradient(135deg, #34c759 0%, #30d158 100%);
 }
 
 .invitation-link-box {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 12px 16px;
+  padding: 14px 16px;
   background: var(--color-bg-sunken);
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius-md);
-  margin: 16px 24px;
+  border: none;
+  border-radius: 12px;
+  margin: 16px 20px;
 }
 
 .invitation-link-box code {
   flex: 1;
-  font-size: 13px;
+  font-size: 14px;
   color: var(--color-text-secondary);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  font-family: 'SF Mono', 'Menlo', monospace;
 }
 
 /* ==================== 后台页面全局重构 ==================== */
