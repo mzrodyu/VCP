@@ -2602,43 +2602,52 @@ body[theme-mode='light'] .semi-message {
   border-radius: 3px !important;
 }
 
-/* Tooltip 提示重构 */
+/* Tooltip - iOS 风格 */
 .semi-tooltip-wrapper {
-  background: var(--color-bg-elevated) !important;
-  border: 1px solid var(--color-border) !important;
-  border-radius: 10px !important;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15) !important;
-  padding: 10px 14px !important;
-  animation: tooltipIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  background: var(--glass-bg-dark) !important;
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate)) !important;
+  -webkit-backdrop-filter: blur(var(--glass-blur))
+    saturate(var(--glass-saturate)) !important;
+  border: none !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
+  padding: 8px 12px !important;
+  color: white !important;
+  font-size: 13px !important;
+  animation: ios-tooltip-in 0.15s var(--ease-ios) !important;
 }
 
-@keyframes tooltipIn {
+body[theme-mode='light'] .semi-tooltip-wrapper {
+  background: rgba(0, 0, 0, 0.75) !important;
+}
+
+@keyframes ios-tooltip-in {
   from {
     opacity: 0;
-    transform: scale(0.95) translateY(-4px);
+    transform: scale(0.96);
   }
   to {
     opacity: 1;
-    transform: scale(1) translateY(0);
+    transform: scale(1);
   }
 }
 
-/* Popover 气泡卡片重构 */
+/* Popover - iOS 风格 */
 .semi-popover {
   background: var(--color-bg-elevated) !important;
-  border: 1px solid var(--color-border) !important;
+  border: none !important;
   border-radius: 14px !important;
   box-shadow:
-    0 10px 40px rgba(0, 0, 0, 0.12),
-    0 0 0 1px rgba(0, 0, 0, 0.05) !important;
-  animation: popoverIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    0 25px 50px rgba(0, 0, 0, 0.15),
+    0 0 0 0.5px rgba(0, 0, 0, 0.1) !important;
+  animation: ios-popover-in 0.2s var(--ease-ios-spring) !important;
   overflow: hidden !important;
 }
 
-@keyframes popoverIn {
+@keyframes ios-popover-in {
   from {
     opacity: 0;
-    transform: scale(0.9);
+    transform: scale(0.95);
   }
   to {
     opacity: 1;
@@ -2647,19 +2656,40 @@ body[theme-mode='light'] .semi-message {
 }
 
 .semi-popover-content {
-  padding: 16px !important;
+  padding: 12px !important;
 }
 
-/* Dropdown 下拉菜单重构 */
+/* Dropdown - iOS 风格 */
 .semi-dropdown-menu {
-  background: var(--color-bg-elevated) !important;
-  border: 1px solid var(--color-border) !important;
-  border-radius: 12px !important;
+  background: var(--glass-bg-light) !important;
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate)) !important;
+  -webkit-backdrop-filter: blur(var(--glass-blur))
+    saturate(var(--glass-saturate)) !important;
+  border: none !important;
+  border-radius: 14px !important;
   box-shadow:
-    0 10px 40px rgba(0, 0, 0, 0.15),
-    0 0 0 1px rgba(0, 0, 0, 0.05) !important;
+    0 25px 50px rgba(0, 0, 0, 0.15),
+    0 0 0 0.5px rgba(0, 0, 0, 0.1) !important;
   padding: 6px !important;
-  animation: dropdownIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  animation: ios-dropdown-in 0.2s var(--ease-ios-spring) !important;
+}
+
+body[theme-mode='dark'] .semi-dropdown-menu {
+  background: var(--glass-bg-dark) !important;
+  box-shadow:
+    0 25px 50px rgba(0, 0, 0, 0.3),
+    0 0 0 0.5px rgba(255, 255, 255, 0.1) !important;
+}
+
+@keyframes ios-dropdown-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 @keyframes dropdownIn {
