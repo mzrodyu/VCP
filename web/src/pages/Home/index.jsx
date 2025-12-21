@@ -155,7 +155,7 @@ const Home = () => {
       desc: t('健康度与负载状态动态切换，保证最优表现。')
     },
     {
-      icon: <IconPulse className="text-blue-500" style={{ fontSize: 20 }} />,
+      icon: <IconServer className="text-blue-500" style={{ fontSize: 20 }} />,
       title: t('统一监控'),
       desc: t('调用、费用、并发一站式AI观测，获取完整运行状态。')
     },
@@ -169,12 +169,12 @@ const Home = () => {
   // 核心价值卡片
   const features = [
     {
-      icon: <IconGlobeStroke className="text-blue-500" style={{ fontSize: 24 }} />,
+      icon: <IconServer className="text-blue-500" style={{ fontSize: 24 }} />,
       title: t('统一入口，极速连通'),
       desc: t('以单一接口和地址快速接入全部大模型渠道资源，智能自动切换保障业务不中断。')
     },
     {
-      icon: <IconPulse className="text-blue-500" style={{ fontSize: 24 }} />,
+      icon: <IconBolt className="text-blue-500" style={{ fontSize: 24 }} />,
       title: t('全栈可观测与风控'),
       desc: t('实时监控使用量、模型成本与效用，一站配置限额、审计与安全策略。')
     },
@@ -184,7 +184,7 @@ const Home = () => {
       desc: t('多云混合部署，智能选择与批量自动处理，灵活适配成本与产出能力。')
     },
     {
-      icon: <IconCommand className="text-blue-500" style={{ fontSize: 24 }} />,
+      icon: <IconFile className="text-blue-500" style={{ fontSize: 24 }} />,
       title: t('开发者友好体验'),
       desc: t('兼容 OpenAI 接口协议，提供 SDK、示例与 Web Playground，轻松集成上线。')
     }
@@ -205,7 +205,7 @@ const Home = () => {
       desc: t('根据业务请求，结合负载与价格自动选择最优大模型渠道，内置故障切换。')
     },
     {
-      icon: <IconPulse className="text-blue-500" style={{ fontSize: 24 }} />,
+      icon: <IconSetting className="text-blue-500" style={{ fontSize: 24 }} />,
       num: '03',
       title: t('持续洞察'),
       desc: t('通过仪表板监控用量趋势、消耗与失败率，实现预警确保 SLO。')
