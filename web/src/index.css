@@ -2803,68 +2803,67 @@ body[theme-mode='light'] .semi-message {
   height: 12px !important;
 }
 
-/* Tag 标签重构 */
+/* Tag - iOS 风格 */
 .semi-tag {
-  border-radius: 8px !important;
+  border-radius: 6px !important;
   font-weight: 500 !important;
-  transition: all 0.2s ease !important;
+  font-size: 13px !important;
+  padding: 4px 10px !important;
+  border: none !important;
+  transition: all 0.15s var(--ease-ios) !important;
 }
 
-.semi-tag:hover {
-  transform: translateY(-1px);
+.semi-tag:active {
+  transform: scale(0.95) !important;
+}
+
+.semi-tag-light {
+  background: rgba(120, 120, 128, 0.12) !important;
+  color: var(--color-text-secondary) !important;
 }
 
 .semi-tag-primary {
-  background: linear-gradient(
-    135deg,
-    rgba(59, 130, 246, 0.15) 0%,
-    rgba(99, 102, 241, 0.1) 100%
-  ) !important;
-  color: #3b82f6 !important;
-  border: 1px solid rgba(59, 130, 246, 0.3) !important;
+  background: rgba(0, 122, 255, 0.12) !important;
+  color: #007aff !important;
 }
 
-.semi-tag-success {
-  background: linear-gradient(
-    135deg,
-    rgba(16, 185, 129, 0.15) 0%,
-    rgba(5, 150, 105, 0.1) 100%
-  ) !important;
-  color: #10b981 !important;
-  border: 1px solid rgba(16, 185, 129, 0.3) !important;
+.semi-tag-success,
+.semi-tag-green {
+  background: rgba(52, 199, 89, 0.12) !important;
+  color: #34c759 !important;
 }
 
-.semi-tag-warning {
-  background: linear-gradient(
-    135deg,
-    rgba(245, 158, 11, 0.15) 0%,
-    rgba(217, 119, 6, 0.1) 100%
-  ) !important;
-  color: #f59e0b !important;
-  border: 1px solid rgba(245, 158, 11, 0.3) !important;
+.semi-tag-warning,
+.semi-tag-orange {
+  background: rgba(255, 149, 0, 0.12) !important;
+  color: #ff9500 !important;
 }
 
-.semi-tag-danger {
-  background: linear-gradient(
-    135deg,
-    rgba(239, 68, 68, 0.15) 0%,
-    rgba(220, 38, 38, 0.1) 100%
-  ) !important;
-  color: #ef4444 !important;
-  border: 1px solid rgba(239, 68, 68, 0.3) !important;
+.semi-tag-danger,
+.semi-tag-red {
+  background: rgba(255, 59, 48, 0.12) !important;
+  color: #ff3b30 !important;
 }
 
-/* Badge 徽章重构 */
+/* Badge - iOS 风格 */
 .semi-badge-dot {
-  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
-  box-shadow: 0 0 8px rgba(239, 68, 68, 0.5) !important;
-  animation: pulse 2s ease-in-out infinite !important;
+  background: #ff3b30 !important;
+  width: 10px !important;
+  height: 10px !important;
+  box-shadow: none !important;
+  animation: none !important;
 }
 
 .semi-badge-count {
-  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
+  background: #ff3b30 !important;
   font-weight: 600 !important;
-  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.4) !important;
+  font-size: 12px !important;
+  min-width: 18px !important;
+  height: 18px !important;
+  line-height: 18px !important;
+  padding: 0 5px !important;
+  border-radius: 9px !important;
+  box-shadow: none !important;
 }
 
 /* Toast 提示重构 */
