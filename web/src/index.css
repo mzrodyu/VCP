@@ -1705,7 +1705,7 @@ code {
   border: 1px solid var(--color-border) !important;
   border-radius: 16px !important;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
-  overflow: hidden !important;
+  overflow: visible !important;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
@@ -1733,7 +1733,7 @@ code {
   background: var(--color-bg-elevated) !important;
   border: 1px solid var(--color-border) !important;
   border-radius: 20px !important;
-  overflow: hidden !important;
+  overflow: visible !important;
   animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
 }
@@ -1765,7 +1765,8 @@ code {
 
 .semi-table-container {
   border-radius: 12px !important;
-  overflow: hidden !important;
+  overflow-x: auto !important;
+  overflow-y: visible !important;
 }
 
 .semi-table-thead > .semi-table-row > .semi-table-row-head {
