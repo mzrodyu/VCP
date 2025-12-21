@@ -473,11 +473,31 @@ code {
 /* ==================== 标签页样式 ==================== */
 .semi-tabs-bar {
   border-bottom: 1px solid var(--color-border) !important;
+  background: transparent !important;
+}
+
+.semi-tabs-bar-outer {
+  background: transparent !important;
+}
+
+.semi-tabs-bar-inner {
+  background: transparent !important;
+}
+
+/* 修复 Tabs 滚动条样式 */
+.semi-tabs-bar-scroll {
+  background: transparent !important;
+}
+
+.semi-tabs-bar-scroll::-webkit-scrollbar {
+  height: 0 !important;
+  display: none !important;
 }
 
 .semi-tabs-tab {
   color: var(--color-text-muted) !important;
   transition: all var(--transition-fast) !important;
+  background: transparent !important;
 }
 
 .semi-tabs-tab:hover {
@@ -491,6 +511,15 @@ code {
 
 .semi-tabs-content {
   padding: 0 !important;
+}
+
+/* 修复表格页面布局 */
+.semi-table-container {
+  background: transparent !important;
+}
+
+.semi-table-wrapper {
+  background: transparent !important;
 }
 
 /* ==================== Dashboard 样式 ==================== */
