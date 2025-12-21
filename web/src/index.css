@@ -2713,6 +2713,122 @@ body[theme-mode='light'] .semi-layout-content {
   border-radius: 3px 3px 0 0 !important;
 }
 
+/* ==================== 移动端响应式优化 ==================== */
+@media (max-width: 768px) {
+  /* 移动端卡片优化 */
+  .semi-card {
+    border-radius: 12px !important;
+    margin: 0 -4px;
+  }
+
+  .semi-card:hover {
+    transform: none !important;
+  }
+
+  .semi-card-body {
+    padding: 16px !important;
+  }
+
+  /* 移动端按钮优化 */
+  .semi-button {
+    min-height: 44px !important;
+    padding: 10px 16px !important;
+  }
+
+  .semi-button-primary:hover {
+    transform: none !important;
+  }
+
+  /* 移动端表格优化 */
+  .semi-table-tbody > .semi-table-row > .semi-table-row-cell {
+    padding: 12px 8px !important;
+    font-size: 13px !important;
+  }
+
+  .semi-table-thead > .semi-table-row > .semi-table-row-head {
+    padding: 10px 8px !important;
+    font-size: 12px !important;
+  }
+
+  /* 移动端输入框优化 */
+  .semi-input-wrapper {
+    min-height: 44px !important;
+  }
+
+  .semi-input {
+    font-size: 16px !important; /* 防止iOS缩放 */
+  }
+
+  /* 移动端模态框优化 */
+  .semi-modal {
+    margin: 16px !important;
+    max-height: calc(100vh - 32px) !important;
+  }
+
+  .semi-modal-content {
+    border-radius: 16px !important;
+  }
+
+  /* 移动端标签页优化 */
+  .semi-tabs-tab {
+    padding: 12px 16px !important;
+    font-size: 14px !important;
+  }
+
+  /* 移动端导航项优化 */
+  .semi-navigation-item {
+    padding: 14px 16px !important;
+  }
+
+  /* 禁用移动端hover效果 */
+  .semi-navigation-item:hover {
+    transform: none !important;
+  }
+
+  /* 移动端页面容器 */
+  .page-container,
+  .dashboard-container {
+    padding: 12px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* 超小屏幕优化 */
+  .semi-card-body {
+    padding: 12px !important;
+  }
+
+  .cardpro-header {
+    padding: 12px !important;
+  }
+
+  .semi-button {
+    font-size: 14px !important;
+  }
+
+  /* 超小屏幕表格 */
+  .semi-table-tbody > .semi-table-row > .semi-table-row-cell {
+    padding: 10px 6px !important;
+  }
+}
+
+/* 触摸设备优化 */
+@media (hover: none) and (pointer: coarse) {
+  .semi-card:hover,
+  .semi-button:hover,
+  .semi-navigation-item:hover {
+    transform: none !important;
+  }
+
+  .semi-button:active {
+    transform: scale(0.98) !important;
+  }
+
+  .semi-card:active {
+    transform: scale(0.99) !important;
+  }
+}
+
 /* ==================== 打印样式 ==================== */
 @media print {
   .sidebar-container,
