@@ -28,7 +28,7 @@ import { useSidebar } from '../../hooks/common/useSidebar';
 import { useSidebarCollapsed } from '../../hooks/common/useSidebarCollapsed';
 import SkeletonWrapper from './components/SkeletonWrapper';
 
-import { Button, Divider, Nav } from '@douyinfe/semi-ui';
+import { Nav } from '@douyinfe/semi-ui';
 
 const routerMap = {
   home: '/',
@@ -354,11 +354,41 @@ const SiderBar = ({ onNavigate = () => {} }) => {
     }
   };
 
+  // 自定义导航项渲染
+  const renderCustomNavItem = (item, isSelected) => {
+    const IconComponent = getLucideIcon(item.itemKey);
+    return (
+      <Link
+        key={item.itemKey}
+        to={routerMapState[item.itemKey] || routerMap[item.itemKey] || '#'}
+        onClick={onNavigate}
+        className={`
+          flex items-center gap-3 px-4 py-3 mx-2 my-1 rounded-xl transition-all duration-200
+          ${isSelected 
+            ? 'bg-gradient-to-r from-violet-500 to-purple-600 text-white shadow-lg shadow-violet-500/30' 
+            : 'text-slate-400 hover:bg-white/10 hover:text-white'
+          }
+          ${collapsed ? 'justify-center' : ''}
+        `}
+        style={{ textDecoration: 'none' }}
+      >
+        <div className={`flex-shrink-0 ${isSelected ? 'text-white' : 'text-slate-400'}`}>
+          {IconComponent && <IconComponent size={20} />}
+        </div>
+        {!collapsed && (
+          <span className='text-sm font-medium truncate'>{item.text}</span>
+        )}
+      </Link>
+    );
+  };
+
   return (
     <div
-      className='sidebar-container'
+      className='h-full flex flex-col'
       style={{
         width: 'var(--sidebar-current-width)',
+        background: 'linear-gradient(180deg, #1e1b4b 0%, #0f172a 100%)',
+        borderRight: '1px solid rgba(255,255,255,0.1)',
       }}
     >
       <SkeletonWrapper
@@ -368,129 +398,97 @@ const SiderBar = ({ onNavigate = () => {} }) => {
         collapsed={collapsed}
         showAdmin={isAdmin()}
       >
-        <Nav
-          className='sidebar-nav'
-          defaultIsCollapsed={collapsed}
-          isCollapsed={collapsed}
-          onCollapseChange={toggleCollapsed}
-          selectedKeys={selectedKeys}
-          itemStyle='sidebar-nav-item'
-          hoverStyle='sidebar-nav-item:hover'
-          selectedStyle='sidebar-nav-item-selected'
-          renderWrapper={({ itemElement, props }) => {
-            const to =
-              routerMapState[props.itemKey] || routerMap[props.itemKey];
-
-            // 如果没有路由，直接返回元素
-            if (!to) return itemElement;
-
-            return (
-              <Link
-                style={{ textDecoration: 'none' }}
-                to={to}
-                onClick={onNavigate}
-              >
-                {itemElement}
-              </Link>
-            );
-          }}
-          onSelect={(key) => {
-            // 如果点击的是已经展开的子菜单的父项，则收起子菜单
-            if (openedKeys.includes(key.itemKey)) {
-              setOpenedKeys(openedKeys.filter((k) => k !== key.itemKey));
-            }
-
-            setSelectedKeys([key.itemKey]);
-          }}
-          openKeys={openedKeys}
-          onOpenChange={(data) => {
-            setOpenedKeys(data.openKeys);
-          }}
-        >
+        {/* 导航内容 */}
+        <div className='flex-1 overflow-y-auto py-4'>
           {/* 聊天区域 */}
           {hasSectionVisibleModules('chat') && (
-            <div className='sidebar-section'>
+            <div className='mb-4'>
               {!collapsed && (
-                <div className='sidebar-group-label'>{t('聊天')}</div>
+                <div className='px-4 py-2 text-xs font-bold text-violet-400 uppercase tracking-wider'>
+                  {t('聊天')}
+                </div>
               )}
-              {chatMenuItems.map((item) => renderSubItem(item))}
+              {chatMenuItems.map((item) => 
+                renderCustomNavItem(item, selectedKeys.includes(item.itemKey))
+              )}
             </div>
           )}
 
           {/* 控制台区域 */}
           {hasSectionVisibleModules('console') && (
-            <>
-              <Divider className='sidebar-divider' />
-              <div>
-                {!collapsed && (
-                  <div className='sidebar-group-label'>{t('控制台')}</div>
-                )}
-                {workspaceItems.map((item) => renderNavItem(item))}
-              </div>
-            </>
+            <div className='mb-4'>
+              {!collapsed && (
+                <>
+                  <div className='mx-4 my-3 h-px bg-gradient-to-r from-transparent via-violet-500/50 to-transparent' />
+                  <div className='px-4 py-2 text-xs font-bold text-violet-400 uppercase tracking-wider'>
+                    {t('控制台')}
+                  </div>
+                </>
+              )}
+              {workspaceItems.map((item) => 
+                renderCustomNavItem(item, selectedKeys.includes(item.itemKey))
+              )}
+            </div>
           )}
 
           {/* 个人中心区域 */}
           {hasSectionVisibleModules('personal') && (
-            <>
-              <Divider className='sidebar-divider' />
-              <div>
-                {!collapsed && (
-                  <div className='sidebar-group-label'>{t('个人中心')}</div>
-                )}
-                {financeItems.map((item) => renderNavItem(item))}
-              </div>
-            </>
+            <div className='mb-4'>
+              {!collapsed && (
+                <>
+                  <div className='mx-4 my-3 h-px bg-gradient-to-r from-transparent via-violet-500/50 to-transparent' />
+                  <div className='px-4 py-2 text-xs font-bold text-violet-400 uppercase tracking-wider'>
+                    {t('个人中心')}
+                  </div>
+                </>
+              )}
+              {financeItems.map((item) => 
+                renderCustomNavItem(item, selectedKeys.includes(item.itemKey))
+              )}
+            </div>
           )}
 
-          {/* 管理员区域 - 只在管理员时显示且配置允许时显示 */}
+          {/* 管理员区域 */}
           {isAdmin() && hasSectionVisibleModules('admin') && (
-            <>
-              <Divider className='sidebar-divider' />
-              <div>
-                {!collapsed && (
-                  <div className='sidebar-group-label'>{t('管理员')}</div>
-                )}
-                {adminItems.map((item) => renderNavItem(item))}
-              </div>
-            </>
+            <div className='mb-4'>
+              {!collapsed && (
+                <>
+                  <div className='mx-4 my-3 h-px bg-gradient-to-r from-transparent via-violet-500/50 to-transparent' />
+                  <div className='px-4 py-2 text-xs font-bold text-rose-400 uppercase tracking-wider'>
+                    {t('管理员')}
+                  </div>
+                </>
+              )}
+              {adminItems.map((item) => 
+                renderCustomNavItem(item, selectedKeys.includes(item.itemKey))
+              )}
+            </div>
           )}
-        </Nav>
+        </div>
       </SkeletonWrapper>
 
       {/* 底部折叠按钮 */}
-      <div className='sidebar-collapse-button'>
+      <div className='p-3 border-t border-white/10'>
         <SkeletonWrapper
           loading={showSkeleton}
           type='button'
           width={collapsed ? 36 : 156}
-          height={24}
+          height={36}
           className='w-full'
         >
-          <Button
-            theme='outline'
-            type='tertiary'
-            size='small'
-            icon={
-              <ChevronLeft
-                size={16}
-                strokeWidth={2.5}
-                color='var(--semi-color-text-2)'
-                style={{
-                  transform: collapsed ? 'rotate(180deg)' : 'rotate(0deg)',
-                }}
-              />
-            }
+          <button
             onClick={toggleCollapsed}
-            icononly={collapsed}
-            style={
-              collapsed
-                ? { width: 36, height: 24, padding: 0 }
-                : { padding: '4px 12px', width: '100%' }
-            }
+            className='w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white transition-all duration-200'
           >
-            {!collapsed ? t('收起侧边栏') : null}
-          </Button>
+            <ChevronLeft
+              size={18}
+              className='transition-transform duration-200'
+              style={{
+                transform: collapsed ? 'rotate(180deg)' : 'rotate(0deg)',
+              }}
+            />
+            {!collapsed && <span className='text-sm font-medium'>{t('收起')}</span>}
+          </button>
         </SkeletonWrapper>
       </div>
     </div>

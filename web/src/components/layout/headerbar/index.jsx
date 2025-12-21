@@ -64,7 +64,14 @@ const HeaderBar = ({ onMobileMenuToggle, drawerOpen }) => {
   const { mainNavLinks } = useNavigation(t, docsLink, headerNavModules);
 
   return (
-    <header className='header-bar'>
+    <header 
+      className='sticky top-0 z-50 h-16 flex items-center px-4'
+      style={{
+        background: 'linear-gradient(90deg, #1e1b4b 0%, #312e81 50%, #1e1b4b 100%)',
+        borderBottom: '1px solid rgba(139, 92, 246, 0.3)',
+        boxShadow: '0 4px 30px rgba(139, 92, 246, 0.15)',
+      }}
+    >
       <NoticeModal
         visible={noticeVisible}
         onClose={handleNoticeClose}
@@ -73,8 +80,8 @@ const HeaderBar = ({ onMobileMenuToggle, drawerOpen }) => {
         unreadKeys={getUnreadKeys()}
       />
 
-      <div className='header-container'>
-        <div className='header-left'>
+      <div className='w-full flex items-center justify-between'>
+        <div className='flex items-center gap-4'>
           <MobileMenuButton
             isConsoleRoute={isConsoleRoute}
             isMobile={isMobile}
@@ -105,7 +112,7 @@ const HeaderBar = ({ onMobileMenuToggle, drawerOpen }) => {
           pricingRequireAuth={pricingRequireAuth}
         />
 
-        <div className='header-right'>
+        <div className='flex items-center gap-2'>
           <ActionButtons
             isNewYear={isNewYear}
             unreadCount={unreadCount}
