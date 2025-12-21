@@ -1948,3 +1948,600 @@ body:not([theme-mode]) .stat-item:hover .stat-icon-wrapper {
   border: 1px solid var(--glass-border) !important;
   border-radius: 20px !important;
 }
+
+/* ==================== 全局高级感大改造 ==================== */
+
+/* 侧边栏高级样式 */
+.semi-layout-sider {
+  background: linear-gradient(
+    180deg,
+    rgba(10, 14, 20, 0.98),
+    rgba(15, 20, 25, 0.95)
+  ) !important;
+  border-right: 1px solid rgba(0, 212, 255, 0.08) !important;
+  box-shadow: 4px 0 30px rgba(0, 0, 0, 0.3) !important;
+}
+
+body[theme-mode='light'] .semi-layout-sider,
+body:not([theme-mode]) .semi-layout-sider {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(248, 250, 252, 0.95)
+  ) !important;
+  border-right: 1px solid rgba(8, 145, 178, 0.08) !important;
+  box-shadow: 4px 0 30px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* 侧边栏导航项 */
+.semi-navigation-item {
+  margin: 4px 8px !important;
+  border-radius: 12px !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.semi-navigation-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    var(--semi-color-primary),
+    var(--semi-color-success)
+  );
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.semi-navigation-item:hover {
+  background: rgba(0, 212, 255, 0.08) !important;
+  transform: translateX(4px);
+}
+
+.semi-navigation-item-selected {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 212, 255, 0.15),
+    rgba(0, 255, 159, 0.08)
+  ) !important;
+}
+
+.semi-navigation-item-selected::before {
+  opacity: 1;
+}
+
+body[theme-mode='light'] .semi-navigation-item:hover,
+body:not([theme-mode]) .semi-navigation-item:hover {
+  background: rgba(8, 145, 178, 0.08) !important;
+}
+
+body[theme-mode='light'] .semi-navigation-item-selected,
+body:not([theme-mode]) .semi-navigation-item-selected {
+  background: linear-gradient(
+    135deg,
+    rgba(8, 145, 178, 0.15),
+    rgba(8, 145, 178, 0.08)
+  ) !important;
+}
+
+/* 导航图标动画 */
+.semi-navigation-item-icon {
+  transition: all 0.3s !important;
+}
+
+.semi-navigation-item:hover .semi-navigation-item-icon {
+  transform: scale(1.15);
+  color: var(--semi-color-primary) !important;
+}
+
+/* 顶部导航栏高级样式 */
+.semi-layout-header {
+  background: linear-gradient(
+    90deg,
+    rgba(10, 14, 20, 0.95),
+    rgba(15, 20, 25, 0.9)
+  ) !important;
+  border-bottom: 1px solid rgba(0, 212, 255, 0.1) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+}
+
+body[theme-mode='light'] .semi-layout-header,
+body:not([theme-mode]) .semi-layout-header {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.95),
+    rgba(248, 250, 252, 0.9)
+  ) !important;
+  border-bottom: 1px solid rgba(8, 145, 178, 0.1) !important;
+}
+
+/* 按钮高级样式 */
+.semi-button {
+  border-radius: 10px !important;
+  font-weight: 500 !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.semi-button-primary {
+  background: linear-gradient(135deg, #00d4ff, #00a8cc) !important;
+  border: none !important;
+  box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3) !important;
+}
+
+.semi-button-primary:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 25px rgba(0, 212, 255, 0.4) !important;
+}
+
+.semi-button-primary::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transform: rotate(45deg);
+  transition: all 0.5s;
+  opacity: 0;
+}
+
+.semi-button-primary:hover::after {
+  animation: button-shine 0.5s ease-out;
+}
+
+@keyframes button-shine {
+  0% {
+    left: -50%;
+    opacity: 1;
+  }
+  100% {
+    left: 150%;
+    opacity: 0;
+  }
+}
+
+body[theme-mode='light'] .semi-button-primary,
+body:not([theme-mode]) .semi-button-primary {
+  background: linear-gradient(135deg, #0891b2, #0e7490) !important;
+  box-shadow: 0 4px 15px rgba(8, 145, 178, 0.3) !important;
+}
+
+body[theme-mode='light'] .semi-button-primary:hover,
+body:not([theme-mode]) .semi-button-primary:hover {
+  box-shadow: 0 6px 25px rgba(8, 145, 178, 0.4) !important;
+}
+
+/* 次级按钮 */
+.semi-button-secondary,
+.semi-button-tertiary {
+  background: transparent !important;
+  border: 1px solid rgba(0, 212, 255, 0.3) !important;
+  color: var(--semi-color-primary) !important;
+}
+
+.semi-button-secondary:hover,
+.semi-button-tertiary:hover {
+  background: rgba(0, 212, 255, 0.1) !important;
+  border-color: var(--semi-color-primary) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* 输入框高级样式 */
+.semi-input-wrapper {
+  background: rgba(10, 14, 20, 0.6) !important;
+  border: 1px solid rgba(0, 212, 255, 0.15) !important;
+  border-radius: 12px !important;
+  transition: all 0.3s !important;
+}
+
+.semi-input-wrapper:hover {
+  border-color: rgba(0, 212, 255, 0.3) !important;
+}
+
+.semi-input-wrapper:focus-within {
+  border-color: var(--semi-color-primary) !important;
+  box-shadow:
+    0 0 0 4px rgba(0, 212, 255, 0.1),
+    0 0 20px rgba(0, 212, 255, 0.1) !important;
+}
+
+body[theme-mode='light'] .semi-input-wrapper,
+body:not([theme-mode]) .semi-input-wrapper {
+  background: rgba(255, 255, 255, 0.8) !important;
+  border: 1px solid rgba(8, 145, 178, 0.15) !important;
+}
+
+body[theme-mode='light'] .semi-input-wrapper:focus-within,
+body:not([theme-mode]) .semi-input-wrapper:focus-within {
+  box-shadow:
+    0 0 0 4px rgba(8, 145, 178, 0.1),
+    0 0 20px rgba(8, 145, 178, 0.05) !important;
+}
+
+/* 选择器高级样式 */
+.semi-select {
+  border-radius: 12px !important;
+}
+
+.semi-select-selection {
+  background: rgba(10, 14, 20, 0.6) !important;
+  border: 1px solid rgba(0, 212, 255, 0.15) !important;
+  border-radius: 12px !important;
+  transition: all 0.3s !important;
+}
+
+.semi-select-selection:hover {
+  border-color: rgba(0, 212, 255, 0.3) !important;
+}
+
+.semi-select-focus .semi-select-selection {
+  border-color: var(--semi-color-primary) !important;
+  box-shadow: 0 0 0 4px rgba(0, 212, 255, 0.1) !important;
+}
+
+body[theme-mode='light'] .semi-select-selection,
+body:not([theme-mode]) .semi-select-selection {
+  background: rgba(255, 255, 255, 0.8) !important;
+  border: 1px solid rgba(8, 145, 178, 0.15) !important;
+}
+
+/* 下拉菜单高级样式 */
+.semi-select-option-list {
+  background: rgba(15, 20, 25, 0.98) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(0, 212, 255, 0.15) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4) !important;
+}
+
+.semi-select-option {
+  border-radius: 8px !important;
+  margin: 4px !important;
+  transition: all 0.2s !important;
+}
+
+.semi-select-option:hover {
+  background: rgba(0, 212, 255, 0.1) !important;
+}
+
+.semi-select-option-selected {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 212, 255, 0.2),
+    rgba(0, 255, 159, 0.1)
+  ) !important;
+}
+
+body[theme-mode='light'] .semi-select-option-list,
+body:not([theme-mode]) .semi-select-option-list {
+  background: rgba(255, 255, 255, 0.98) !important;
+  border: 1px solid rgba(8, 145, 178, 0.15) !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* 表格高级样式 */
+.semi-table {
+  border-radius: 16px !important;
+  overflow: hidden !important;
+}
+
+.semi-table-container {
+  background: rgba(10, 14, 20, 0.4) !important;
+  border: 1px solid rgba(0, 212, 255, 0.1) !important;
+  border-radius: 16px !important;
+}
+
+.semi-table-thead > .semi-table-row > .semi-table-row-head {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 212, 255, 0.08),
+    rgba(0, 255, 159, 0.04)
+  ) !important;
+  border-bottom: 1px solid rgba(0, 212, 255, 0.1) !important;
+  font-weight: 600 !important;
+}
+
+.semi-table-tbody > .semi-table-row {
+  transition: all 0.3s !important;
+  border-bottom: 1px solid rgba(0, 212, 255, 0.05) !important;
+}
+
+.semi-table-tbody > .semi-table-row:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 212, 255, 0.08),
+    transparent
+  ) !important;
+  transform: scale(1.005);
+}
+
+body[theme-mode='light'] .semi-table-container,
+body:not([theme-mode]) .semi-table-container {
+  background: rgba(255, 255, 255, 0.6) !important;
+  border: 1px solid rgba(8, 145, 178, 0.1) !important;
+}
+
+body[theme-mode='light']
+  .semi-table-thead
+  > .semi-table-row
+  > .semi-table-row-head,
+body:not([theme-mode])
+  .semi-table-thead
+  > .semi-table-row
+  > .semi-table-row-head {
+  background: linear-gradient(
+    135deg,
+    rgba(8, 145, 178, 0.08),
+    rgba(8, 145, 178, 0.04)
+  ) !important;
+  border-bottom: 1px solid rgba(8, 145, 178, 0.1) !important;
+}
+
+/* 标签高级样式 */
+.semi-tag {
+  border-radius: 8px !important;
+  font-weight: 500 !important;
+  transition: all 0.2s !important;
+}
+
+.semi-tag:hover {
+  transform: scale(1.05);
+}
+
+.semi-tag-blue,
+.semi-tag-light-blue {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 212, 255, 0.2),
+    rgba(0, 212, 255, 0.1)
+  ) !important;
+  border: 1px solid rgba(0, 212, 255, 0.3) !important;
+  color: #00d4ff !important;
+}
+
+.semi-tag-green,
+.semi-tag-light-green {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 255, 159, 0.2),
+    rgba(0, 255, 159, 0.1)
+  ) !important;
+  border: 1px solid rgba(0, 255, 159, 0.3) !important;
+  color: #00ff9f !important;
+}
+
+.semi-tag-red,
+.semi-tag-light-red {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 61, 113, 0.2),
+    rgba(255, 61, 113, 0.1)
+  ) !important;
+  border: 1px solid rgba(255, 61, 113, 0.3) !important;
+  color: #ff3d71 !important;
+}
+
+.semi-tag-yellow,
+.semi-tag-light-yellow {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 184, 0, 0.2),
+    rgba(255, 184, 0, 0.1)
+  ) !important;
+  border: 1px solid rgba(255, 184, 0, 0.3) !important;
+  color: #ffb800 !important;
+}
+
+/* 分页器高级样式 */
+.semi-page {
+  display: flex;
+  gap: 8px;
+}
+
+.semi-page-item {
+  border-radius: 10px !important;
+  border: 1px solid rgba(0, 212, 255, 0.15) !important;
+  background: rgba(10, 14, 20, 0.4) !important;
+  transition: all 0.2s !important;
+}
+
+.semi-page-item:hover {
+  border-color: var(--semi-color-primary) !important;
+  background: rgba(0, 212, 255, 0.1) !important;
+}
+
+.semi-page-item-active {
+  background: linear-gradient(135deg, #00d4ff, #00a8cc) !important;
+  border: none !important;
+  color: #0a0e14 !important;
+  font-weight: 600 !important;
+}
+
+/* Tabs 高级样式 */
+.semi-tabs-bar {
+  background: rgba(10, 14, 20, 0.4) !important;
+  border: 1px solid rgba(0, 212, 255, 0.1) !important;
+  border-radius: 14px !important;
+  padding: 6px !important;
+}
+
+.semi-tabs-tab {
+  border-radius: 10px !important;
+  transition: all 0.3s !important;
+  margin: 0 4px !important;
+}
+
+.semi-tabs-tab:hover {
+  background: rgba(0, 212, 255, 0.1) !important;
+}
+
+.semi-tabs-tab-active {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 212, 255, 0.2),
+    rgba(0, 255, 159, 0.1)
+  ) !important;
+  color: var(--semi-color-primary) !important;
+  font-weight: 600 !important;
+}
+
+body[theme-mode='light'] .semi-tabs-bar,
+body:not([theme-mode]) .semi-tabs-bar {
+  background: rgba(255, 255, 255, 0.6) !important;
+  border: 1px solid rgba(8, 145, 178, 0.1) !important;
+}
+
+/* Switch 高级样式 */
+.semi-switch {
+  transition: all 0.3s !important;
+}
+
+.semi-switch-checked {
+  background: linear-gradient(135deg, #00d4ff, #00a8cc) !important;
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.4) !important;
+}
+
+/* Tooltip 高级样式 */
+.semi-tooltip-wrapper {
+  background: rgba(15, 20, 25, 0.95) !important;
+  backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(0, 212, 255, 0.2) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Popover 高级样式 */
+.semi-popover-wrapper {
+  background: rgba(15, 20, 25, 0.98) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(0, 212, 255, 0.15) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* 滚动条高级样式 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 212, 255, 0.4),
+    rgba(0, 212, 255, 0.2)
+  );
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 212, 255, 0.6),
+    rgba(0, 212, 255, 0.4)
+  );
+}
+
+/* 页面内容区域 */
+.semi-layout-content {
+  background: linear-gradient(
+    135deg,
+    var(--semi-color-bg-0),
+    var(--semi-color-bg-1)
+  ) !important;
+}
+
+/* 面包屑高级样式 */
+.semi-breadcrumb-item {
+  transition: all 0.2s !important;
+}
+
+.semi-breadcrumb-item:hover {
+  color: var(--semi-color-primary) !important;
+}
+
+/* 通知/消息高级样式 */
+.semi-notification-wrapper {
+  background: rgba(15, 20, 25, 0.98) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(0, 212, 255, 0.15) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4) !important;
+}
+
+.semi-toast-wrapper {
+  background: rgba(15, 20, 25, 0.98) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(0, 212, 255, 0.15) !important;
+  border-radius: 12px !important;
+}
+
+/* 空状态高级样式 */
+.semi-empty {
+  padding: 40px !important;
+}
+
+.semi-empty-image {
+  opacity: 0.6;
+  filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.2));
+}
+
+/* 加载状态高级样式 */
+.semi-spin-wrapper .semi-spin {
+  color: var(--semi-color-primary) !important;
+}
+
+/* 进度条高级样式 */
+.semi-progress-track {
+  background: rgba(0, 212, 255, 0.1) !important;
+  border-radius: 10px !important;
+}
+
+.semi-progress-line-bar {
+  background: linear-gradient(90deg, #00d4ff, #00ff9f) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.4) !important;
+}
+
+/* 头像高级样式 */
+.semi-avatar {
+  border: 2px solid rgba(0, 212, 255, 0.2) !important;
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.1) !important;
+  transition: all 0.3s !important;
+}
+
+.semi-avatar:hover {
+  border-color: var(--semi-color-primary) !important;
+  transform: scale(1.1);
+}
+
+/* 徽章高级样式 */
+.semi-badge-dot {
+  background: linear-gradient(135deg, #ff3d71, #ff6b9d) !important;
+  box-shadow: 0 0 10px rgba(255, 61, 113, 0.5) !important;
+}
+
+.semi-badge-count {
+  background: linear-gradient(135deg, #ff3d71, #ff6b9d) !important;
+  border: none !important;
+  box-shadow: 0 0 10px rgba(255, 61, 113, 0.5) !important;
+}
