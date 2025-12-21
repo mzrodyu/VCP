@@ -3149,37 +3149,50 @@ body[theme-mode='dark'] .glass-effect {
   border: 1px solid rgba(148, 163, 184, 0.1) !important;
 }
 
-/* ==================== 顶部导航栏重构 - iOS 风格 ==================== */
-header.sticky {
-  background: var(--glass-bg-dark) !important;
-  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate)) !important;
-  -webkit-backdrop-filter: blur(var(--glass-blur))
-    saturate(var(--glass-saturate)) !important;
-  border-bottom: 0.5px solid rgba(255, 255, 255, 0.1) !important;
+/* ==================== 顶部导航栏 - 赛博朋克风格 ==================== */
+header.sticky,
+.semi-layout-header {
+  background: linear-gradient(
+    180deg,
+    rgba(10, 10, 15, 0.95) 0%,
+    rgba(18, 18, 26, 0.9) 100%
+  ) !important;
+  backdrop-filter: blur(30px) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(30px) saturate(200%) !important;
+  border-bottom: 1px solid rgba(102, 126, 234, 0.2) !important;
   box-shadow:
-    0 0.5px 0 rgba(255, 255, 255, 0.05),
-    0 4px 20px rgba(0, 0, 0, 0.15) !important;
+    0 1px 0 rgba(102, 126, 234, 0.1),
+    0 4px 30px rgba(0, 0, 0, 0.4),
+    inset 0 -1px 0 rgba(102, 126, 234, 0.05) !important;
 }
 
-body[theme-mode='light'] header.sticky {
-  background: var(--glass-bg-light) !important;
-  border-bottom: 0.5px solid rgba(0, 0, 0, 0.1) !important;
+body[theme-mode='light'] header.sticky,
+body[theme-mode='light'] .semi-layout-header {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(248, 250, 252, 0.9) 100%
+  ) !important;
+  border-bottom: 1px solid rgba(102, 126, 234, 0.15) !important;
   box-shadow:
-    0 0.5px 0 rgba(255, 255, 255, 0.8),
-    0 4px 20px rgba(0, 0, 0, 0.06) !important;
+    0 1px 0 rgba(102, 126, 234, 0.08),
+    0 4px 20px rgba(102, 126, 234, 0.08) !important;
 }
 
-/* 侧边栏重构 - iOS 风格 */
+/* 侧边栏 - 赛博朋克风格 */
 .semi-layout-sider,
 .sidebar-container {
-  background: var(--glass-bg-dark) !important;
-  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate)) !important;
-  -webkit-backdrop-filter: blur(var(--glass-blur))
-    saturate(var(--glass-saturate)) !important;
-  border-right: 0.5px solid rgba(255, 255, 255, 0.08) !important;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 10, 15, 0.98) 0%,
+    rgba(12, 12, 18, 0.95) 100%
+  ) !important;
+  backdrop-filter: blur(30px) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(30px) saturate(200%) !important;
+  border-right: 1px solid rgba(102, 126, 234, 0.15) !important;
   box-shadow:
-    0.5px 0 0 rgba(255, 255, 255, 0.05),
-    4px 0 20px rgba(0, 0, 0, 0.1) !important;
+    1px 0 0 rgba(102, 126, 234, 0.05),
+    8px 0 40px rgba(0, 0, 0, 0.3) !important;
 }
 
 body[theme-mode='light'] .semi-layout-sider,
@@ -3463,44 +3476,50 @@ body[theme-mode='dark'] .semi-card:hover {
   box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.2) !important;
 }
 
-/* 表格 - iOS 风格 */
+/* 表格 - 赛博朋克风格 */
 .semi-table {
   background: transparent !important;
 }
 
 .semi-table-container {
   background: var(--color-bg-elevated) !important;
-  border-radius: 16px !important;
+  border: 1px solid var(--color-border) !important;
+  border-radius: 20px !important;
   overflow: hidden !important;
-  box-shadow:
-    0 1px 3px rgba(0, 0, 0, 0.04),
-    0 4px 12px rgba(0, 0, 0, 0.06) !important;
+  box-shadow: var(--shadow-md) !important;
 }
 
 .semi-table-thead > .semi-table-row > .semi-table-row-head {
-  background: var(--color-bg-sunken) !important;
-  font-weight: 600 !important;
-  font-size: 12px !important;
-  color: var(--color-text-muted) !important;
+  background: linear-gradient(
+    180deg,
+    rgba(102, 126, 234, 0.08) 0%,
+    rgba(102, 126, 234, 0.04) 100%
+  ) !important;
+  font-weight: 700 !important;
+  font-size: 11px !important;
+  color: #667eea !important;
   text-transform: uppercase !important;
-  letter-spacing: 0.5px !important;
-  border-bottom: 0.5px solid var(--color-border) !important;
+  letter-spacing: 1px !important;
+  border-bottom: 1px solid var(--color-border) !important;
+  padding: 16px !important;
 }
 
 .semi-table-tbody > .semi-table-row {
-  transition: background 0.15s var(--ease-ios) !important;
+  transition: all 0.3s var(--ease-smooth) !important;
 }
 
 .semi-table-tbody > .semi-table-row:hover {
-  background: rgba(0, 122, 255, 0.04) !important;
+  background: rgba(102, 126, 234, 0.06) !important;
+  box-shadow: inset 4px 0 0 #667eea !important;
 }
 
 .semi-table-tbody > .semi-table-row:active {
-  background: rgba(0, 122, 255, 0.08) !important;
+  background: rgba(102, 126, 234, 0.1) !important;
 }
 
 .semi-table-tbody > .semi-table-row > .semi-table-row-cell {
-  border-bottom: 0.5px solid var(--color-border) !important;
+  border-bottom: 1px solid var(--color-border) !important;
+  padding: 18px 16px !important;
 }
 
 .semi-table-tbody > .semi-table-row:last-child > .semi-table-row-cell {
