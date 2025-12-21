@@ -1856,21 +1856,24 @@ body[theme-mode='light'] .semi-message {
   z-index: -1;
 }
 
-/* ==================== 充值页面样式 ==================== */
+/* ==================== 充值页面 - iOS 风格 ==================== */
 .topup-page {
-  padding: 24px;
-  animation: fadeIn 0.3s ease;
+  padding: 20px;
+  animation: fadeIn 0.3s var(--ease-ios);
 }
 
 .topup-card {
   background: var(--color-bg-elevated) !important;
-  border: 1px solid var(--color-border) !important;
-  border-radius: var(--border-radius-xl) !important;
+  border: none !important;
+  border-radius: 16px !important;
   overflow: hidden;
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.04),
+    0 4px 12px rgba(0, 0, 0, 0.06) !important;
 }
 
 .topup-header {
-  background: linear-gradient(135deg, var(--color-accent), #6366f1);
+  background: linear-gradient(135deg, #007aff 0%, #5856d6 100%);
   padding: 24px;
   color: white;
 }
@@ -1880,7 +1883,7 @@ body[theme-mode='light'] .semi-message {
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   padding: 20px 24px;
-  background: linear-gradient(135deg, var(--color-accent), #6366f1);
+  background: linear-gradient(135deg, #007aff 0%, #5856d6 100%);
 }
 
 .topup-stat-item {
@@ -1888,52 +1891,62 @@ body[theme-mode='light'] .semi-message {
 }
 
 .topup-stat-value {
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 700;
   color: white;
+  letter-spacing: -0.5px;
 }
 
 .topup-stat-label {
-  font-size: 12px;
+  font-size: 13px;
   color: rgba(255, 255, 255, 0.8);
   margin-top: 4px;
+  font-weight: 500;
 }
 
 .topup-content {
-  padding: 24px;
+  padding: 20px;
 }
 
 .topup-amount-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-  gap: 12px;
+  gap: 10px;
   margin-bottom: 20px;
 }
 
 .topup-amount-btn {
   padding: 16px 12px;
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius-md);
-  background: var(--color-bg-elevated);
+  border: none;
+  border-radius: 12px;
+  background: var(--color-bg-sunken);
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: all 0.2s var(--ease-ios);
   text-align: center;
 }
 
 .topup-amount-btn:hover {
-  border-color: var(--color-accent);
-  background: var(--color-accent-muted);
+  background: rgba(0, 122, 255, 0.1);
+}
+
+.topup-amount-btn:active {
+  transform: scale(0.96);
 }
 
 .topup-amount-btn.selected {
-  border-color: var(--color-accent);
-  background: var(--color-accent-muted);
-  color: var(--color-accent);
+  background: #007aff;
+  color: white;
+}
+
+.topup-amount-btn.selected .topup-amount-value,
+.topup-amount-btn.selected .topup-amount-quota {
+  color: white !important;
 }
 
 .topup-amount-value {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
+  letter-spacing: -0.5px;
   color: var(--color-text-primary);
 }
 
