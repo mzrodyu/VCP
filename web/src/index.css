@@ -2747,42 +2747,60 @@ body[theme-mode='light'] .semi-message {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
-/* Checkbox 复选框重构 */
+/* Checkbox - iOS 风格 */
 .semi-checkbox-inner {
+  width: 22px !important;
+  height: 22px !important;
   border-radius: 6px !important;
-  border: 2px solid var(--color-border) !important;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  border: 2px solid rgba(120, 120, 128, 0.32) !important;
+  transition: all 0.2s var(--ease-ios) !important;
+  background: transparent !important;
 }
 
 .semi-checkbox:hover .semi-checkbox-inner {
-  border-color: var(--color-accent) !important;
+  border-color: #007aff !important;
+}
+
+.semi-checkbox:active .semi-checkbox-inner {
+  transform: scale(0.9) !important;
 }
 
 .semi-checkbox-checked .semi-checkbox-inner {
-  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
-  border-color: transparent !important;
-  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.4) !important;
+  background: #007aff !important;
+  border-color: #007aff !important;
+  box-shadow: none !important;
 }
 
-/* Radio 单选框重构 */
+.semi-checkbox-inner-checked svg {
+  color: white !important;
+}
+
+/* Radio - iOS 风格 */
 .semi-radio-inner {
-  border: 2px solid var(--color-border) !important;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  width: 22px !important;
+  height: 22px !important;
+  border: 2px solid rgba(120, 120, 128, 0.32) !important;
+  transition: all 0.2s var(--ease-ios) !important;
+  background: transparent !important;
 }
 
 .semi-radio:hover .semi-radio-inner {
-  border-color: var(--color-accent) !important;
+  border-color: #007aff !important;
+}
+
+.semi-radio:active .semi-radio-inner {
+  transform: scale(0.9) !important;
 }
 
 .semi-radio-checked .semi-radio-inner {
-  border-color: var(--color-accent) !important;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15) !important;
+  border-color: #007aff !important;
+  box-shadow: none !important;
 }
 
 .semi-radio-checked .semi-radio-inner-display {
-  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
-  transform: scale(1);
-  animation: scaleIn 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  background: #007aff !important;
+  width: 12px !important;
+  height: 12px !important;
 }
 
 /* Tag 标签重构 */
