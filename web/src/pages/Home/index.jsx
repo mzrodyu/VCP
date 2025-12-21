@@ -28,9 +28,6 @@ import {
     IconShield
 } from '@douyinfe/semi-icons';
 import {
-    Button,
-    Card,
-    Input,
     ScrollItem,
     ScrollList,
     Typography
@@ -176,7 +173,7 @@ const Home = () => {
   ];
 
   return (
-    <div className='w-full overflow-x-hidden bg-[var(--semi-color-bg-0)] min-h-screen'>
+    <div className='w-full overflow-x-hidden min-h-screen home-page'>
       <NoticeModal
         visible={noticeVisible}
         onClose={() => setNoticeVisible(false)}
@@ -184,172 +181,160 @@ const Home = () => {
       />
       {homePageContentLoaded && homePageContent === '' ? (
         <div className='w-full'>
-          {/* Hero Section */}
-          <div className='relative w-full min-h-[600px] flex flex-col justify-center items-center px-4 py-20 overflow-hidden'>
-            {/* 动态背景装饰 */}
-            <div className='blur-ball blur-ball-indigo opacity-30 animate-pulse' />
-            <div className='blur-ball blur-ball-teal opacity-20 animate-pulse delay-1000' />
+          {/* Hero Section - 全新设计 */}
+          <div className='hero-section relative w-full min-h-screen flex flex-col justify-center items-center px-4 py-20 overflow-hidden'>
+            {/* 动态网格背景 */}
+            <div className='hero-grid-bg' />
             
-            <div className='z-10 text-center max-w-5xl mx-auto space-y-8'>
-              <div className='space-y-4 animate-fade-in-up'>
-                <div className="inline-block px-4 py-1.5 rounded-full bg-[var(--semi-color-fill-0)] border border-[var(--semi-color-border)] mb-4 backdrop-blur-sm">
-                  <Text type="secondary" strong className="text-sm">🚀 {t('新一代 AI 接口管理平台')}</Text>
-                </div>
-                <h1 className='text-5xl md:text-6xl lg:text-7xl font-extrabold text-[var(--semi-color-text-0)] leading-tight tracking-tight'>
-                  {t('统一的')} <span className='shine-text'>{t('大模型接口网关')}</span>
-                </h1>
-                <p className='text-lg md:text-xl text-[var(--semi-color-text-1)] max-w-2xl mx-auto leading-relaxed'>
-                  {t('一站式管理所有 AI 模型接口，提供更优的价格、更高的稳定性与企业级管理功能。')}
-                </p>
-              </div>
-
-              {/* API URL Box */}
-              <div className='w-full max-w-xl mx-auto animate-fade-in-up delay-200'>
-                <div className='p-2 rounded-2xl bg-[var(--semi-color-bg-2)] border border-[var(--semi-color-border)] shadow-lg backdrop-blur-xl'>
-                  <Input
-                    readonly
-                    value={serverAddress}
-                    size='large'
-                    className='!bg-transparent !border-none text-base'
-                    suffix={
-                      <div className='flex items-center gap-3'>
-                        <div className='hidden sm:block h-6 w-[1px] bg-[var(--semi-color-border)]'></div>
-                        <ScrollList
-                          bodyHeight={24}
-                          className="w-32 hidden sm:block"
-                          style={{ border: 'unset', boxShadow: 'unset' }}
-                        >
-                          <ScrollItem
-                            mode='wheel'
-                            cycled={true}
-                            list={endpointItems}
-                            selectedIndex={endpointIndex}
-                            onSelect={({ index }) => setEndpointIndex(index)}
-                          />
-                        </ScrollList>
-                        <Button
-                          theme='solid'
-                          type='primary'
-                          onClick={handleCopyBaseURL}
-                          icon={<IconCopy />}
-                          className='!rounded-xl !font-bold'
-                        >
-                          {t('复制')}
-                        </Button>
-                      </div>
-                    }
-                  />
+            {/* 渐变光晕 */}
+            <div className='hero-glow hero-glow-1' />
+            <div className='hero-glow hero-glow-2' />
+            <div className='hero-glow hero-glow-3' />
+            
+            {/* 浮动粒子 */}
+            <div className='floating-particles'>
+              {[...Array(6)].map((_, i) => (
+                <div key={i} className={`particle particle-${i + 1}`} />
+              ))}
+            </div>
+            
+            <div className='z-10 text-center max-w-5xl mx-auto'>
+              {/* 徽章 */}
+              <div className='animate-fade-in-up mb-8'>
+                <div className='hero-badge inline-flex items-center gap-2 px-5 py-2.5 rounded-full'>
+                  <span className='badge-dot' />
+                  <span className='text-sm font-medium'>{t('新一代 AI 接口管理平台')}</span>
                 </div>
               </div>
+              
+              {/* 主标题 */}
+              <h1 className='hero-title animate-fade-in-up mb-6'>
+                <span className='hero-title-line'>{t('统一的')}</span>
+                <span className='hero-title-gradient'>{t('大模型接口网关')}</span>
+              </h1>
+              
+              {/* 副标题 */}
+              <p className='hero-subtitle animate-fade-in-up delay-200 mb-12'>
+                {t('一站式管理所有 AI 模型接口，提供更优的价格、更高的稳定性与企业级管理功能。')}
+              </p>
 
-              {/* Action Buttons */}
-              <div className='flex flex-wrap justify-center gap-4 mt-8 animate-fade-in-up delay-300'>
+              {/* API URL Box - 玻璃拟态 */}
+              <div className='w-full max-w-2xl mx-auto animate-fade-in-up delay-300 mb-10'>
+                <div className='api-url-box'>
+                  <div className='api-url-inner'>
+                    <code className='api-url-text'>{serverAddress}</code>
+                    <div className='api-url-actions'>
+                      <ScrollList
+                        bodyHeight={28}
+                        className="w-36 hidden sm:block"
+                        style={{ border: 'unset', boxShadow: 'unset', background: 'transparent' }}
+                      >
+                        <ScrollItem
+                          mode='wheel'
+                          cycled={true}
+                          list={endpointItems}
+                          selectedIndex={endpointIndex}
+                          onSelect={({ index }) => setEndpointIndex(index)}
+                        />
+                      </ScrollList>
+                      <button className='copy-btn' onClick={handleCopyBaseURL}>
+                        <IconCopy style={{ fontSize: 16 }} />
+                        <span>{t('复制')}</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* CTA 按钮 */}
+              <div className='flex flex-wrap justify-center gap-4 animate-fade-in-up delay-300'>
                 <Link to='/console'>
-                  <Button
-                    theme='solid'
-                    type='primary'
-                    size='large'
-                    className='!rounded-full !px-8 !py-6 !text-lg !font-bold shadow-lg shadow-indigo-500/20 hover:shadow-indigo-500/30 transition-all'
-                    icon={<IconPlay />}
-                  >
-                    {t('立即开始')}
-                  </Button>
+                  <button className='cta-btn cta-btn-primary'>
+                    <IconPlay style={{ fontSize: 20 }} />
+                    <span>{t('立即开始')}</span>
+                    <div className='cta-btn-shine' />
+                  </button>
                 </Link>
                 {docsLink && (
-                  <Button
-                    size='large'
-                    type='tertiary'
-                    className='!rounded-full !px-8 !py-6 !text-lg !font-bold !bg-[var(--semi-color-fill-0)] hover:!bg-[var(--semi-color-fill-1)] transition-all'
-                    icon={<IconFile />}
-                    onClick={() => window.open(docsLink, '_blank')}
-                  >
-                    {t('开发文档')}
-                  </Button>
+                  <button className='cta-btn cta-btn-secondary' onClick={() => window.open(docsLink, '_blank')}>
+                    <IconFile style={{ fontSize: 20 }} />
+                    <span>{t('开发文档')}</span>
+                  </button>
                 )}
                 {isDemoSiteMode && statusState?.status?.version && (
-                   <Button
-                   size='large'
-                   type='tertiary'
-                   className='!rounded-full !px-8 !py-6 !text-lg !font-bold !bg-[var(--semi-color-fill-0)] hover:!bg-[var(--semi-color-fill-1)] transition-all'
-                   icon={<IconGithubLogo />}
-                   onClick={() =>
-                     window.open(
-                       'https://github.com/QuantumNous/new-api',
-                       '_blank',
-                       )
-                   }
-                 >
-                   GitHub
-                 </Button>
+                  <button className='cta-btn cta-btn-secondary' onClick={() => window.open('https://github.com/QuantumNous/new-api', '_blank')}>
+                    <IconGithubLogo style={{ fontSize: 20 }} />
+                    <span>GitHub</span>
+                  </button>
                 )}
+              </div>
+            </div>
+            
+            {/* 向下滚动提示 */}
+            <div className='scroll-indicator'>
+              <div className='scroll-mouse'>
+                <div className='scroll-wheel' />
               </div>
             </div>
           </div>
 
-          {/* Features Section */}
-          <div className='w-full px-4 py-20 bg-[var(--semi-color-bg-1)] border-t border-[var(--semi-color-border)]'>
+          {/* Features Section - 卡片重设计 */}
+          <div className='features-section w-full px-4 py-24'>
             <div className='max-w-6xl mx-auto'>
-              <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
+              <div className='text-center mb-16'>
+                <h2 className='section-title'>{t('为什么选择我们')}</h2>
+                <p className='section-subtitle'>{t('强大的功能，简洁的体验')}</p>
+              </div>
+              
+              <div className='features-grid'>
                 {features.map((feature, index) => (
-                  <Card
-                    key={index}
-                    className='!bg-[var(--semi-color-bg-2)] !border-[var(--semi-color-border)] hover:!translate-y-[-4px] transition-transform duration-300 shadow-sm hover:shadow-md'
-                    bodyStyle={{ padding: '24px' }}
-                  >
-                    <div className='flex flex-col items-start gap-4'>
-                      <div className='p-3 rounded-2xl bg-[var(--semi-color-fill-0)]'>
-                        {feature.icon}
-                      </div>
-                      <div>
-                        <Title heading={5} className='mb-2'>{feature.title}</Title>
-                        <Text type="secondary" className='leading-relaxed'>{feature.desc}</Text>
-                      </div>
+                  <div key={index} className='feature-card' style={{ animationDelay: `${index * 0.1}s` }}>
+                    <div className='feature-card-glow' />
+                    <div className='feature-icon-wrapper'>
+                      {feature.icon}
                     </div>
-                  </Card>
+                    <h3 className='feature-title'>{feature.title}</h3>
+                    <p className='feature-desc'>{feature.desc}</p>
+                  </div>
                 ))}
               </div>
             </div>
           </div>
 
-          {/* Model Providers Section */}
-          <div className='w-full px-4 py-24 overflow-hidden'>
-            <div className='max-w-5xl mx-auto text-center space-y-12'>
-              <div className='space-y-2'>
-                <Title heading={2}>{t('支持众多主流大模型')}</Title>
-                <Text type="secondary" className='text-lg'>{t('无缝接入，一键切换，享受极致体验')}</Text>
+          {/* Model Providers Section - 无限滚动 */}
+          <div className='providers-section w-full py-24 overflow-hidden'>
+            <div className='max-w-6xl mx-auto px-4'>
+              <div className='text-center mb-16'>
+                <h2 className='section-title'>{t('支持众多主流大模型')}</h2>
+                <p className='section-subtitle'>{t('无缝接入，一键切换，享受极致体验')}</p>
               </div>
               
-              <div className='flex flex-wrap justify-center gap-6 md:gap-8 opacity-80 hover:opacity-100 transition-opacity duration-300'>
-                <div className="provider-icon hover:scale-110 transition-transform"><Moonshot size={48} /></div>
-                <div className="provider-icon hover:scale-110 transition-transform"><OpenAI size={48} /></div>
-                <div className="provider-icon hover:scale-110 transition-transform"><Claude.Color size={48} /></div>
-                <div className="provider-icon hover:scale-110 transition-transform"><Gemini.Color size={48} /></div>
-                <div className="provider-icon hover:scale-110 transition-transform"><Midjourney size={48} /></div>
-                <div className="provider-icon hover:scale-110 transition-transform"><Suno size={48} /></div>
-                <div className="provider-icon hover:scale-110 transition-transform"><Zhipu.Color size={48} /></div>
-                <div className="provider-icon hover:scale-110 transition-transform"><Qwen.Color size={48} /></div>
-                <div className="provider-icon hover:scale-110 transition-transform"><DeepSeek.Color size={48} /></div>
-                <div className="provider-icon hover:scale-110 transition-transform"><Spark.Color size={48} /></div>
-                <div className="provider-icon hover:scale-110 transition-transform"><Wenxin.Color size={48} /></div>
-                <div className="provider-icon hover:scale-110 transition-transform"><Minimax.Color size={48} /></div>
-                <div className="provider-icon hover:scale-110 transition-transform"><Volcengine.Color size={48} /></div>
-                <div className="provider-icon hover:scale-110 transition-transform"><Cohere.Color size={48} /></div>
-                <div className="provider-icon hover:scale-110 transition-transform"><XAI size={48} /></div>
-                <div className="provider-icon hover:scale-110 transition-transform"><Grok size={48} /></div>
-                <div className="provider-icon hover:scale-110 transition-transform"><AzureAI.Color size={48} /></div>
-                <div className="provider-icon hover:scale-110 transition-transform"><Hunyuan.Color size={48} /></div>
-                <div className="provider-icon hover:scale-110 transition-transform"><Xinference.Color size={48} /></div>
-                <div className='flex items-center justify-center w-12 h-12 rounded-full bg-[var(--semi-color-fill-0)] text-[var(--semi-color-text-1)] font-bold text-sm border border-[var(--semi-color-border)]'>
-                  30+
+              <div className='providers-marquee'>
+                <div className='providers-track'>
+                  {[Moonshot, OpenAI, Claude, Gemini, Midjourney, Suno, Zhipu, Qwen, DeepSeek, Spark].map((Provider, i) => (
+                    <div key={i} className='provider-card'>
+                      {Provider.Color ? <Provider.Color size={40} /> : <Provider size={40} />}
+                    </div>
+                  ))}
+                  {[Wenxin, Minimax, Volcengine, Cohere, XAI, Grok, AzureAI, Hunyuan, Xinference].map((Provider, i) => (
+                    <div key={i + 10} className='provider-card'>
+                      {Provider.Color ? <Provider.Color size={40} /> : <Provider size={40} />}
+                    </div>
+                  ))}
+                  <div className='provider-card provider-card-more'>
+                    <span>30+</span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
           
           {/* Footer */}
-          <div className="py-8 text-center border-t border-[var(--semi-color-border)]">
-             <Text type="tertiary" size="small">Copyright © {new Date().getFullYear()} New API. All rights reserved.</Text>
-          </div>
+          <footer className='home-footer'>
+            <div className='footer-content'>
+              <Text type="tertiary" size="small">© {new Date().getFullYear()} New API. All rights reserved.</Text>
+            </div>
+          </footer>
         </div>
       ) : (
         <div className='w-full min-h-screen bg-[var(--semi-color-bg-0)]'>
