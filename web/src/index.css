@@ -3429,34 +3429,48 @@ body[theme-mode='dark'] .semi-card:hover {
   transform: scale(0.96) !important;
 }
 
-/* 输入框 - iOS 风格 */
+/* 输入框 - 赛博朋克风格 */
 .semi-input-wrapper {
   background: var(--color-bg-sunken) !important;
-  border: none !important;
-  border-radius: 12px !important;
-  transition: all 0.2s var(--ease-ios) !important;
+  border: 1px solid var(--color-border) !important;
+  border-radius: 14px !important;
+  transition: all 0.3s var(--ease-spring) !important;
+}
+
+.semi-input-wrapper:hover {
+  border-color: rgba(102, 126, 234, 0.4) !important;
 }
 
 .semi-input-wrapper:focus-within {
   background: var(--color-bg-elevated) !important;
-  box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.2) !important;
+  border-color: #667eea !important;
+  box-shadow:
+    0 0 0 4px rgba(102, 126, 234, 0.2),
+    var(--glow-primary) !important;
 }
 
 .semi-input {
-  font-size: 16px !important;
+  font-size: 15px !important;
 }
 
-/* 文本域 - iOS 风格 */
+/* 文本域 - 赛博朋克风格 */
 .semi-input-textarea-wrapper {
   background: var(--color-bg-sunken) !important;
-  border: none !important;
-  border-radius: 12px !important;
-  transition: all 0.2s var(--ease-ios) !important;
+  border: 1px solid var(--color-border) !important;
+  border-radius: 14px !important;
+  transition: all 0.3s var(--ease-spring) !important;
+}
+
+.semi-input-textarea-wrapper:hover {
+  border-color: rgba(102, 126, 234, 0.4) !important;
 }
 
 .semi-input-textarea-wrapper:focus-within {
   background: var(--color-bg-elevated) !important;
-  box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.2) !important;
+  border-color: #667eea !important;
+  box-shadow:
+    0 0 0 4px rgba(102, 126, 234, 0.2),
+    var(--glow-primary) !important;
 }
 
 /* 选择器 - iOS 风格 */
@@ -3903,28 +3917,33 @@ body[theme-mode='dark'] .ios-glass-card {
   letter-spacing: 0.5px !important;
 }
 
-/* iOS 风格开关 - 覆盖默认样式 */
+/* 开关 - 赛博朋克风格 */
 .semi-switch {
-  width: 51px !important;
-  height: 31px !important;
-  border-radius: 31px !important;
-  background: rgba(120, 120, 128, 0.16) !important;
-  transition: background 0.3s var(--ease-ios) !important;
+  width: 56px !important;
+  height: 32px !important;
+  border-radius: 32px !important;
+  background: var(--color-bg-muted) !important;
+  border: 1px solid var(--color-border) !important;
+  transition: all 0.3s var(--ease-spring) !important;
+}
+
+.semi-switch:hover {
+  border-color: rgba(102, 126, 234, 0.4) !important;
 }
 
 .semi-switch-checked {
-  background: #34c759 !important;
+  background: var(--gradient-primary) !important;
+  border-color: transparent !important;
+  box-shadow: var(--glow-primary) !important;
 }
 
 .semi-switch-knob {
-  width: 27px !important;
-  height: 27px !important;
-  border-radius: 27px !important;
+  width: 28px !important;
+  height: 28px !important;
+  border-radius: 28px !important;
   background: white !important;
-  box-shadow:
-    0 3px 8px rgba(0, 0, 0, 0.15),
-    0 3px 1px rgba(0, 0, 0, 0.06) !important;
-  transition: transform 0.3s var(--ease-ios-spring) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+  transition: all 0.3s var(--ease-spring) !important;
 }
 
 /* iOS 风格输入框 */
