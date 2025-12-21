@@ -2941,3 +2941,550 @@ body:not([theme-mode]) .semi-tabs-bar {
     grid-template-columns: 1fr;
   }
 }
+
+/* ==================== 高级动画效果 ==================== */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse-soft {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(91, 141, 239, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(91, 141, 239, 0.4);
+  }
+}
+
+/* 卡片动画入场 */
+.semi-card {
+  animation: slideUp 0.4s ease-out;
+}
+
+.semi-table-container {
+  animation: scaleIn 0.3s ease-out;
+}
+
+/* ==================== 高级卡片样式 ==================== */
+.premium-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 24px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.premium-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(91, 141, 239, 0.5),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.premium-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  border-color: rgba(91, 141, 239, 0.3);
+}
+
+.premium-card:hover::before {
+  opacity: 1;
+}
+
+/* ==================== 高级表单样式 ==================== */
+.semi-form .semi-form-field {
+  margin-bottom: 20px;
+}
+
+.semi-form .semi-form-field-label-text {
+  font-weight: 500;
+  color: var(--semi-color-text-1);
+  margin-bottom: 8px;
+}
+
+.semi-input-wrapper,
+.semi-select {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.semi-input-wrapper:focus-within,
+.semi-select-focus {
+  transform: translateY(-1px);
+}
+
+/* 输入框占位符样式 */
+.semi-input::placeholder {
+  color: var(--semi-color-text-3) !important;
+  transition: color 0.2s;
+}
+
+.semi-input:focus::placeholder {
+  color: var(--semi-color-text-2) !important;
+}
+
+/* ==================== 高级Collapse样式 ==================== */
+.semi-collapse {
+  border: none !important;
+  background: transparent !important;
+}
+
+.semi-collapse-item {
+  background: var(--glass-bg) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 16px !important;
+  margin-bottom: 12px !important;
+  overflow: hidden;
+  transition: all 0.3s !important;
+}
+
+.semi-collapse-item:hover {
+  border-color: rgba(91, 141, 239, 0.3) !important;
+}
+
+.semi-collapse-header {
+  padding: 16px 20px !important;
+  font-weight: 600 !important;
+  color: var(--semi-color-text-0) !important;
+}
+
+.semi-collapse-content {
+  padding: 0 20px 20px !important;
+}
+
+/* ==================== 高级Dropdown样式 ==================== */
+.semi-dropdown-menu {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2) !important;
+  padding: 8px !important;
+  animation: scaleIn 0.2s ease-out;
+}
+
+.semi-dropdown-item {
+  border-radius: 8px !important;
+  padding: 10px 14px !important;
+  margin: 2px 0 !important;
+  transition: all 0.2s !important;
+}
+
+.semi-dropdown-item:hover {
+  background: rgba(91, 141, 239, 0.1) !important;
+}
+
+.semi-dropdown-item-active {
+  background: rgba(91, 141, 239, 0.15) !important;
+  color: var(--semi-color-primary) !important;
+}
+
+/* ==================== 高级描述列表样式 ==================== */
+.semi-descriptions {
+  background: var(--glass-bg) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 16px !important;
+  padding: 20px !important;
+}
+
+.semi-descriptions-item {
+  padding: 12px 0 !important;
+  border-bottom: 1px solid var(--glass-border) !important;
+}
+
+.semi-descriptions-item:last-child {
+  border-bottom: none !important;
+}
+
+.semi-descriptions-key {
+  color: var(--semi-color-text-2) !important;
+  font-weight: 500 !important;
+}
+
+.semi-descriptions-value {
+  color: var(--semi-color-text-0) !important;
+}
+
+/* ==================== 高级Timeline样式 ==================== */
+.semi-timeline-item-head {
+  background: var(--semi-color-primary) !important;
+  box-shadow: 0 0 10px rgba(91, 141, 239, 0.3) !important;
+}
+
+.semi-timeline-item-tail {
+  background: var(--glass-border) !important;
+}
+
+.semi-timeline-item-content {
+  padding-left: 20px !important;
+}
+
+/* ==================== 高级List样式 ==================== */
+.semi-list {
+  background: transparent !important;
+}
+
+.semi-list-item {
+  background: var(--glass-bg) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 12px !important;
+  margin-bottom: 8px !important;
+  padding: 16px !important;
+  transition: all 0.3s !important;
+}
+
+.semi-list-item:hover {
+  transform: translateX(4px);
+  border-color: rgba(91, 141, 239, 0.3) !important;
+}
+
+/* ==================== 高级Checkbox/Radio样式 ==================== */
+.semi-checkbox-inner {
+  border-radius: 6px !important;
+  border: 2px solid var(--glass-border) !important;
+  transition: all 0.2s !important;
+}
+
+.semi-checkbox-checked .semi-checkbox-inner {
+  background: var(--semi-color-primary) !important;
+  border-color: var(--semi-color-primary) !important;
+}
+
+.semi-radio-inner {
+  border: 2px solid var(--glass-border) !important;
+  transition: all 0.2s !important;
+}
+
+.semi-radio-checked .semi-radio-inner {
+  border-color: var(--semi-color-primary) !important;
+}
+
+.semi-radio-checked .semi-radio-inner-display {
+  background: var(--semi-color-primary) !important;
+}
+
+/* ==================== 高级Slider样式 ==================== */
+.semi-slider-track {
+  background: var(--glass-border) !important;
+  border-radius: 10px !important;
+}
+
+.semi-slider-track-active {
+  background: var(--semi-color-primary) !important;
+}
+
+.semi-slider-handle {
+  background: #fff !important;
+  border: 3px solid var(--semi-color-primary) !important;
+  box-shadow: 0 2px 10px rgba(91, 141, 239, 0.3) !important;
+  transition: all 0.2s !important;
+}
+
+.semi-slider-handle:hover {
+  transform: scale(1.2);
+  box-shadow: 0 4px 15px rgba(91, 141, 239, 0.5) !important;
+}
+
+/* ==================== 高级Upload样式 ==================== */
+.semi-upload-drag-area {
+  background: var(--glass-bg) !important;
+  border: 2px dashed var(--glass-border) !important;
+  border-radius: 16px !important;
+  padding: 40px !important;
+  transition: all 0.3s !important;
+}
+
+.semi-upload-drag-area:hover,
+.semi-upload-drag-area-drag-over {
+  border-color: var(--semi-color-primary) !important;
+  background: rgba(91, 141, 239, 0.05) !important;
+}
+
+/* ==================== 高级Calendar样式 ==================== */
+.semi-calendar {
+  background: var(--glass-bg) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 16px !important;
+}
+
+.semi-calendar-month-row .semi-calendar-day:hover {
+  background: rgba(91, 141, 239, 0.1) !important;
+}
+
+.semi-calendar-day-selected {
+  background: var(--semi-color-primary) !important;
+  color: #fff !important;
+}
+
+/* ==================== 高级DatePicker样式 ==================== */
+.semi-datepicker-panel {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* ==================== 高级TreeSelect样式 ==================== */
+.semi-tree-option {
+  border-radius: 8px !important;
+  margin: 2px 4px !important;
+  transition: all 0.2s !important;
+}
+
+.semi-tree-option:hover {
+  background: rgba(91, 141, 239, 0.1) !important;
+}
+
+.semi-tree-option-selected {
+  background: rgba(91, 141, 239, 0.15) !important;
+}
+
+/* ==================== 在线状态指示器 ==================== */
+.online-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 10px rgba(74, 222, 128, 0.5);
+  animation: pulse-soft 2s infinite;
+}
+
+.offline-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--semi-color-text-3);
+}
+
+/* ==================== 数据高亮效果 ==================== */
+.highlight-value {
+  font-weight: 700;
+  color: var(--semi-color-primary);
+}
+
+.highlight-success {
+  color: #4ade80;
+}
+
+.highlight-warning {
+  color: #fbbf24;
+}
+
+.highlight-danger {
+  color: #f87171;
+}
+
+/* ==================== 加载骨架屏 ==================== */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--glass-bg) 25%,
+    rgba(91, 141, 239, 0.1) 50%,
+    var(--glass-bg) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  border-radius: 8px;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* ==================== 悬浮提示增强 ==================== */
+.info-tooltip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--glass-border);
+  color: var(--semi-color-text-2);
+  font-size: 10px;
+  cursor: help;
+  transition: all 0.2s;
+}
+
+.info-tooltip:hover {
+  background: var(--semi-color-primary);
+  color: #fff;
+}
+
+/* ==================== 操作按钮组 ==================== */
+.action-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.action-btn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: var(--semi-color-text-1);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.action-btn:hover {
+  background: rgba(91, 141, 239, 0.1);
+  border-color: var(--semi-color-primary);
+  color: var(--semi-color-primary);
+}
+
+.action-btn.danger:hover {
+  background: rgba(248, 113, 113, 0.1);
+  border-color: #f87171;
+  color: #f87171;
+}
+
+/* ==================== 代码块样式 ==================== */
+.code-block {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 16px;
+  font-family: 'Monaco', 'Consolas', monospace;
+  font-size: 13px;
+  color: var(--semi-color-text-1);
+  overflow-x: auto;
+}
+
+.code-inline {
+  background: rgba(91, 141, 239, 0.1);
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-family: 'Monaco', 'Consolas', monospace;
+  font-size: 0.9em;
+  color: var(--semi-color-primary);
+}
+
+/* ==================== 数据表格增强 ==================== */
+.semi-table-row-expand-icon {
+  transition: transform 0.3s !important;
+}
+
+.semi-table-row-expanded .semi-table-row-expand-icon {
+  transform: rotate(90deg);
+}
+
+.semi-table-expanded-row {
+  background: rgba(91, 141, 239, 0.03) !important;
+}
+
+.semi-table-expanded-row > td {
+  padding: 20px !important;
+}
+
+/* 表格选中行 */
+.semi-table-row-selected {
+  background: rgba(91, 141, 239, 0.08) !important;
+}
+
+.semi-table-row-selected:hover {
+  background: rgba(91, 141, 239, 0.12) !important;
+}
+
+/* ==================== 浅色模式优化 ==================== */
+body[theme-mode='light'] .premium-card,
+body:not([theme-mode]) .premium-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(8, 145, 178, 0.1);
+}
+
+body[theme-mode='light'] .premium-card:hover,
+body:not([theme-mode]) .premium-card:hover {
+  box-shadow: 0 12px 40px rgba(8, 145, 178, 0.1);
+  border-color: rgba(8, 145, 178, 0.2);
+}
+
+body[theme-mode='light'] .code-block,
+body:not([theme-mode]) .code-block {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+body[theme-mode='light'] .semi-collapse-item,
+body:not([theme-mode]) .semi-collapse-item {
+  background: rgba(255, 255, 255, 0.9) !important;
+}
+
+body[theme-mode='light'] .semi-dropdown-menu,
+body:not([theme-mode]) .semi-dropdown-menu {
+  background: rgba(255, 255, 255, 0.98) !important;
+}
+
+body[theme-mode='light'] .semi-list-item,
+body:not([theme-mode]) .semi-list-item {
+  background: rgba(255, 255, 255, 0.9) !important;
+}
+
+body[theme-mode='light'] .action-btn,
+body:not([theme-mode]) .action-btn {
+  background: rgba(255, 255, 255, 0.9);
+}
