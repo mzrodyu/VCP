@@ -31,6 +31,34 @@ body {
   background-color: var(--semi-color-bg-0);
 }
 
+/* ==================== 赛博朋克暗色主题 ==================== */
+body[theme-mode='dark'] {
+  --semi-color-bg-0: #0a0e14;
+  --semi-color-bg-1: #0f1419;
+  --semi-color-bg-2: #151b23;
+  --semi-color-bg-3: #1a222c;
+  --semi-color-bg-4: #1f2935;
+  --semi-color-fill-0: rgba(0, 255, 255, 0.05);
+  --semi-color-fill-1: rgba(0, 255, 255, 0.08);
+  --semi-color-fill-2: rgba(0, 255, 255, 0.12);
+  --semi-color-border: rgba(0, 255, 255, 0.12);
+  --semi-color-primary: #00d4ff;
+  --semi-color-primary-hover: #00e5ff;
+  --semi-color-primary-active: #00b8d4;
+  --semi-color-primary-light-default: rgba(0, 212, 255, 0.15);
+  --semi-color-primary-light-hover: rgba(0, 212, 255, 0.2);
+  --semi-color-text-0: #e6f1ff;
+  --semi-color-text-1: #b3c5d6;
+  --semi-color-text-2: #7a8b99;
+  --semi-color-text-3: #4a5568;
+  --semi-color-link: #00d4ff;
+  --semi-color-success: #00ff9f;
+  --semi-color-warning: #ffb800;
+  --semi-color-danger: #ff3d71;
+  --cyber-glow: 0 0 20px rgba(0, 212, 255, 0.3);
+  --cyber-glow-strong: 0 0 30px rgba(0, 212, 255, 0.5);
+}
+
 code {
   font-family:
     source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
@@ -848,8 +876,8 @@ html.dark .with-pastel-balls::before {
 
 /* ==================== 首页高级设计 ==================== */
 .home-page {
-  --accent: #60a5fa;
-  --accent-dim: rgba(96, 165, 250, 0.1);
+  --accent: #00d4ff;
+  --accent-dim: rgba(0, 212, 255, 0.1);
 }
 
 /* Hero Section */
@@ -1177,4 +1205,160 @@ html.dark .with-pastel-balls::before {
   text-align: center;
   border-top: 1px solid var(--semi-color-border);
   background: var(--semi-color-bg-0);
+}
+
+/* ==================== 赛博朋克组件样式 ==================== */
+body[theme-mode='dark'] .semi-card {
+  background: linear-gradient(
+    145deg,
+    rgba(15, 20, 25, 0.9),
+    rgba(10, 14, 20, 0.95)
+  );
+  border: 1px solid rgba(0, 212, 255, 0.15);
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(0, 212, 255, 0.1);
+}
+
+body[theme-mode='dark'] .semi-card:hover {
+  border-color: rgba(0, 212, 255, 0.3);
+  box-shadow:
+    0 4px 30px rgba(0, 212, 255, 0.15),
+    inset 0 1px 0 rgba(0, 212, 255, 0.15);
+}
+
+body[theme-mode='dark'] .semi-button-primary {
+  background: linear-gradient(135deg, #00d4ff, #00a8cc);
+  border: none;
+  color: #0a0e14;
+  font-weight: 600;
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+}
+
+body[theme-mode='dark'] .semi-button-primary:hover {
+  background: linear-gradient(135deg, #00e5ff, #00b8d4);
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+}
+
+body[theme-mode='dark'] .semi-button-tertiary {
+  background: transparent;
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  color: #00d4ff;
+}
+
+body[theme-mode='dark'] .semi-button-tertiary:hover {
+  background: rgba(0, 212, 255, 0.1);
+  border-color: #00d4ff;
+}
+
+body[theme-mode='dark'] .semi-input-wrapper,
+body[theme-mode='dark'] .semi-select {
+  background: rgba(10, 14, 20, 0.8);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+body[theme-mode='dark'] .semi-input-wrapper:focus-within,
+body[theme-mode='dark'] .semi-select:focus-within {
+  border-color: #00d4ff;
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);
+}
+
+body[theme-mode='dark'] .semi-navigation {
+  background: linear-gradient(
+    180deg,
+    rgba(10, 14, 20, 0.98),
+    rgba(15, 20, 25, 0.95)
+  );
+}
+
+body[theme-mode='dark'] .semi-navigation-item-selected {
+  background: rgba(0, 212, 255, 0.15) !important;
+  border-left: 2px solid #00d4ff;
+}
+
+body[theme-mode='dark'] .semi-navigation-item:hover {
+  background: rgba(0, 212, 255, 0.08);
+}
+
+body[theme-mode='dark'] .semi-table-tbody > .semi-table-row:hover {
+  background: rgba(0, 212, 255, 0.05);
+}
+
+body[theme-mode='dark'] .semi-tag {
+  border: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+body[theme-mode='dark'] .semi-tag-light-blue {
+  background: rgba(0, 212, 255, 0.15);
+  color: #00d4ff;
+}
+
+body[theme-mode='dark'] .semi-progress-track {
+  background: rgba(0, 212, 255, 0.1);
+}
+
+body[theme-mode='dark'] .semi-progress-line-bar {
+  background: linear-gradient(90deg, #00d4ff, #00ff9f);
+}
+
+/* 侧边栏赛博风格 */
+body[theme-mode='dark'] .semi-layout-sider {
+  background: linear-gradient(180deg, #0a0e14, #0f1419) !important;
+  border-right: 1px solid rgba(0, 212, 255, 0.1);
+}
+
+/* 顶部导航赛博风格 */
+body[theme-mode='dark'] .semi-layout-header {
+  background: rgba(10, 14, 20, 0.95) !important;
+  border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+/* Dashboard 统计卡片 */
+body[theme-mode='dark'] .dashboard-stat-card {
+  background: linear-gradient(
+    145deg,
+    rgba(15, 20, 25, 0.9),
+    rgba(10, 14, 20, 0.95)
+  );
+  border: 1px solid rgba(0, 212, 255, 0.12);
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+body[theme-mode='dark'] .dashboard-stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00d4ff, transparent);
+}
+
+/* 图表容器 */
+body[theme-mode='dark'] .chart-container {
+  background: rgba(10, 14, 20, 0.6);
+  border: 1px solid rgba(0, 212, 255, 0.1);
+  border-radius: 12px;
+}
+
+/* 青色高亮文字 */
+.cyber-text {
+  color: #00d4ff;
+  text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+}
+
+/* 青色边框发光效果 */
+.cyber-border {
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.1);
+}
+
+/* 渐变背景 */
+.cyber-gradient {
+  background: linear-gradient(135deg, #00d4ff, #00ff9f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
