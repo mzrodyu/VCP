@@ -41,26 +41,6 @@
   --glass-bg-dark: rgba(17, 24, 39, 0.85);
   --glass-blur: 24px;
   --glass-saturate: 200%;
-
-  /* 品牌渐变色 */
-  --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --gradient-accent: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  --gradient-success: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-  --gradient-warning: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
-  --gradient-dark: linear-gradient(
-    135deg,
-    #0c1445 0%,
-    #1a1a2e 50%,
-    #16213e 100%
-  );
-
-  /* 霓虹发光效果 */
-  --glow-primary:
-    0 0 20px rgba(102, 126, 234, 0.5), 0 0 40px rgba(102, 126, 234, 0.3);
-  --glow-accent:
-    0 0 20px rgba(245, 87, 108, 0.5), 0 0 40px rgba(245, 87, 108, 0.3);
-  --glow-success:
-    0 0 20px rgba(0, 242, 254, 0.5), 0 0 40px rgba(0, 242, 254, 0.3);
 }
 
 body.sidebar-collapsed {
@@ -107,31 +87,31 @@ body:not([theme-mode]) {
   --semi-color-primary-hover: var(--color-accent-hover);
 }
 
-/* ==================== 暗色主题 - 赛博朋克风格 ==================== */
+/* ==================== 暗色主题 ==================== */
 body[theme-mode='dark'] {
-  --color-bg-page: #0a0a0f;
-  --color-bg-elevated: #12121a;
-  --color-bg-sunken: #08080c;
-  --color-bg-muted: #1a1a24;
+  --color-bg-page: #0f172a;
+  --color-bg-elevated: #1e293b;
+  --color-bg-sunken: #0f172a;
+  --color-bg-muted: #334155;
 
-  --color-border: rgba(102, 126, 234, 0.2);
-  --color-border-hover: rgba(102, 126, 234, 0.4);
+  --color-border: #334155;
+  --color-border-hover: #475569;
 
-  --color-text-primary: #ffffff;
-  --color-text-secondary: #a0aec0;
-  --color-text-muted: #718096;
+  --color-text-primary: #f8fafc;
+  --color-text-secondary: #cbd5e1;
+  --color-text-muted: #64748b;
 
-  --color-accent: #667eea;
-  --color-accent-hover: #7c3aed;
-  --color-accent-muted: rgba(102, 126, 234, 0.15);
+  --color-accent: #3b82f6;
+  --color-accent-hover: #60a5fa;
+  --color-accent-muted: rgba(59, 130, 246, 0.15);
 
-  --color-success: #00f2fe;
-  --color-warning: #ffd93d;
-  --color-error: #ff6b6b;
+  --color-success: #34d399;
+  --color-warning: #fbbf24;
+  --color-error: #f87171;
 
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 1px rgba(102, 126, 234, 0.2);
-  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 1px rgba(102, 126, 234, 0.3);
-  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.6), 0 0 2px rgba(102, 126, 234, 0.4);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
 
   /* Semi UI 变量映射 */
   --semi-color-bg-0: var(--color-bg-page);
@@ -3337,140 +3317,96 @@ body[theme-mode='light'] .semi-layout-content {
 }
 
 body[theme-mode='dark'] .semi-card {
-  background: linear-gradient(145deg, #12121a 0%, #1a1a24 100%) !important;
-  box-shadow:
-    0 4px 20px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+  box-shadow: var(--shadow-md) !important;
 }
 
 body[theme-mode='dark'] .semi-card:hover {
-  box-shadow:
-    0 8px 40px rgba(0, 0, 0, 0.5),
-    var(--glow-primary) !important;
+  box-shadow: var(--shadow-lg) !important;
 }
 
-/* 按钮 - 赛博朋克风格 */
+/* 按钮样式 */
 .semi-button {
-  border-radius: 14px !important;
+  border-radius: 12px !important;
   font-weight: 600 !important;
-  transition: all 0.3s var(--ease-spring) !important;
-  position: relative !important;
-  overflow: hidden !important;
-}
-
-.semi-button::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    45deg,
-    transparent 30%,
-    rgba(255, 255, 255, 0.1) 50%,
-    transparent 70%
-  );
-  transform: translateX(-100%);
-  transition: transform 0.6s ease;
-}
-
-.semi-button:hover::before {
-  transform: translateX(100%);
+  transition: all 0.2s var(--ease-smooth) !important;
 }
 
 .semi-button:active {
-  transform: scale(0.95) !important;
+  transform: scale(0.96) !important;
 }
 
 .semi-button-primary {
-  background: var(--gradient-primary) !important;
+  background: var(--color-accent) !important;
   border: none !important;
-  box-shadow:
-    0 4px 15px rgba(102, 126, 234, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3) !important;
 }
 
 .semi-button-primary:hover {
-  box-shadow:
-    0 6px 25px rgba(102, 126, 234, 0.5),
-    var(--glow-primary) !important;
-  transform: translateY(-2px) !important;
+  background: var(--color-accent-hover) !important;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4) !important;
 }
 
-.semi-button-primary:active {
-  transform: translateY(0) scale(0.95) !important;
-}
-
-/* 次要按钮 - 赛博朋克风格 */
+/* 次要按钮 */
 .semi-button-secondary,
 .semi-button-tertiary {
-  background: rgba(102, 126, 234, 0.1) !important;
-  color: #667eea !important;
-  border: 1px solid rgba(102, 126, 234, 0.3) !important;
+  background: var(--color-accent-muted) !important;
+  color: var(--color-accent) !important;
+  border: none !important;
 }
 
 .semi-button-secondary:hover,
 .semi-button-tertiary:hover {
-  background: rgba(102, 126, 234, 0.2) !important;
-  border-color: rgba(102, 126, 234, 0.5) !important;
-  box-shadow: var(--glow-primary) !important;
+  background: rgba(59, 130, 246, 0.2) !important;
 }
 
-.semi-button-secondary:active,
-.semi-button-tertiary:active {
-  background: rgba(0, 122, 255, 0.2) !important;
-}
-
-/* 危险按钮 - iOS 风格 */
+/* 危险按钮 */
 .semi-button-danger {
-  background: linear-gradient(135deg, #ff3b30 0%, #d62c23 100%) !important;
-  box-shadow: 0 2px 8px rgba(255, 59, 48, 0.3) !important;
+  background: var(--color-error) !important;
+  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3) !important;
 }
 
-.semi-button-danger:active {
-  transform: scale(0.96) !important;
+.semi-button-danger:hover {
+  background: #dc2626 !important;
 }
 
-/* 输入框 - 赛博朋克风格 */
+/* 输入框样式 */
 .semi-input-wrapper {
   background: var(--color-bg-sunken) !important;
   border: 1px solid var(--color-border) !important;
-  border-radius: 14px !important;
-  transition: all 0.3s var(--ease-spring) !important;
+  border-radius: 12px !important;
+  transition: all 0.2s var(--ease-smooth) !important;
 }
 
 .semi-input-wrapper:hover {
-  border-color: rgba(102, 126, 234, 0.4) !important;
+  border-color: var(--color-border-hover) !important;
 }
 
 .semi-input-wrapper:focus-within {
   background: var(--color-bg-elevated) !important;
-  border-color: #667eea !important;
-  box-shadow:
-    0 0 0 4px rgba(102, 126, 234, 0.2),
-    var(--glow-primary) !important;
+  border-color: var(--color-accent) !important;
+  box-shadow: 0 0 0 3px var(--color-accent-muted) !important;
 }
 
 .semi-input {
   font-size: 15px !important;
 }
 
-/* 文本域 - 赛博朋克风格 */
+/* 文本域样式 */
 .semi-input-textarea-wrapper {
   background: var(--color-bg-sunken) !important;
   border: 1px solid var(--color-border) !important;
-  border-radius: 14px !important;
-  transition: all 0.3s var(--ease-spring) !important;
+  border-radius: 12px !important;
+  transition: all 0.2s var(--ease-smooth) !important;
 }
 
 .semi-input-textarea-wrapper:hover {
-  border-color: rgba(102, 126, 234, 0.4) !important;
+  border-color: var(--color-border-hover) !important;
 }
 
 .semi-input-textarea-wrapper:focus-within {
   background: var(--color-bg-elevated) !important;
-  border-color: #667eea !important;
-  box-shadow:
-    0 0 0 4px rgba(102, 126, 234, 0.2),
-    var(--glow-primary) !important;
+  border-color: var(--color-accent) !important;
+  box-shadow: 0 0 0 3px var(--color-accent-muted) !important;
 }
 
 /* 选择器 - iOS 风格 */
