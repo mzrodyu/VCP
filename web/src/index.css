@@ -1612,19 +1612,33 @@ code {
   margin-top: 4px !important;
 }
 
-/* Toast 增强 */
+/* Toast - iOS 风格 */
 .semi-toast-wrapper {
-  background: var(--color-bg-elevated) !important;
-  border: 1px solid var(--color-border) !important;
-  border-radius: 12px !important;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2) !important;
-  animation: toastSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  background: var(--glass-bg-dark) !important;
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate)) !important;
+  -webkit-backdrop-filter: blur(var(--glass-blur))
+    saturate(var(--glass-saturate)) !important;
+  border: none !important;
+  border-radius: 14px !important;
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.2),
+    0 0 0 0.5px rgba(255, 255, 255, 0.1) !important;
+  animation: ios-toast-in 0.35s var(--ease-ios-spring) !important;
+  color: white !important;
 }
 
-@keyframes toastSlideUp {
+body[theme-mode='light'] .semi-toast-wrapper {
+  background: var(--glass-bg-light) !important;
+  color: var(--color-text-primary) !important;
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.1),
+    0 0 0 0.5px rgba(0, 0, 0, 0.1) !important;
+}
+
+@keyframes ios-toast-in {
   from {
     opacity: 0;
-    transform: translateY(20px) scale(0.95);
+    transform: translateY(20px) scale(0.9);
   }
   to {
     opacity: 1;
@@ -1633,31 +1647,54 @@ code {
 }
 
 .semi-toast-content {
-  padding: 12px 16px !important;
+  padding: 14px 18px !important;
+  display: flex !important;
+  align-items: center !important;
 }
 
 .semi-toast-content-icon {
-  margin-right: 10px !important;
+  margin-right: 12px !important;
+  flex-shrink: 0 !important;
 }
 
-/* Message 消息增强 */
+.semi-toast-content-text {
+  font-size: 15px !important;
+  font-weight: 500 !important;
+}
+
+/* Message - iOS 风格 */
 .semi-message {
-  background: var(--color-bg-elevated) !important;
-  border: 1px solid var(--color-border) !important;
-  border-radius: 10px !important;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15) !important;
-  animation: messageIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  background: var(--glass-bg-dark) !important;
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate)) !important;
+  -webkit-backdrop-filter: blur(var(--glass-blur))
+    saturate(var(--glass-saturate)) !important;
+  border: none !important;
+  border-radius: 100px !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2) !important;
+  animation: ios-message-in 0.3s var(--ease-ios-spring) !important;
+  padding: 10px 20px !important;
+  color: white !important;
 }
 
-@keyframes messageIn {
+body[theme-mode='light'] .semi-message {
+  background: var(--glass-bg-light) !important;
+  color: var(--color-text-primary) !important;
+}
+
+@keyframes ios-message-in {
   from {
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateY(-20px) scale(0.9);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
+}
+
+.semi-message-content {
+  font-size: 15px !important;
+  font-weight: 500 !important;
 }
 
 /* ==================== 进度条 ==================== */
