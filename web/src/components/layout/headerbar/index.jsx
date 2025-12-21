@@ -64,7 +64,7 @@ const HeaderBar = ({ onMobileMenuToggle, drawerOpen }) => {
   const { mainNavLinks } = useNavigation(t, docsLink, headerNavModules);
 
   return (
-    <header className='sticky top-0 z-50 bg-white dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800'>
+    <header className='header-bar'>
       <NoticeModal
         visible={noticeVisible}
         onClose={handleNoticeClose}
@@ -73,8 +73,8 @@ const HeaderBar = ({ onMobileMenuToggle, drawerOpen }) => {
         unreadKeys={getUnreadKeys()}
       />
 
-      <div className='h-16 px-6 flex items-center justify-between'>
-        <div className='flex items-center gap-4'>
+      <div className='header-container'>
+        <div className='header-left'>
           <MobileMenuButton
             isConsoleRoute={isConsoleRoute}
             isMobile={isMobile}
@@ -105,7 +105,7 @@ const HeaderBar = ({ onMobileMenuToggle, drawerOpen }) => {
           pricingRequireAuth={pricingRequireAuth}
         />
 
-        <div className='flex items-center gap-3'>
+        <div className='header-right'>
           <ActionButtons
             isNewYear={isNewYear}
             unreadCount={unreadCount}
