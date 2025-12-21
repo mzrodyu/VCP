@@ -20,15 +20,27 @@
   --sidebar-width-collapsed: 60px;
   --sidebar-current-width: var(--sidebar-width);
   --header-height: 60px;
-  --border-radius-sm: 8px;
-  --border-radius-md: 12px;
-  --border-radius-lg: 16px;
-  --border-radius-xl: 20px;
+  --border-radius-sm: 10px;
+  --border-radius-md: 14px;
+  --border-radius-lg: 18px;
+  --border-radius-xl: 24px;
+
+  /* iOS 风格动画曲线 */
+  --ease-ios: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-ios-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --ease-ios-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-ios-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 
   /* 动画 */
-  --transition-fast: 0.15s ease;
-  --transition-normal: 0.25s ease;
-  --transition-slow: 0.4s ease;
+  --transition-fast: 0.2s var(--ease-ios);
+  --transition-normal: 0.35s var(--ease-ios);
+  --transition-slow: 0.5s var(--ease-ios);
+
+  /* iOS 毛玻璃效果 */
+  --glass-bg-light: rgba(255, 255, 255, 0.72);
+  --glass-bg-dark: rgba(30, 41, 59, 0.72);
+  --glass-blur: 20px;
+  --glass-saturate: 180%;
 }
 
 body.sidebar-collapsed {
@@ -3401,12 +3413,350 @@ body[theme-mode='light'] .semi-layout-content {
   }
 
   .semi-button:active {
-    transform: scale(0.98) !important;
+    transform: scale(0.96) !important;
+    transition: transform 0.1s var(--ease-ios) !important;
   }
 
   .semi-card:active {
-    transform: scale(0.99) !important;
+    transform: scale(0.98) !important;
+    transition: transform 0.1s var(--ease-ios) !important;
   }
+}
+
+/* ==================== iOS 风格高级效果 ==================== */
+
+/* iOS 毛玻璃卡片 */
+.ios-glass-card {
+  background: var(--glass-bg-light) !important;
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate)) !important;
+  -webkit-backdrop-filter: blur(var(--glass-blur))
+    saturate(var(--glass-saturate)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5) !important;
+}
+
+body[theme-mode='dark'] .ios-glass-card {
+  background: var(--glass-bg-dark) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+}
+
+/* iOS 弹簧动画按钮 */
+.ios-spring-button {
+  transition: transform 0.4s var(--ease-ios-spring) !important;
+}
+
+.ios-spring-button:hover {
+  transform: scale(1.02) !important;
+}
+
+.ios-spring-button:active {
+  transform: scale(0.95) !important;
+  transition: transform 0.1s var(--ease-ios) !important;
+}
+
+/* iOS 触感反馈效果 */
+.ios-haptic {
+  transition: all 0.15s var(--ease-ios) !important;
+}
+
+.ios-haptic:active {
+  transform: scale(0.97) !important;
+  opacity: 0.8 !important;
+}
+
+/* iOS 风格列表项 */
+.ios-list-item {
+  position: relative;
+  padding: 14px 16px !important;
+  background: var(--color-bg-elevated) !important;
+  transition: background 0.15s var(--ease-ios) !important;
+}
+
+.ios-list-item::after {
+  content: '';
+  position: absolute;
+  left: 16px;
+  right: 0;
+  bottom: 0;
+  height: 0.5px;
+  background: var(--color-border);
+}
+
+.ios-list-item:last-child::after {
+  display: none;
+}
+
+.ios-list-item:active {
+  background: var(--color-bg-sunken) !important;
+}
+
+/* iOS 风格分组标题 */
+.ios-section-header {
+  padding: 8px 16px !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  color: var(--color-text-muted) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+/* iOS 风格开关 - 覆盖默认样式 */
+.semi-switch {
+  width: 51px !important;
+  height: 31px !important;
+  border-radius: 31px !important;
+  background: rgba(120, 120, 128, 0.16) !important;
+  transition: background 0.3s var(--ease-ios) !important;
+}
+
+.semi-switch-checked {
+  background: #34c759 !important;
+}
+
+.semi-switch-knob {
+  width: 27px !important;
+  height: 27px !important;
+  border-radius: 27px !important;
+  background: white !important;
+  box-shadow:
+    0 3px 8px rgba(0, 0, 0, 0.15),
+    0 3px 1px rgba(0, 0, 0, 0.06) !important;
+  transition: transform 0.3s var(--ease-ios-spring) !important;
+}
+
+/* iOS 风格输入框 */
+.ios-input {
+  background: var(--color-bg-sunken) !important;
+  border: none !important;
+  border-radius: 10px !important;
+  padding: 12px 16px !important;
+  font-size: 17px !important;
+  transition: all 0.2s var(--ease-ios) !important;
+}
+
+.ios-input:focus {
+  background: var(--color-bg-elevated) !important;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.3) !important;
+}
+
+/* iOS 风格分割器 */
+.ios-divider {
+  height: 0.5px !important;
+  background: var(--color-border) !important;
+  margin: 0 16px !important;
+}
+
+/* iOS 风格导航栏 */
+.ios-navbar {
+  background: var(--glass-bg-light) !important;
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate)) !important;
+  -webkit-backdrop-filter: blur(var(--glass-blur))
+    saturate(var(--glass-saturate)) !important;
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+body[theme-mode='dark'] .ios-navbar {
+  background: var(--glass-bg-dark) !important;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* iOS 风格标签栏 */
+.ios-tabbar {
+  background: var(--glass-bg-light) !important;
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate)) !important;
+  -webkit-backdrop-filter: blur(var(--glass-blur))
+    saturate(var(--glass-saturate)) !important;
+  border-top: 0.5px solid rgba(0, 0, 0, 0.1) !important;
+  padding-bottom: env(safe-area-inset-bottom) !important;
+}
+
+body[theme-mode='dark'] .ios-tabbar {
+  background: var(--glass-bg-dark) !important;
+  border-top: 0.5px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* iOS 风格模态框 */
+.semi-modal-content {
+  border-radius: 14px !important;
+  overflow: hidden !important;
+}
+
+.semi-modal-header {
+  text-align: center !important;
+  font-weight: 600 !important;
+  font-size: 17px !important;
+}
+
+/* iOS 风格 Action Sheet */
+.ios-action-sheet {
+  background: var(--glass-bg-light) !important;
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate)) !important;
+  -webkit-backdrop-filter: blur(var(--glass-blur))
+    saturate(var(--glass-saturate)) !important;
+  border-radius: 14px !important;
+  overflow: hidden !important;
+  margin: 8px !important;
+}
+
+body[theme-mode='dark'] .ios-action-sheet {
+  background: var(--glass-bg-dark) !important;
+}
+
+.ios-action-sheet-item {
+  padding: 18px !important;
+  text-align: center !important;
+  font-size: 20px !important;
+  color: #007aff !important;
+  border-bottom: 0.5px solid var(--color-border) !important;
+  transition: background 0.15s var(--ease-ios) !important;
+}
+
+.ios-action-sheet-item:active {
+  background: var(--color-bg-sunken) !important;
+}
+
+.ios-action-sheet-item-destructive {
+  color: #ff3b30 !important;
+}
+
+.ios-action-sheet-cancel {
+  margin-top: 8px !important;
+  font-weight: 600 !important;
+}
+
+/* iOS 风格 Pill 按钮 */
+.ios-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 16px !important;
+  border-radius: 100px !important;
+  background: var(--color-accent-muted) !important;
+  color: var(--color-accent) !important;
+  font-weight: 500 !important;
+  font-size: 15px !important;
+  transition: all 0.2s var(--ease-ios-spring) !important;
+}
+
+.ios-pill:active {
+  transform: scale(0.95) !important;
+  opacity: 0.8 !important;
+}
+
+/* iOS 风格搜索框 */
+.ios-search {
+  background: rgba(118, 118, 128, 0.12) !important;
+  border: none !important;
+  border-radius: 10px !important;
+  padding: 10px 12px 10px 36px !important;
+  font-size: 17px !important;
+}
+
+body[theme-mode='dark'] .ios-search {
+  background: rgba(118, 118, 128, 0.24) !important;
+}
+
+/* iOS 风格 Segmented Control */
+.ios-segment {
+  background: rgba(118, 118, 128, 0.12) !important;
+  border-radius: 9px !important;
+  padding: 2px !important;
+}
+
+body[theme-mode='dark'] .ios-segment {
+  background: rgba(118, 118, 128, 0.24) !important;
+}
+
+.ios-segment-item {
+  padding: 8px 16px !important;
+  border-radius: 7px !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  transition: all 0.2s var(--ease-ios) !important;
+}
+
+.ios-segment-item-active {
+  background: var(--color-bg-elevated) !important;
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.08),
+    0 1px 2px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* iOS 风格进度指示器 */
+@keyframes ios-spinner {
+  0% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.ios-spinner {
+  width: 20px;
+  height: 20px;
+  position: relative;
+}
+
+.ios-spinner::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 2px solid transparent;
+  border-top-color: var(--color-accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+/* iOS 风格页面过渡 */
+@keyframes ios-page-in {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes ios-page-out {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-30%);
+  }
+}
+
+.ios-page-enter {
+  animation: ios-page-in 0.35s var(--ease-ios) forwards;
+}
+
+.ios-page-exit {
+  animation: ios-page-out 0.35s var(--ease-ios) forwards;
+}
+
+/* iOS 风格卡片阴影 */
+.ios-card-shadow {
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.04),
+    0 4px 8px rgba(0, 0, 0, 0.04),
+    0 12px 24px rgba(0, 0, 0, 0.06) !important;
+}
+
+body[theme-mode='dark'] .ios-card-shadow {
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.2),
+    0 4px 8px rgba(0, 0, 0, 0.2),
+    0 12px 24px rgba(0, 0, 0, 0.3) !important;
 }
 
 /* ==================== 打印样式 ==================== */
