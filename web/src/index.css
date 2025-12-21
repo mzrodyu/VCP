@@ -3010,22 +3010,33 @@ body[theme-mode='dark'] .semi-select-option-list {
   line-height: 1.5 !important;
 }
 
-/* Skeleton 骨架屏重构 */
+/* Skeleton - iOS 风格 */
 .semi-skeleton-paragraph-row {
-  background: linear-gradient(
-    90deg,
-    var(--color-bg-sunken) 25%,
-    var(--color-bg-muted) 50%,
-    var(--color-bg-sunken) 75%
-  ) !important;
-  background-size: 200% 100% !important;
-  animation: shimmer 1.5s infinite !important;
-  border-radius: 6px !important;
+  background: rgba(120, 120, 128, 0.12) !important;
+  border-radius: 4px !important;
+  animation: ios-skeleton 1.5s ease-in-out infinite !important;
 }
 
-/* Spin 加载重构 */
+@keyframes ios-skeleton {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+.semi-skeleton-avatar,
+.semi-skeleton-image,
+.semi-skeleton-button {
+  background: rgba(120, 120, 128, 0.12) !important;
+  animation: ios-skeleton 1.5s ease-in-out infinite !important;
+}
+
+/* Spin - iOS 风格 */
 .semi-spin-wrapper {
-  color: var(--color-accent) !important;
+  color: #007aff !important;
 }
 
 /* Popover 弹出框重构 */
