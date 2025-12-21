@@ -3151,6 +3151,148 @@ body[theme-mode='light'] .semi-layout-content {
   border-radius: 3px 3px 0 0 !important;
 }
 
+/* DatePicker 日期选择器增强 */
+.semi-datepicker-panel {
+  background: var(--color-bg-elevated) !important;
+  border: 1px solid var(--color-border) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15) !important;
+  overflow: hidden !important;
+  animation: dropdownIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.semi-datepicker-day {
+  border-radius: 8px !important;
+  transition: all 0.15s ease !important;
+}
+
+.semi-datepicker-day:hover {
+  background: var(--color-accent-muted) !important;
+}
+
+.semi-datepicker-day-selected {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+  color: white !important;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.4) !important;
+}
+
+.semi-datepicker-day-today {
+  border: 2px solid var(--color-accent) !important;
+  font-weight: 600 !important;
+}
+
+.semi-datepicker-header {
+  padding: 16px !important;
+  border-bottom: 1px solid var(--color-border) !important;
+}
+
+.semi-datepicker-navigation-left,
+.semi-datepicker-navigation-right {
+  border-radius: 8px !important;
+  transition: all 0.2s ease !important;
+}
+
+.semi-datepicker-navigation-left:hover,
+.semi-datepicker-navigation-right:hover {
+  background: var(--color-accent-muted) !important;
+  color: var(--color-accent) !important;
+}
+
+/* TimePicker 时间选择器增强 */
+.semi-timepicker-panel {
+  background: var(--color-bg-elevated) !important;
+  border: 1px solid var(--color-border) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15) !important;
+}
+
+.semi-timepicker-option {
+  border-radius: 6px !important;
+  transition: all 0.15s ease !important;
+}
+
+.semi-timepicker-option:hover {
+  background: var(--color-accent-muted) !important;
+}
+
+.semi-timepicker-option-selected {
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.2) 0%,
+    rgba(99, 102, 241, 0.15) 100%
+  ) !important;
+  color: var(--color-accent) !important;
+  font-weight: 600 !important;
+}
+
+/* Calendar 日历增强 */
+.semi-calendar {
+  background: var(--color-bg-elevated) !important;
+  border: 1px solid var(--color-border) !important;
+  border-radius: 16px !important;
+  overflow: hidden !important;
+}
+
+.semi-calendar-header {
+  padding: 20px !important;
+  background: linear-gradient(
+    135deg,
+    var(--color-bg-elevated) 0%,
+    var(--color-bg-sunken) 100%
+  ) !important;
+  border-bottom: 1px solid var(--color-border) !important;
+}
+
+.semi-calendar-grid {
+  padding: 16px !important;
+}
+
+.semi-calendar-day {
+  border-radius: 10px !important;
+  transition: all 0.2s ease !important;
+}
+
+.semi-calendar-day:hover {
+  background: var(--color-accent-muted) !important;
+  transform: scale(1.05) !important;
+}
+
+.semi-calendar-day-selected {
+  background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%) !important;
+  color: white !important;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4) !important;
+}
+
+/* Upload 上传组件增强 */
+.semi-upload-drag-area {
+  border: 2px dashed var(--color-border) !important;
+  border-radius: 16px !important;
+  background: var(--color-bg-sunken) !important;
+  transition: all 0.3s ease !important;
+}
+
+.semi-upload-drag-area:hover {
+  border-color: var(--color-accent) !important;
+  background: rgba(59, 130, 246, 0.05) !important;
+}
+
+.semi-upload-drag-area-active {
+  border-color: var(--color-accent) !important;
+  background: rgba(59, 130, 246, 0.1) !important;
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.2) !important;
+}
+
+/* Image 图片预览增强 */
+.semi-image-preview-popup {
+  background: rgba(0, 0, 0, 0.9) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+.semi-image-preview-img {
+  border-radius: 12px !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5) !important;
+}
+
 /* ==================== 移动端响应式优化 ==================== */
 @media (max-width: 768px) {
   /* 移动端卡片优化 */
