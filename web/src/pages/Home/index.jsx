@@ -21,11 +21,8 @@ import {
     IconBolt,
     IconCopy,
     IconFile,
-    IconGithubLogo,
     IconPlay,
-    IconPriceTag,
-    IconServer,
-    IconShield
+    IconServer
 } from '@douyinfe/semi-icons';
 import {
     ScrollItem,
@@ -149,26 +146,68 @@ const Home = () => {
     return () => clearInterval(timer);
   }, [endpointItems.length]);
 
+  // 右侧功能卡片
+  const sideFeatures = [
+    {
+      icon: <IconBolt className="text-blue-500" style={{ fontSize: 20 }} />,
+      title: t('实时响应'),
+      desc: t('健康度与负载状态动态切换，保证最优表现。')
+    },
+    {
+      icon: <IconChartLine className="text-blue-500" style={{ fontSize: 20 }} />,
+      title: t('统一监控'),
+      desc: t('调用、费用、并发一站式AI观测，获取完整运行状态。')
+    },
+    {
+      icon: <IconSetting className="text-blue-500" style={{ fontSize: 20 }} />,
+      title: t('智能调度'),
+      desc: t('多维策略控制核心业务优先级，避免突发异常情况。')
+    }
+  ];
+
+  // 核心价值卡片
   const features = [
     {
-      icon: <IconBolt style={{ fontSize: 24, color: 'var(--semi-color-primary)' }} />,
-      title: t('极速响应'),
-      desc: t('采用全球CDN加速与优化的路由算法，确保每一次API调用都能获得毫秒级的响应速度。')
+      icon: <IconCloud className="text-blue-500" style={{ fontSize: 24 }} />,
+      title: t('统一入口，极速连通'),
+      desc: t('以单一接口和地址快速接入全部大模型渠道资源，智能自动切换保障业务不中断。')
     },
     {
-      icon: <IconServer style={{ fontSize: 24, color: 'var(--semi-color-success)' }} />,
-      title: t('稳定可靠'),
-      desc: t('企业级高可用架构，自动负载均衡与故障转移机制，保障服务 99.9% 在线率。')
+      icon: <IconChartLine className="text-blue-500" style={{ fontSize: 24 }} />,
+      title: t('全栈可观测与风控'),
+      desc: t('实时监控使用量、模型成本与效用，一站配置限额、审计与安全策略。')
     },
     {
-      icon: <IconPriceTag style={{ fontSize: 24, color: 'var(--semi-color-warning)' }} />,
-      title: t('成本可控'),
-      desc: t('透明的计费模式，实时监控额度使用情况，支持自定义限额，大幅降低运营成本。')
+      icon: <IconServer className="text-blue-500" style={{ fontSize: 24 }} />,
+      title: t('按需扩容与成本优化'),
+      desc: t('多云混合部署，智能选择与批量自动处理，灵活适配成本与产出能力。')
     },
     {
-      icon: <IconShield style={{ fontSize: 24, color: 'var(--semi-color-danger)' }} />,
-      title: t('安全合规'),
-      desc: t('内置敏感词过滤与安全审计功能，支持令牌级权限控制，全方位守护您的数据安全。')
+      icon: <IconCode className="text-blue-500" style={{ fontSize: 24 }} />,
+      title: t('开发者友好体验'),
+      desc: t('兼容 OpenAI 接口协议，提供 SDK、示例与 Web Playground，轻松集成上线。')
+    }
+  ];
+
+  // 工作流程步骤
+  const steps = [
+    {
+      icon: <IconSetting className="text-blue-500" style={{ fontSize: 24 }} />,
+      num: '01',
+      title: t('接入配置'),
+      desc: t('在控制台创建渠道，设置密钥与限额，导入模型列表。')
+    },
+    {
+      icon: <IconBolt className="text-blue-500" style={{ fontSize: 24 }} />,
+      num: '02',
+      title: t('智能调度'),
+      desc: t('根据业务请求，结合负载与价格自动选择最优大模型渠道，内置故障切换。')
+    },
+    {
+      icon: <IconChartLine className="text-blue-500" style={{ fontSize: 24 }} />,
+      num: '03',
+      title: t('持续洞察'),
+      desc: t('通过仪表板监控用量趋势、消耗与失败率，实现预警确保 SLO。')
     }
   ];
 
@@ -180,53 +219,38 @@ const Home = () => {
         isMobile={isMobile}
       />
       {homePageContentLoaded && homePageContent === '' ? (
-        <div className='w-full'>
-          {/* Hero Section - 全新设计 */}
-          <div className='hero-section relative w-full min-h-screen flex flex-col justify-center items-center px-4 py-20 overflow-hidden'>
-            {/* 动态网格背景 */}
-            <div className='hero-grid-bg' />
-            
-            {/* 渐变光晕 */}
-            <div className='hero-glow hero-glow-1' />
-            <div className='hero-glow hero-glow-2' />
-            <div className='hero-glow hero-glow-3' />
-            
-            {/* 浮动粒子 */}
-            <div className='floating-particles'>
-              {[...Array(6)].map((_, i) => (
-                <div key={i} className={`particle particle-${i + 1}`} />
-              ))}
-            </div>
-            
-            <div className='z-10 text-center max-w-5xl mx-auto'>
-              {/* 徽章 */}
-              <div className='animate-fade-in-up mb-8'>
-                <div className='hero-badge inline-flex items-center gap-2 px-5 py-2.5 rounded-full'>
-                  <span className='badge-dot' />
-                  <span className='text-sm font-medium'>{t('新一代 AI 接口管理平台')}</span>
+        <div className='w-full packy-home'>
+          {/* Hero Section - PackyAPI 风格 */}
+          <section className='packy-hero'>
+            <div className='packy-hero-container'>
+              {/* 左侧内容 */}
+              <div className='packy-hero-left'>
+                {/* 徽章 */}
+                <div className='packy-badge'>
+                  <span>{t('面向企业的 AI 生产力基座')}</span>
                 </div>
-              </div>
-              
-              {/* 主标题 */}
-              <h1 className='hero-title animate-fade-in-up mb-6'>
-                <span className='hero-title-line'>{t('统一的')}</span>
-                <span className='hero-title-gradient'>{t('大模型接口网关')}</span>
-              </h1>
-              
-              {/* 副标题 */}
-              <p className='hero-subtitle animate-fade-in-up delay-200 mb-12'>
-                {t('一站式管理所有 AI 模型接口，提供更优的价格、更高的稳定性与企业级管理功能。')}
-              </p>
+                
+                {/* 主标题 */}
+                <h1 className='packy-hero-title'>
+                  {t('统一的大模型接口网关')}
+                  <br />
+                  <span className='packy-hero-highlight'>{t('链')}</span>{t('接全球 AI 能力')}
+                </h1>
+                
+                {/* 副标题 */}
+                <p className='packy-hero-desc'>
+                  {t('以一套接口、密钥与风控策略连接全球大模型资源，保险可观测、可拓展、可控。')}
+                </p>
 
-              {/* API URL Box - 玻璃拟态 */}
-              <div className='w-full max-w-2xl mx-auto animate-fade-in-up delay-300 mb-10'>
-                <div className='api-url-box'>
-                  <div className='api-url-inner'>
-                    <code className='api-url-text'>{serverAddress}</code>
-                    <div className='api-url-actions'>
+                {/* API URL Box */}
+                <div className='packy-url-box'>
+                  <div className='packy-url-label'>{t('将该基础 URL 引入接入')}</div>
+                  <div className='packy-url-input'>
+                    <code>{serverAddress}</code>
+                    <div className='packy-url-actions'>
                       <ScrollList
-                        bodyHeight={28}
-                        className="w-36 hidden sm:block"
+                        bodyHeight={24}
+                        className="packy-endpoint-scroll"
                         style={{ border: 'unset', boxShadow: 'unset', background: 'transparent' }}
                       >
                         <ScrollItem
@@ -237,102 +261,169 @@ const Home = () => {
                           onSelect={({ index }) => setEndpointIndex(index)}
                         />
                       </ScrollList>
-                      <button className='copy-btn' onClick={handleCopyBaseURL}>
-                        <IconCopy style={{ fontSize: 16 }} />
-                        <span>{t('复制')}</span>
+                      <button className='packy-copy-btn' onClick={handleCopyBaseURL}>
+                        <IconCopy style={{ fontSize: 14 }} />
                       </button>
                     </div>
                   </div>
                 </div>
+
+                {/* CTA 按钮 */}
+                <div className='packy-cta-group'>
+                  <Link to='/console'>
+                    <button className='packy-btn packy-btn-primary'>
+                      <IconPlay style={{ fontSize: 16 }} />
+                      <span>{t('前往控制台')}</span>
+                    </button>
+                  </Link>
+                  {docsLink && (
+                    <button className='packy-btn packy-btn-outline' onClick={() => window.open(docsLink, '_blank')}>
+                      <IconFile style={{ fontSize: 16 }} />
+                      <span>{t('文档')}</span>
+                    </button>
+                  )}
+                </div>
+
+                {/* 统计数据 */}
+                <div className='packy-stats'>
+                  <div className='packy-stat-item'>
+                    <span className='packy-stat-value'>30+</span>
+                    <span className='packy-stat-label'>{t('可用渠道数')}</span>
+                  </div>
+                  <div className='packy-stat-item'>
+                    <span className='packy-stat-value'>99.9%</span>
+                    <span className='packy-stat-label'>{t('SLA 可用性')}</span>
+                  </div>
+                  <div className='packy-stat-item'>
+                    <span className='packy-stat-value'>7</span>
+                    <span className='packy-stat-label'>{t('多区域节点')}</span>
+                  </div>
+                </div>
               </div>
 
-              {/* CTA 按钮 */}
-              <div className='flex flex-wrap justify-center gap-4 animate-fade-in-up delay-300'>
-                <Link to='/console'>
-                  <button className='cta-btn cta-btn-primary'>
-                    <IconPlay style={{ fontSize: 20 }} />
-                    <span>{t('立即开始')}</span>
-                    <div className='cta-btn-shine' />
-                  </button>
-                </Link>
-                {docsLink && (
-                  <button className='cta-btn cta-btn-secondary' onClick={() => window.open(docsLink, '_blank')}>
-                    <IconFile style={{ fontSize: 20 }} />
-                    <span>{t('开发文档')}</span>
-                  </button>
-                )}
-                {isDemoSiteMode && statusState?.status?.version && (
-                  <button className='cta-btn cta-btn-secondary' onClick={() => window.open('https://github.com/QuantumNous/new-api', '_blank')}>
-                    <IconGithubLogo style={{ fontSize: 20 }} />
-                    <span>GitHub</span>
-                  </button>
-                )}
-              </div>
-            </div>
-            
-            {/* 向下滚动提示 */}
-            <div className='scroll-indicator'>
-              <div className='scroll-mouse'>
-                <div className='scroll-wheel' />
-              </div>
-            </div>
-          </div>
-
-          {/* Features Section - 卡片重设计 */}
-          <div className='features-section w-full px-4 py-24'>
-            <div className='max-w-6xl mx-auto'>
-              <div className='text-center mb-16'>
-                <h2 className='section-title'>{t('为什么选择我们')}</h2>
-                <p className='section-subtitle'>{t('强大的功能，简洁的体验')}</p>
-              </div>
-              
-              <div className='features-grid'>
-                {features.map((feature, index) => (
-                  <div key={index} className='feature-card' style={{ animationDelay: `${index * 0.1}s` }}>
-                    <div className='feature-card-glow' />
-                    <div className='feature-icon-wrapper'>
-                      {feature.icon}
+              {/* 右侧功能卡片 */}
+              <div className='packy-hero-right'>
+                {sideFeatures.map((item, index) => (
+                  <div key={index} className='packy-side-card'>
+                    <div className='packy-side-icon'>{item.icon}</div>
+                    <div className='packy-side-content'>
+                      <h4 className='packy-side-title'>{item.title}</h4>
+                      <p className='packy-side-desc'>{item.desc}</p>
                     </div>
-                    <h3 className='feature-title'>{feature.title}</h3>
-                    <p className='feature-desc'>{feature.desc}</p>
                   </div>
                 ))}
               </div>
             </div>
-          </div>
+          </section>
 
-          {/* Model Providers Section - 无限滚动 */}
-          <div className='providers-section w-full py-24 overflow-hidden'>
-            <div className='max-w-6xl mx-auto px-4'>
-              <div className='text-center mb-16'>
-                <h2 className='section-title'>{t('支持众多主流大模型')}</h2>
-                <p className='section-subtitle'>{t('无缝接入，一键切换，享受极致体验')}</p>
+          {/* Features Section - 核心价值 */}
+          <section className='packy-features'>
+            <div className='packy-section-container'>
+              <div className='packy-section-header'>
+                <span className='packy-section-tag'>{t('核心价值')}</span>
+                <h2 className='packy-section-title'>{t('让团队稳定使用大模型，更快落地 AI 创新')}</h2>
+                <p className='packy-section-desc'>{t('从可用性控制、成本可视化到全局调度，为企业级供应构建的 AI 基础设施能力。')}</p>
               </div>
               
-              <div className='providers-marquee'>
-                <div className='providers-track'>
-                  {[Moonshot, OpenAI, Claude, Gemini, Midjourney, Suno, Zhipu, Qwen, DeepSeek, Spark].map((Provider, i) => (
-                    <div key={i} className='provider-card'>
-                      {Provider.Color ? <Provider.Color size={40} /> : <Provider size={40} />}
-                    </div>
-                  ))}
-                  {[Wenxin, Minimax, Volcengine, Cohere, XAI, Grok, AzureAI, Hunyuan, Xinference].map((Provider, i) => (
-                    <div key={i + 10} className='provider-card'>
-                      {Provider.Color ? <Provider.Color size={40} /> : <Provider size={40} />}
-                    </div>
-                  ))}
-                  <div className='provider-card provider-card-more'>
-                    <span>30+</span>
+              <div className='packy-features-grid'>
+                {features.map((feature, index) => (
+                  <div key={index} className='packy-feature-card'>
+                    <div className='packy-feature-icon'>{feature.icon}</div>
+                    <h3 className='packy-feature-title'>{feature.title}</h3>
+                    <p className='packy-feature-desc'>{feature.desc}</p>
                   </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Steps Section - 工作流程 */}
+          <section className='packy-steps'>
+            <div className='packy-section-container'>
+              <div className='packy-section-header'>
+                <span className='packy-section-tag'>{t('工作流')}</span>
+                <h2 className='packy-section-title'>{t('用 3 个步骤构建你的 AI 控制平面')}</h2>
+              </div>
+              
+              <div className='packy-steps-grid'>
+                {steps.map((step, index) => (
+                  <div key={index} className='packy-step-card'>
+                    <div className='packy-step-icon'>{step.icon}</div>
+                    <span className='packy-step-num'>{step.num}</span>
+                    <h3 className='packy-step-title'>{step.title}</h3>
+                    <p className='packy-step-desc'>{step.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Providers Section - 供应商 */}
+          <section className='packy-providers'>
+            <div className='packy-section-container'>
+              <div className='packy-section-header'>
+                <span className='packy-section-tag'>{t('生态伙伴')}</span>
+                <h2 className='packy-section-title'>{t('与主流模型供应商深度对接')}</h2>
+                <p className='packy-section-desc'>{t('保持统一协议，快速切换与扩展模型能力，随时接入最新生态。')}</p>
+              </div>
+              
+              <div className='packy-providers-grid'>
+                {[OpenAI, Claude, Gemini, Midjourney, Qwen, DeepSeek, Zhipu].map((Provider, i) => (
+                  <div key={i} className='packy-provider-card'>
+                    {Provider.Color ? <Provider.Color size={36} /> : <Provider size={36} />}
+                  </div>
+                ))}
+                {[Moonshot, Spark, Wenxin, Minimax, Volcengine, Cohere, XAI].map((Provider, i) => (
+                  <div key={i + 7} className='packy-provider-card'>
+                    {Provider.Color ? <Provider.Color size={36} /> : <Provider size={36} />}
+                  </div>
+                ))}
+                {[Grok, AzureAI, Hunyuan, Xinference, Suno].map((Provider, i) => (
+                  <div key={i + 14} className='packy-provider-card'>
+                    {Provider.Color ? <Provider.Color size={36} /> : <Provider size={36} />}
+                  </div>
+                ))}
+                <div className='packy-provider-card packy-provider-more'>
+                  <span>30+</span>
                 </div>
               </div>
             </div>
-          </div>
-          
+          </section>
+
+          {/* CTA Section - 底部号召 */}
+          <section className='packy-cta-section'>
+            <div className='packy-cta-container'>
+              <h2 className='packy-cta-title'>{t('将大模型能力真正落地到业务流程')}</h2>
+              <p className='packy-cta-desc'>{t('立即接入，统一控制访问凭据与调用成本，为产品带来增长，可扩展的智能体验。')}</p>
+              <div className='packy-cta-buttons'>
+                <Link to='/console'>
+                  <button className='packy-btn packy-btn-primary'>
+                    <IconPlay style={{ fontSize: 16 }} />
+                    <span>{t('立即开始')}</span>
+                  </button>
+                </Link>
+                {docsLink && (
+                  <button className='packy-btn packy-btn-outline-dark' onClick={() => window.open(docsLink, '_blank')}>
+                    <IconFile style={{ fontSize: 16 }} />
+                    <span>{t('查看文档')}</span>
+                  </button>
+                )}
+              </div>
+            </div>
+          </section>
+
           {/* Footer */}
-          <footer className='home-footer'>
-            <div className='footer-content'>
-              <Text type="tertiary" size="small">© {new Date().getFullYear()} New API. All rights reserved.</Text>
+          <footer className='packy-footer'>
+            <div className='packy-footer-links'>
+              <a href='#'>{t('文档')}</a>
+              <a href='#'>{t('关于')}</a>
+              <a href='#'>{t('服务条款')}</a>
+              <a href='#'>{t('使用政策')}</a>
+              <a href='#'>{t('支持的国家和地区')}</a>
+              <a href='#'>{t('服务稳定状态')}</a>
+            </div>
+            <div className='packy-footer-bottom'>
+              <Text type="tertiary" size="small">© {new Date().getFullYear()} New API. {t('版权所有')}</Text>
             </div>
           </footer>
         </div>
