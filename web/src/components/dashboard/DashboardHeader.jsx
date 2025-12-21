@@ -17,7 +17,7 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 For commercial licensing, please contact support@quantumnous.com
 */
 
-import { Calendar, RefreshCw, Search, Sparkles } from 'lucide-react';
+import { Calendar, RefreshCw, Search, User } from 'lucide-react';
 
 const DashboardHeader = ({
   getGreeting,
@@ -36,62 +36,52 @@ const DashboardHeader = ({
 
   return (
     <div className='mb-8'>
-      {/* 顶部欢迎区域 */}
-      <div className='relative overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 p-8 mb-6'>
-        {/* 装饰元素 */}
-        <div className='absolute top-0 right-0 w-64 h-64 opacity-20'>
-          <svg viewBox="0 0 200 200" className='w-full h-full'>
-            <defs>
-              <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style={{stopColor:'white', stopOpacity:0.8}} />
-                <stop offset="100%" style={{stopColor:'white', stopOpacity:0.2}} />
-              </linearGradient>
-            </defs>
-            <circle cx="100" cy="100" r="80" fill="url(#grad1)" />
-          </svg>
+      <div className='flex flex-col md:flex-row md:items-end justify-between gap-4'>
+        {/* 左侧欢迎语 */}
+        <div>
+          <div className='flex items-center gap-2 text-zinc-500 dark:text-zinc-400 text-sm mb-1 font-medium'>
+            <Calendar className='w-4 h-4' />
+            <span>{dateStr}</span>
+          </div>
+          <h1
+            className='text-3xl font-bold text-zinc-900 dark:text-zinc-100 tracking-tight transition-all duration-700'
+            style={{ 
+              opacity: greetingVisible ? 1 : 0,
+              transform: greetingVisible ? 'translateY(0)' : 'translateY(10px)'
+            }}
+          >
+            {getGreeting}
+          </h1>
+          <p className='text-zinc-500 dark:text-zinc-400 mt-1 text-base'>
+            {t('这是您的今日数据概览')}
+          </p>
         </div>
-        <div className='absolute -bottom-10 -left-10 w-40 h-40 bg-white/10 rounded-full blur-2xl' />
-        <div className='absolute top-1/2 right-1/4 w-20 h-20 bg-yellow-300/20 rounded-full blur-xl' />
 
-        <div className='relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-4'>
-          <div>
-            <div className='flex items-center gap-2 text-white/70 text-sm mb-2'>
-              <Calendar className='w-4 h-4' />
-              <span>{dateStr}</span>
-            </div>
-            <h1
-              className='text-3xl md:text-4xl font-bold text-white flex items-center gap-3 transition-all duration-700'
-              style={{ 
-                opacity: greetingVisible ? 1 : 0,
-                transform: greetingVisible ? 'translateY(0)' : 'translateY(10px)'
-              }}
-            >
-              <Sparkles className='w-8 h-8 text-yellow-300' />
-              {getGreeting}
-            </h1>
-            <p className='text-white/70 mt-2 text-lg'>
-              {t('欢迎回来，这是您的数据概览')}
-            </p>
+        {/* 右侧操作按钮 */}
+        <div className='flex items-center gap-3'>
+          <div className='hidden md:flex items-center px-3 py-2 bg-zinc-100 dark:bg-zinc-800 rounded-lg text-sm text-zinc-500 dark:text-zinc-400'>
+            <User className='w-4 h-4 mr-2' />
+            <span>{t('标准用户')}</span>
           </div>
+          
+          <div className='h-8 w-px bg-zinc-200 dark:bg-zinc-700 hidden md:block mx-1'></div>
 
-          {/* 操作按钮 */}
-          <div className='flex items-center gap-3'>
-            <button
-              onClick={showSearchModal}
-              className='flex items-center gap-2 px-5 py-3 bg-white/20 hover:bg-white/30 backdrop-blur-md rounded-2xl text-white font-medium transition-all duration-200 hover:scale-105 active:scale-95'
-            >
-              <Search className='w-5 h-5' />
-              <span className='hidden sm:inline'>{t('搜索数据')}</span>
-            </button>
-            <button
-              onClick={refresh}
-              disabled={loading}
-              className='flex items-center gap-2 px-5 py-3 bg-white hover:bg-white/90 rounded-2xl text-indigo-600 font-semibold transition-all duration-200 hover:scale-105 active:scale-95 disabled:opacity-50'
-            >
-              <RefreshCw className={`w-5 h-5 ${loading ? 'animate-spin' : ''}`} />
-              <span className='hidden sm:inline'>{t('刷新')}</span>
-            </button>
-          </div>
+          <button
+            onClick={showSearchModal}
+            className='flex items-center justify-center w-10 h-10 md:w-auto md:h-auto md:px-4 md:py-2 bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 hover:border-zinc-300 dark:hover:border-zinc-600 rounded-lg text-zinc-700 dark:text-zinc-200 transition-all shadow-sm hover:shadow'
+          >
+            <Search className='w-4 h-4 md:mr-2' />
+            <span className='hidden md:inline font-medium text-sm'>{t('搜索')}</span>
+          </button>
+          
+          <button
+            onClick={refresh}
+            disabled={loading}
+            className='flex items-center justify-center w-10 h-10 md:w-auto md:h-auto md:px-4 md:py-2 bg-zinc-900 dark:bg-zinc-100 hover:bg-zinc-800 dark:hover:bg-zinc-200 text-white dark:text-zinc-900 rounded-lg transition-all shadow-sm hover:shadow disabled:opacity-70'
+          >
+            <RefreshCw className={`w-4 h-4 md:mr-2 ${loading ? 'animate-spin' : ''}`} />
+            <span className='hidden md:inline font-medium text-sm'>{t('刷新')}</span>
+          </button>
         </div>
       </div>
     </div>
