@@ -1246,16 +1246,16 @@ body[theme-mode='dark'] .semi-card:hover {
 }
 
 body[theme-mode='dark'] .semi-button-primary {
-  background: linear-gradient(135deg, #5b8def, #00a8cc);
+  background: #5b8def;
   border: none;
-  color: #0a0e14;
+  color: #fff;
   font-weight: 600;
-  box-shadow: 0 0 20px rgba(91, 141, 239, 0.3);
+  box-shadow: 0 4px 12px rgba(91, 141, 239, 0.25);
 }
 
 body[theme-mode='dark'] .semi-button-primary:hover {
-  background: linear-gradient(135deg, #00e5ff, #00b8d4);
-  box-shadow: 0 0 30px rgba(91, 141, 239, 0.5);
+  background: #6b9bff;
+  box-shadow: 0 6px 16px rgba(91, 141, 239, 0.35);
 }
 
 body[theme-mode='dark'] .semi-button-tertiary {
@@ -1845,11 +1845,7 @@ body:not([theme-mode]) .stat-item:hover .stat-icon-wrapper {
 }
 
 .topup-tag {
-  background: linear-gradient(
-    135deg,
-    var(--semi-color-primary),
-    var(--semi-color-success)
-  ) !important;
+  background: var(--semi-color-primary) !important;
   color: #fff !important;
   border: none !important;
   font-weight: 600 !important;
@@ -2071,9 +2067,10 @@ body:not([theme-mode]) .semi-layout-header {
 }
 
 .semi-button-primary {
-  background: linear-gradient(135deg, #5b8def, #00a8cc) !important;
+  background: #5b8def !important;
   border: none !important;
-  box-shadow: 0 4px 15px rgba(91, 141, 239, 0.3) !important;
+  color: #fff !important;
+  box-shadow: 0 4px 12px rgba(91, 141, 239, 0.2) !important;
 }
 
 .semi-button-primary:hover {
@@ -2116,13 +2113,14 @@ body:not([theme-mode]) .semi-layout-header {
 
 body[theme-mode='light'] .semi-button-primary,
 body:not([theme-mode]) .semi-button-primary {
-  background: linear-gradient(135deg, #0891b2, #0e7490) !important;
-  box-shadow: 0 4px 15px rgba(8, 145, 178, 0.3) !important;
+  background: #0891b2 !important;
+  box-shadow: 0 4px 12px rgba(8, 145, 178, 0.2) !important;
 }
 
 body[theme-mode='light'] .semi-button-primary:hover,
 body:not([theme-mode]) .semi-button-primary:hover {
-  box-shadow: 0 6px 25px rgba(8, 145, 178, 0.4) !important;
+  background: #0e7490 !important;
+  box-shadow: 0 6px 16px rgba(8, 145, 178, 0.3) !important;
 }
 
 /* 次级按钮 */
@@ -2365,9 +2363,9 @@ body:not([theme-mode])
 }
 
 .semi-page-item-active {
-  background: linear-gradient(135deg, #5b8def, #00a8cc) !important;
+  background: #5b8def !important;
   border: none !important;
-  color: #0a0e14 !important;
+  color: #fff !important;
   font-weight: 600 !important;
 }
 
@@ -2411,8 +2409,8 @@ body:not([theme-mode]) .semi-tabs-bar {
 }
 
 .semi-switch-checked {
-  background: linear-gradient(135deg, #5b8def, #00a8cc) !important;
-  box-shadow: 0 0 15px rgba(91, 141, 239, 0.4) !important;
+  background: #5b8def !important;
+  box-shadow: 0 0 10px rgba(91, 141, 239, 0.3) !important;
 }
 
 /* Tooltip 高级样式 */
