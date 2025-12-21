@@ -18,7 +18,7 @@ For commercial licensing, please contact support@quantumnous.com
 */
 
 import { VChart } from '@visactor/react-vchart';
-import { Activity, BarChart3, TrendingUp } from 'lucide-react';
+import { Activity, BarChart3, PieChart as PieChartIcon, TrendingUp } from 'lucide-react';
 
 const ChartsPanel = ({
   activeChartTab,
