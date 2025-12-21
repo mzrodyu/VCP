@@ -1750,10 +1750,69 @@ body:not([theme-mode]) .stat-item {
   gap: 12px;
 }
 
-.stat-avatar {
-  width: 40px !important;
-  height: 40px !important;
-  border-radius: 12px !important;
+/* 透明玻璃风格图标 */
+.stat-icon-wrapper {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 212, 255, 0.1),
+    rgba(0, 255, 159, 0.05)
+  );
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--semi-color-primary);
+  font-size: 20px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-icon-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.stat-item:hover .stat-icon-wrapper {
+  transform: scale(1.1) rotate(5deg);
+  border-color: var(--semi-color-primary);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+}
+
+.stat-item:hover .stat-icon-wrapper::before {
+  left: 100%;
+}
+
+body[theme-mode='light'] .stat-icon-wrapper,
+body:not([theme-mode]) .stat-icon-wrapper {
+  background: linear-gradient(
+    135deg,
+    rgba(8, 145, 178, 0.1),
+    rgba(8, 145, 178, 0.05)
+  );
+  border: 1px solid rgba(8, 145, 178, 0.2);
+  color: #0891b2;
+}
+
+body[theme-mode='light'] .stat-item:hover .stat-icon-wrapper,
+body:not([theme-mode]) .stat-item:hover .stat-icon-wrapper {
+  box-shadow: 0 0 20px rgba(8, 145, 178, 0.2);
 }
 
 .stat-info {

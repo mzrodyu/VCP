@@ -17,7 +17,7 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 For commercial licensing, please contact support@quantumnous.com
 */
 
-import { Avatar, Card, Skeleton, Tag } from '@douyinfe/semi-ui';
+import { Card, Skeleton, Tag } from '@douyinfe/semi-ui';
 import { VChart } from '@visactor/react-vchart';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
@@ -50,13 +50,9 @@ const StatsCards = ({
                   onClick={item.onClick}
                 >
                   <div className='stat-item-left'>
-                    <Avatar
-                      className='stat-avatar'
-                      size='small'
-                      color={item.avatarColor}
-                    >
+                    <div className='stat-icon-wrapper'>
                       {item.icon}
-                    </Avatar>
+                    </div>
                     <div className='stat-info'>
                       <div className='stat-label'>{item.title}</div>
                       <div className='stat-value'>
