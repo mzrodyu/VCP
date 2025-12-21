@@ -120,51 +120,16 @@ const PageLayout = () => {
   }, [i18n]);
 
   return (
-    <Layout
-      style={{
-        height: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        overflow: isMobile ? 'visible' : 'hidden',
-      }}
-    >
-      <Header
-        style={{
-          padding: 0,
-          height: 'auto',
-          lineHeight: 'normal',
-          position: 'fixed',
-          width: '100%',
-          top: 0,
-          zIndex: 100,
-        }}
-      >
+    <Layout className='app-layout'>
+      <Header className='app-header'>
         <HeaderBar
           onMobileMenuToggle={() => setDrawerOpen((prev) => !prev)}
           drawerOpen={drawerOpen}
         />
       </Header>
-      <Layout
-        style={{
-          overflow: isMobile ? 'visible' : 'auto',
-          display: 'flex',
-          flexDirection: 'column',
-          marginTop: '68px',
-        }}
-      >
+      <Layout className='app-body'>
         {showSider && (
-          <Sider
-            style={{
-              position: 'fixed',
-              left: 0,
-              top: '68px',
-              zIndex: 99,
-              border: 'none',
-              paddingRight: '0',
-              height: 'calc(100vh - 64px)',
-              width: 'var(--sidebar-current-width)',
-            }}
-          >
+          <Sider className='app-sider'>
             <SiderBar
               onNavigate={() => {
                 if (isMobile) setDrawerOpen(false);
@@ -173,35 +138,25 @@ const PageLayout = () => {
           </Sider>
         )}
         <Layout
+          className='app-main'
           style={{
             marginLeft: isMobile
               ? '0'
               : showSider
                 ? 'var(--sidebar-current-width)'
                 : '0',
-            flex: '1 1 auto',
-            display: 'flex',
-            flexDirection: 'column',
           }}
         >
           <Content
+            className='app-content'
             style={{
-              flex: '1 0 auto',
-              overflowY: isMobile ? 'visible' : 'hidden',
-              WebkitOverflowScrolling: 'touch',
-              padding: shouldInnerPadding ? (isMobile ? '5px' : '24px') : '0',
-              position: 'relative',
+              padding: shouldInnerPadding ? (isMobile ? '12px' : '24px') : '0',
             }}
           >
             <App />
           </Content>
           {!shouldHideFooter && (
-            <Layout.Footer
-              style={{
-                flex: '0 0 auto',
-                width: '100%',
-              }}
-            >
+            <Layout.Footer className='app-footer'>
               <FooterBar />
             </Layout.Footer>
           )}
