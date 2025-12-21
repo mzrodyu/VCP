@@ -2955,60 +2955,61 @@ body[theme-mode='dark'] .glass-effect {
   border: 1px solid rgba(148, 163, 184, 0.1) !important;
 }
 
-/* ==================== 顶部导航栏重构 ==================== */
+/* ==================== 顶部导航栏重构 - iOS 风格 ==================== */
 header.sticky {
-  background: linear-gradient(
-    180deg,
-    rgba(15, 23, 42, 0.95) 0%,
-    rgba(15, 23, 42, 0.9) 100%
-  ) !important;
-  backdrop-filter: blur(20px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
-  border-bottom: 1px solid rgba(148, 163, 184, 0.1) !important;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3) !important;
+  background: var(--glass-bg-dark) !important;
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate)) !important;
+  -webkit-backdrop-filter: blur(var(--glass-blur))
+    saturate(var(--glass-saturate)) !important;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow:
+    0 0.5px 0 rgba(255, 255, 255, 0.05),
+    0 4px 20px rgba(0, 0, 0, 0.15) !important;
 }
 
 body[theme-mode='light'] header.sticky {
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.95) 0%,
-    rgba(248, 250, 252, 0.9) 100%
-  ) !important;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08) !important;
+  background: var(--glass-bg-light) !important;
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.1) !important;
+  box-shadow:
+    0 0.5px 0 rgba(255, 255, 255, 0.8),
+    0 4px 20px rgba(0, 0, 0, 0.06) !important;
 }
 
-/* 侧边栏重构 */
+/* 侧边栏重构 - iOS 风格 */
 .semi-layout-sider,
 .sidebar-container {
-  background: linear-gradient(
-    180deg,
-    rgba(15, 23, 42, 0.98) 0%,
-    rgba(15, 23, 42, 0.95) 100%
-  ) !important;
-  backdrop-filter: blur(20px) !important;
-  border-right: 1px solid rgba(148, 163, 184, 0.08) !important;
-  box-shadow: 4px 0 30px rgba(0, 0, 0, 0.2) !important;
+  background: var(--glass-bg-dark) !important;
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate)) !important;
+  -webkit-backdrop-filter: blur(var(--glass-blur))
+    saturate(var(--glass-saturate)) !important;
+  border-right: 0.5px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow:
+    0.5px 0 0 rgba(255, 255, 255, 0.05),
+    4px 0 20px rgba(0, 0, 0, 0.1) !important;
 }
 
 body[theme-mode='light'] .semi-layout-sider,
 body[theme-mode='light'] .sidebar-container {
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.98) 0%,
-    rgba(248, 250, 252, 0.95) 100%
-  ) !important;
-  border-right: 1px solid rgba(0, 0, 0, 0.06) !important;
-  box-shadow: 4px 0 30px rgba(0, 0, 0, 0.05) !important;
+  background: var(--glass-bg-light) !important;
+  border-right: 0.5px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow:
+    0.5px 0 0 rgba(255, 255, 255, 0.8),
+    4px 0 20px rgba(0, 0, 0, 0.04) !important;
 }
 
-/* 侧边栏菜单项增强 */
+/* 侧边栏菜单项增强 - iOS 风格 */
 .semi-navigation-item {
-  margin: 4px 8px !important;
-  border-radius: 12px !important;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  margin: 2px 8px !important;
+  padding: 10px 12px !important;
+  border-radius: 10px !important;
+  transition: all 0.2s var(--ease-ios) !important;
   position: relative !important;
   overflow: hidden !important;
+}
+
+.semi-navigation-item:active {
+  transform: scale(0.98) !important;
+  transition: transform 0.1s var(--ease-ios) !important;
 }
 
 .semi-navigation-item::before {
