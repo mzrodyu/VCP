@@ -2177,6 +2177,118 @@ code {
   border-radius: 10px !important;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15) !important;
   padding: 10px 14px !important;
+  animation: tooltipIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+@keyframes tooltipIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Popover 气泡卡片重构 */
+.semi-popover {
+  background: var(--color-bg-elevated) !important;
+  border: 1px solid var(--color-border) !important;
+  border-radius: 14px !important;
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.12),
+    0 0 0 1px rgba(0, 0, 0, 0.05) !important;
+  animation: popoverIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  overflow: hidden !important;
+}
+
+@keyframes popoverIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.semi-popover-content {
+  padding: 16px !important;
+}
+
+/* Dropdown 下拉菜单重构 */
+.semi-dropdown-menu {
+  background: var(--color-bg-elevated) !important;
+  border: 1px solid var(--color-border) !important;
+  border-radius: 12px !important;
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(0, 0, 0, 0.05) !important;
+  padding: 6px !important;
+  animation: dropdownIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+@keyframes dropdownIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.semi-dropdown-item {
+  border-radius: 8px !important;
+  padding: 10px 14px !important;
+  margin: 2px 0 !important;
+  transition: all 0.15s ease !important;
+}
+
+.semi-dropdown-item:hover {
+  background: var(--color-accent-muted) !important;
+}
+
+.semi-dropdown-item-active {
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.15) 0%,
+    rgba(99, 102, 241, 0.1) 100%
+  ) !important;
+  color: var(--color-accent) !important;
+}
+
+/* Select 选择器重构 */
+.semi-select-option-list {
+  background: var(--color-bg-elevated) !important;
+  border: 1px solid var(--color-border) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15) !important;
+  padding: 6px !important;
+}
+
+.semi-select-option {
+  border-radius: 8px !important;
+  padding: 10px 14px !important;
+  margin: 2px 0 !important;
+  transition: all 0.15s ease !important;
+}
+
+.semi-select-option:hover {
+  background: var(--color-accent-muted) !important;
+}
+
+.semi-select-option-selected {
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.15) 0%,
+    rgba(99, 102, 241, 0.1) 100%
+  ) !important;
+  color: var(--color-accent) !important;
+  font-weight: 500 !important;
 }
 
 /* Pagination 分页重构 */
