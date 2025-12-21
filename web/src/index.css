@@ -1337,6 +1337,169 @@ code {
   z-index: -1;
 }
 
+/* ==================== 充值页面样式 ==================== */
+.topup-page {
+  padding: 24px;
+  animation: fadeIn 0.3s ease;
+}
+
+.topup-card {
+  background: var(--color-bg-elevated) !important;
+  border: 1px solid var(--color-border) !important;
+  border-radius: var(--border-radius-xl) !important;
+  overflow: hidden;
+}
+
+.topup-header {
+  background: linear-gradient(135deg, var(--color-accent), #6366f1);
+  padding: 24px;
+  color: white;
+}
+
+.topup-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  padding: 20px 24px;
+  background: linear-gradient(135deg, var(--color-accent), #6366f1);
+}
+
+.topup-stat-item {
+  text-align: center;
+}
+
+.topup-stat-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: white;
+}
+
+.topup-stat-label {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 4px;
+}
+
+.topup-content {
+  padding: 24px;
+}
+
+.topup-amount-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.topup-amount-btn {
+  padding: 16px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  background: var(--color-bg-elevated);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-align: center;
+}
+
+.topup-amount-btn:hover {
+  border-color: var(--color-accent);
+  background: var(--color-accent-muted);
+}
+
+.topup-amount-btn.selected {
+  border-color: var(--color-accent);
+  background: var(--color-accent-muted);
+  color: var(--color-accent);
+}
+
+.topup-amount-value {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.topup-amount-quota {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  margin-top: 4px;
+}
+
+.topup-payment-methods {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.topup-payment-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 20px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  background: var(--color-bg-elevated);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-weight: 500;
+}
+
+.topup-payment-btn:hover {
+  border-color: var(--color-accent);
+}
+
+.topup-payment-btn.alipay:hover {
+  border-color: #1677ff;
+  color: #1677ff;
+}
+
+.topup-payment-btn.wechat:hover {
+  border-color: #07c160;
+  color: #07c160;
+}
+
+/* 邀请卡片 */
+.invitation-card {
+  background: var(--color-bg-elevated) !important;
+  border: 1px solid var(--color-border) !important;
+  border-radius: var(--border-radius-xl) !important;
+}
+
+.invitation-header {
+  background: linear-gradient(135deg, #10b981, #059669);
+  padding: 24px;
+  color: white;
+}
+
+.invitation-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  padding: 20px 24px;
+  background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.invitation-link-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: var(--color-bg-sunken);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  margin: 16px 24px;
+}
+
+.invitation-link-box code {
+  flex: 1;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 /* ==================== 打印样式 ==================== */
 @media print {
   .sidebar-container,

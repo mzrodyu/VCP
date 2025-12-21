@@ -424,7 +424,7 @@ const Home = () => {
               <a href='#'>{t('服务稳定状态')}</a>
             </div>
             <div className='packy-footer-bottom'>
-              <Text type="tertiary" size="small">© {new Date().getFullYear()} New API. {t('版权所有')}</Text>
+              <Text type="tertiary" size="small">© {new Date().getFullYear()} NaiLong API. {t('版权所有')}</Text>
             </div>
           </footer>
         </div>
