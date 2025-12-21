@@ -28,7 +28,7 @@ import { useSidebar } from '../../hooks/common/useSidebar';
 import { useSidebarCollapsed } from '../../hooks/common/useSidebarCollapsed';
 import SkeletonWrapper from './components/SkeletonWrapper';
 
-import { Nav } from '@douyinfe/semi-ui';
+import { Button, Divider, Nav } from '@douyinfe/semi-ui';
 
 const routerMap = {
   home: '/',
