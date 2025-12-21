@@ -17,15 +17,13 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 For commercial licensing, please contact support@quantumnous.com
 */
 
-import { Toast, Pagination } from '@douyinfe/semi-ui';
-import { toastConstants } from '../constants';
-import React from 'react';
+import { Pagination, Toast } from '@douyinfe/semi-ui';
 import { toast } from 'react-toastify';
+import { TABLE_COMPACT_MODES_KEY, toastConstants } from '../constants';
 import {
-  THINK_TAG_REGEX,
-  MESSAGE_ROLES,
+    MESSAGE_ROLES,
+    THINK_TAG_REGEX,
 } from '../constants/playground.constants';
-import { TABLE_COMPACT_MODES_KEY } from '../constants';
 import { MOBILE_BREAKPOINT } from '../hooks/common/useIsMobile';
 
 const HTMLToastContent = ({ htmlContent }) => {
@@ -48,7 +46,7 @@ export function isRoot() {
 
 export function getSystemName() {
   let system_name = localStorage.getItem('system_name');
-  if (!system_name) return 'New API';
+  if (!system_name) return 'NaiLong API';
   return system_name;
 }
 
