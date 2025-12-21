@@ -1635,29 +1635,46 @@ body:not([theme-mode]) .semi-navigation-item:hover {
 /* ==================== Dashboard 整洁布局 ==================== */
 .dashboard-container {
   padding: 24px;
-  max-width: 1400px;
+  max-width: 1600px;
   margin: 0 auto;
+  min-height: 100vh;
 }
 
 .dashboard-header {
   margin-bottom: 32px;
 }
 
-.dashboard-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-  margin-bottom: 32px;
+/* 统计卡片区域 */
+.dashboard-stats-section {
+  margin-bottom: 24px;
 }
 
+.dashboard-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 1200px) {
+  .dashboard-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .dashboard-stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 统计卡片样式 */
 .dashboard-stat-card {
-  padding: 24px;
-  border-radius: 16px;
-  background: var(--glass-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--glass-border);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 20px !important;
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid var(--glass-border) !important;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
   position: relative;
   overflow: hidden;
 }
@@ -1669,25 +1686,130 @@ body:not([theme-mode]) .semi-navigation-item:hover {
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--semi-color-primary), transparent);
+  background: linear-gradient(
+    90deg,
+    var(--semi-color-primary),
+    var(--semi-color-success)
+  );
   opacity: 0;
   transition: opacity 0.3s;
+}
+
+.dashboard-stat-card:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: var(--cyber-glow-strong) !important;
+  border-color: var(--semi-color-primary) !important;
 }
 
 .dashboard-stat-card:hover::before {
   opacity: 1;
 }
 
-.dashboard-stat-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--cyber-glow-strong);
+/* 卡片标题 */
+.stat-card-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--semi-color-text-1);
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
+/* 卡片内容 */
+.stat-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* 单个统计项 */
+.stat-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+body[theme-mode='light'] .stat-item,
+body:not([theme-mode]) .stat-item {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.stat-item:hover {
+  background: rgba(var(--semi-color-primary), 0.1);
+  transform: translateX(4px);
+}
+
+.stat-item-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.stat-avatar {
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 12px !important;
+}
+
+.stat-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: var(--semi-color-text-2);
+  font-weight: 500;
+}
+
+.stat-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--semi-color-text-0);
+  line-height: 1.2;
+}
+
+.stat-item-right {
+  display: flex;
+  align-items: center;
+}
+
+.stat-chart {
+  width: 80px;
+  height: 40px;
+}
+
+.topup-tag {
+  background: linear-gradient(
+    135deg,
+    var(--semi-color-primary),
+    var(--semi-color-success)
+  ) !important;
+  color: #fff !important;
+  border: none !important;
+  font-weight: 600 !important;
+  padding: 6px 16px !important;
+  cursor: pointer;
+  transition: all 0.2s !important;
+}
+
+.topup-tag:hover {
+  transform: scale(1.05);
+  box-shadow: var(--cyber-glow);
+}
+
+/* 图表区域 */
 .dashboard-chart-section {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 20px;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 }
 
 @media (max-width: 1024px) {
@@ -1698,9 +1820,10 @@ body:not([theme-mode]) .semi-navigation-item:hover {
 
 .dashboard-chart-card {
   padding: 24px;
-  border-radius: 16px;
+  border-radius: 20px;
   background: var(--glass-bg);
-  backdrop-filter: blur(16px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--glass-border);
 }
 
