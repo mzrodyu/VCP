@@ -3725,15 +3725,75 @@ body[theme-mode='dark'] .ios-tabbar {
 }
 
 /* iOS 风格模态框 */
+.semi-modal-mask {
+  background: rgba(0, 0, 0, 0.4) !important;
+  backdrop-filter: blur(4px) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
+}
+
 .semi-modal-content {
+  background: var(--color-bg-elevated) !important;
+  border: none !important;
   border-radius: 14px !important;
   overflow: hidden !important;
+  box-shadow:
+    0 25px 50px rgba(0, 0, 0, 0.25),
+    0 0 0 0.5px rgba(0, 0, 0, 0.1) !important;
+  animation: ios-modal-in 0.3s var(--ease-ios) !important;
+}
+
+@keyframes ios-modal-in {
+  from {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .semi-modal-header {
+  padding: 20px 20px 0 !important;
   text-align: center !important;
   font-weight: 600 !important;
   font-size: 17px !important;
+  border-bottom: none !important;
+}
+
+.semi-modal-body {
+  padding: 12px 20px 20px !important;
+  text-align: center !important;
+  color: var(--color-text-secondary) !important;
+}
+
+.semi-modal-footer {
+  padding: 0 !important;
+  border-top: 0.5px solid var(--color-border) !important;
+  display: flex !important;
+  background: transparent !important;
+}
+
+.semi-modal-footer .semi-button {
+  flex: 1 !important;
+  border-radius: 0 !important;
+  padding: 16px !important;
+  font-size: 17px !important;
+  border: none !important;
+  background: transparent !important;
+  color: #007aff !important;
+}
+
+.semi-modal-footer .semi-button:not(:last-child) {
+  border-right: 0.5px solid var(--color-border) !important;
+}
+
+.semi-modal-footer .semi-button-primary {
+  font-weight: 600 !important;
+}
+
+.semi-modal-footer .semi-button-danger {
+  color: #ff3b30 !important;
 }
 
 /* iOS 风格 Action Sheet */
