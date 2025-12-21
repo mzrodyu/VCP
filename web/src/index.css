@@ -3228,34 +3228,83 @@ body[theme-mode='dark'] .semi-card:hover {
   box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.2) !important;
 }
 
-/* 表格行悬浮效果增强 */
-.semi-table-tbody > .semi-table-row:hover {
-  background: linear-gradient(
-    90deg,
-    rgba(59, 130, 246, 0.08) 0%,
-    rgba(99, 102, 241, 0.05) 100%
-  ) !important;
-  box-shadow: inset 3px 0 0 #3b82f6 !important;
+/* 表格 - iOS 风格 */
+.semi-table {
+  background: transparent !important;
 }
 
-/* 标签页增强 */
+.semi-table-container {
+  background: var(--color-bg-elevated) !important;
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.04),
+    0 4px 12px rgba(0, 0, 0, 0.06) !important;
+}
+
+.semi-table-thead > .semi-table-row > .semi-table-row-head {
+  background: var(--color-bg-sunken) !important;
+  font-weight: 600 !important;
+  font-size: 12px !important;
+  color: var(--color-text-muted) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  border-bottom: 0.5px solid var(--color-border) !important;
+}
+
+.semi-table-tbody > .semi-table-row {
+  transition: background 0.15s var(--ease-ios) !important;
+}
+
+.semi-table-tbody > .semi-table-row:hover {
+  background: rgba(0, 122, 255, 0.04) !important;
+}
+
+.semi-table-tbody > .semi-table-row:active {
+  background: rgba(0, 122, 255, 0.08) !important;
+}
+
+.semi-table-tbody > .semi-table-row > .semi-table-row-cell {
+  border-bottom: 0.5px solid var(--color-border) !important;
+}
+
+.semi-table-tbody > .semi-table-row:last-child > .semi-table-row-cell {
+  border-bottom: none !important;
+}
+
+/* 标签页 - iOS 风格 */
+.semi-tabs-bar {
+  border-bottom: 0.5px solid var(--color-border) !important;
+}
+
 .semi-tabs-tab {
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
-  border-radius: 8px 8px 0 0 !important;
+  padding: 12px 16px !important;
+  font-weight: 500 !important;
+  color: var(--color-text-muted) !important;
+  transition: all 0.2s var(--ease-ios) !important;
+  border-radius: 0 !important;
+  position: relative !important;
 }
 
 .semi-tabs-tab:hover {
-  background: rgba(59, 130, 246, 0.08) !important;
+  color: var(--color-text-primary) !important;
+  background: transparent !important;
+}
+
+.semi-tabs-tab:active {
+  opacity: 0.7 !important;
 }
 
 .semi-tabs-tab-active {
-  background: rgba(59, 130, 246, 0.12) !important;
+  color: #007aff !important;
+  background: transparent !important;
+  font-weight: 600 !important;
 }
 
 .semi-tabs-ink-bar {
-  background: linear-gradient(90deg, #3b82f6, #6366f1) !important;
-  height: 3px !important;
-  border-radius: 3px 3px 0 0 !important;
+  background: #007aff !important;
+  height: 2px !important;
+  border-radius: 2px 2px 0 0 !important;
 }
 
 /* DatePicker 日期选择器增强 */
