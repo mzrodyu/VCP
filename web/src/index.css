@@ -2765,26 +2765,31 @@ body[theme-mode='dark'] .semi-select-option-list {
   font-weight: 500 !important;
 }
 
-/* Pagination 分页重构 */
+/* Pagination - iOS 风格 */
 .semi-page {
   display: flex !important;
   align-items: center !important;
-  gap: 8px !important;
+  gap: 6px !important;
 }
 
 .semi-page-item {
-  border-radius: 8px !important;
+  border-radius: 10px !important;
   min-width: 36px !important;
   height: 36px !important;
-  transition: all 0.2s ease !important;
+  font-weight: 500 !important;
+  transition: all 0.15s var(--ease-ios) !important;
 }
 
 .semi-page-item:hover {
-  background: var(--color-accent-muted) !important;
+  background: rgba(0, 122, 255, 0.08) !important;
+}
+
+.semi-page-item:active {
+  transform: scale(0.95) !important;
 }
 
 .semi-page-item-active {
-  background: var(--color-accent) !important;
+  background: #007aff !important;
   color: white !important;
 }
 
