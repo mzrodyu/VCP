@@ -22,10 +22,7 @@ import {
     IconFile,
     IconGithubLogo,
     IconPlay,
-    IconPriceTag,
-    IconServer,
-    IconShield,
-    IconThunder,
+    IconShield
 } from '@douyinfe/semi-icons';
 import {
     Button,
