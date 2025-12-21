@@ -4182,3 +4182,251 @@ body[theme-mode='light'] .pricing-card,
 body:not([theme-mode]) .pricing-card {
   background: rgba(255, 255, 255, 0.95);
 }
+
+/* ==================== CardPro 高级布局样式 ==================== */
+.cardpro-container {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 24px !important;
+  overflow: hidden;
+  animation: slideUp 0.4s ease-out;
+}
+
+.cardpro-container .semi-card-header {
+  padding: 0 !important;
+  border-bottom: none !important;
+}
+
+.cardpro-container .semi-card-body {
+  padding: 0 !important;
+}
+
+.cardpro-container .semi-card-footer {
+  padding: 0 !important;
+  border-top: none !important;
+}
+
+.cardpro-header {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cardpro-header-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.cardpro-header-left {
+  flex: 1;
+  min-width: 200px;
+}
+
+.cardpro-header-right {
+  flex-shrink: 0;
+}
+
+.cardpro-description {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cardpro-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 16px;
+}
+
+.cardpro-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.cardpro-tabs {
+  margin-top: 8px;
+}
+
+.cardpro-mobile-toggle {
+  display: flex;
+  justify-content: center;
+  padding: 8px 0;
+}
+
+.cardpro-toggle-btn {
+  width: 100%;
+  justify-content: center;
+  border-radius: 12px !important;
+  background: rgba(91, 141, 239, 0.05) !important;
+}
+
+.cardpro-toggle-btn:hover {
+  background: rgba(91, 141, 239, 0.1) !important;
+}
+
+.cardpro-mobile-actions {
+  padding: 16px;
+  background: rgba(91, 141, 239, 0.03);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  animation: slideUp 0.3s ease-out;
+}
+
+/* 筛选区域样式 */
+.cardpro-filters {
+  background: rgba(91, 141, 239, 0.03);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(91, 141, 239, 0.08);
+}
+
+.cardpro-filters-header {
+  padding: 0;
+}
+
+.cardpro-filters-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--semi-color-text-1);
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.cardpro-filters-toggle:hover {
+  background: rgba(91, 141, 239, 0.05);
+}
+
+.cardpro-filters-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cardpro-filters-title svg {
+  opacity: 0.7;
+}
+
+.cardpro-filters-arrow {
+  display: flex;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.cardpro-filters-arrow.expanded {
+  transform: rotate(180deg);
+}
+
+.cardpro-filters-content {
+  max-height: 0;
+  overflow: hidden;
+  transition:
+    max-height 0.3s ease,
+    padding 0.3s ease;
+  padding: 0 18px;
+}
+
+.cardpro-filters-content.expanded {
+  max-height: 500px;
+  padding: 0 18px 18px;
+}
+
+/* 表格内容区域 */
+.cardpro-body {
+  padding: 0 24px;
+}
+
+/* 分页区域 */
+.cardpro-footer {
+  padding: 20px 24px;
+  background: linear-gradient(180deg, transparent, rgba(91, 141, 239, 0.02));
+  border-top: 1px solid var(--glass-border);
+}
+
+.cardpro-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* 浅色模式适配 */
+body[theme-mode='light'] .cardpro-container,
+body:not([theme-mode]) .cardpro-container {
+  background: rgba(255, 255, 255, 0.95) !important;
+}
+
+body[theme-mode='light'] .cardpro-filters,
+body:not([theme-mode]) .cardpro-filters {
+  background: rgba(8, 145, 178, 0.03);
+  border-color: rgba(8, 145, 178, 0.08);
+}
+
+body[theme-mode='light'] .cardpro-mobile-actions,
+body:not([theme-mode]) .cardpro-mobile-actions {
+  background: rgba(8, 145, 178, 0.03);
+}
+
+body[theme-mode='light'] .cardpro-toggle-btn,
+body:not([theme-mode]) .cardpro-toggle-btn {
+  background: rgba(8, 145, 178, 0.05) !important;
+}
+
+body[theme-mode='light'] .cardpro-toggle-btn:hover,
+body:not([theme-mode]) .cardpro-toggle-btn:hover {
+  background: rgba(8, 145, 178, 0.1) !important;
+}
+
+body[theme-mode='light'] .cardpro-filters-toggle:hover,
+body:not([theme-mode]) .cardpro-filters-toggle:hover {
+  background: rgba(8, 145, 178, 0.05);
+}
+
+body[theme-mode='light'] .cardpro-footer,
+body:not([theme-mode]) .cardpro-footer {
+  background: linear-gradient(180deg, transparent, rgba(8, 145, 178, 0.02));
+}
+
+/* 响应式适配 */
+@media (max-width: 768px) {
+  .cardpro-header {
+    padding: 16px;
+  }
+
+  .cardpro-header-top {
+    flex-direction: column;
+  }
+
+  .cardpro-header-left {
+    width: 100%;
+  }
+
+  .cardpro-body {
+    padding: 0 16px;
+  }
+
+  .cardpro-footer {
+    padding: 16px;
+  }
+
+  .cardpro-pagination {
+    flex-direction: column;
+    gap: 12px;
+  }
+}

@@ -17,16 +17,16 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 For commercial licensing, please contact support@quantumnous.com
 */
 
-import React, { useState } from 'react';
-import { Card, Divider, Typography, Button } from '@douyinfe/semi-ui';
+import { IconChevronDown, IconChevronUp } from '@douyinfe/semi-icons';
+import { Button, Card, Typography } from '@douyinfe/semi-ui';
 import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 import { useIsMobile } from '../../../hooks/common/useIsMobile';
-import { IconEyeOpened, IconEyeClosed } from '@douyinfe/semi-icons';
 
 const { Text } = Typography;
 
 /**
- * CardPro 高级卡片组件
+ * CardPro 高级卡片组件 - 全新设计
  *
  * 布局分为6个区域：
  * 1. 统计信息区域 (statsArea)
@@ -51,7 +51,7 @@ const CardPro = ({
   tabsArea,
   actionsArea,
   searchArea,
-  paginationArea, // 新增分页区域
+  paginationArea,
   // 卡片属性
   shadows = '',
   bordered = true,
@@ -63,6 +63,7 @@ const CardPro = ({
 }) => {
   const isMobile = useIsMobile();
   const [showMobileActions, setShowMobileActions] = useState(false);
+  const [filtersExpanded, setFiltersExpanded] = useState(true);
 
   const toggleMobileActions = () => {
     setShowMobileActions(!showMobileActions);
@@ -76,66 +77,93 @@ const CardPro = ({
     if (!hasContent) return null;
 
     return (
-      <div className='flex flex-col w-full'>
-        {/* 统计信息区域 - 用于type2 */}
-        {type === 'type2' && statsArea && <>{statsArea}</>}
+      <div className='cardpro-header'>
+        {/* 顶部区域：标题/描述 + 操作按钮 */}
+        <div className='cardpro-header-top'>
+          {/* 左侧：描述信息或统计信息 */}
+          <div className='cardpro-header-left'>
+            {type === 'type2' && statsArea && (
+              <div className='cardpro-stats'>{statsArea}</div>
+            )}
+            {(type === 'type1' || type === 'type3') && descriptionArea && (
+              <div className='cardpro-description'>{descriptionArea}</div>
+            )}
+          </div>
 
-        {/* 描述信息区域 - 用于type1和type3 */}
-        {(type === 'type1' || type === 'type3') && descriptionArea && (
-          <>{descriptionArea}</>
-        )}
-
-        {/* 第一个分隔线 - 在描述信息或统计信息后面 */}
-        {((type === 'type1' || type === 'type3') && descriptionArea) ||
-        (type === 'type2' && statsArea) ? (
-          <Divider margin='12px' />
-        ) : null}
+          {/* 右侧：操作按钮区域 - 桌面端显示 */}
+          {!isMobile && (type === 'type1' || type === 'type3') && actionsArea && (
+            <div className='cardpro-header-right'>
+              <div className='cardpro-actions'>
+                {Array.isArray(actionsArea) ? (
+                  actionsArea.map((area, idx) => (
+                    <React.Fragment key={idx}>{area}</React.Fragment>
+                  ))
+                ) : (
+                  actionsArea
+                )}
+              </div>
+            </div>
+          )}
+        </div>
 
         {/* 类型切换/标签区域 - 主要用于type3 */}
-        {type === 'type3' && tabsArea && <>{tabsArea}</>}
+        {type === 'type3' && tabsArea && (
+          <div className='cardpro-tabs'>{tabsArea}</div>
+        )}
 
         {/* 移动端操作切换按钮 */}
         {isMobile && hasMobileHideableContent && (
-          <>
-            <div className='w-full mb-2'>
-              <Button
-                onClick={toggleMobileActions}
-                icon={showMobileActions ? <IconEyeClosed /> : <IconEyeOpened />}
-                type='tertiary'
-                size='small'
-                theme='outline'
-                block
-              >
-                {showMobileActions ? t('隐藏操作项') : t('显示操作项')}
-              </Button>
-            </div>
-          </>
+          <div className='cardpro-mobile-toggle'>
+            <Button
+              onClick={toggleMobileActions}
+              icon={showMobileActions ? <IconChevronUp /> : <IconChevronDown />}
+              type='tertiary'
+              size='small'
+              theme='borderless'
+              className='cardpro-toggle-btn'
+            >
+              {showMobileActions ? t('收起操作') : t('展开操作')}
+            </Button>
+          </div>
         )}
 
-        {/* 操作按钮和搜索表单的容器 */}
-        <div
-          className={`flex flex-col gap-2 ${isMobile && !showMobileActions ? 'hidden' : ''}`}
-        >
-          {/* 操作按钮区域 - 用于type1和type3 */}
-          {(type === 'type1' || type === 'type3') &&
-            actionsArea &&
-            (Array.isArray(actionsArea) ? (
+        {/* 移动端操作区域 */}
+        {isMobile && showMobileActions && (type === 'type1' || type === 'type3') && actionsArea && (
+          <div className='cardpro-mobile-actions'>
+            {Array.isArray(actionsArea) ? (
               actionsArea.map((area, idx) => (
-                <React.Fragment key={idx}>
-                  {idx !== 0 && <Divider />}
-                  <div className='w-full'>{area}</div>
-                </React.Fragment>
+                <React.Fragment key={idx}>{area}</React.Fragment>
               ))
             ) : (
-              <div className='w-full'>{actionsArea}</div>
-            ))}
+              actionsArea
+            )}
+          </div>
+        )}
 
-          {/* 当同时存在操作区和搜索区时，插入分隔线 */}
-          {actionsArea && searchArea && <Divider />}
-
-          {/* 搜索表单区域 - 所有类型都可能有 */}
-          {searchArea && <div className='w-full'>{searchArea}</div>}
-        </div>
+        {/* 搜索/筛选区域 */}
+        {searchArea && (
+          <div className='cardpro-filters'>
+            <div className='cardpro-filters-header'>
+              <button
+                className='cardpro-filters-toggle'
+                onClick={() => setFiltersExpanded(!filtersExpanded)}
+              >
+                <span className='cardpro-filters-title'>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+                  </svg>
+                  {t('筛选条件')}
+                </span>
+                <span className={`cardpro-filters-arrow ${filtersExpanded ? 'expanded' : ''}`}>
+                  <IconChevronDown />
+                </span>
+              </button>
+            </div>
+            <div className={`cardpro-filters-content ${filtersExpanded ? 'expanded' : ''}`}>
+              {searchArea}
+            </div>
+          </div>
+        )}
       </div>
     );
   };
@@ -147,11 +175,10 @@ const CardPro = ({
     if (!paginationArea) return null;
 
     return (
-      <div
-        className={`flex w-full pt-4 border-t ${isMobile ? 'justify-center' : 'justify-between items-center'}`}
-        style={{ borderColor: 'var(--semi-color-border)' }}
-      >
-        {paginationArea}
+      <div className='cardpro-footer'>
+        <div className='cardpro-pagination'>
+          {paginationArea}
+        </div>
       </div>
     );
   };
@@ -160,7 +187,7 @@ const CardPro = ({
 
   return (
     <Card
-      className={`table-scroll-card !rounded-2xl ${className}`}
+      className={`cardpro-container ${className}`}
       title={headerContent}
       footer={footerContent}
       shadows={shadows}
@@ -168,7 +195,9 @@ const CardPro = ({
       style={style}
       {...props}
     >
-      {children}
+      <div className='cardpro-body'>
+        {children}
+      </div>
     </Card>
   );
 };
