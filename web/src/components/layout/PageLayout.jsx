@@ -149,7 +149,7 @@ const PageLayout = () => {
           overflow: isMobile ? 'visible' : 'auto',
           display: 'flex',
           flexDirection: 'column',
-          marginTop: '64px',
+          marginTop: '68px',
         }}
       >
         {showSider && (
@@ -157,7 +157,7 @@ const PageLayout = () => {
             style={{
               position: 'fixed',
               left: 0,
-              top: '64px',
+              top: '68px',
               zIndex: 99,
               border: 'none',
               paddingRight: '0',
