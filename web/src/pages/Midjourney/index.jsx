@@ -17,11 +17,10 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 For commercial licensing, please contact support@quantumnous.com
 */
 
-import React from 'react';
 import MjLogsTable from '../../components/table/mj-logs';
 
 const Midjourney = () => (
-  <div className='mt-[60px] px-2'>
+  <div className='table-page'>
     <MjLogsTable />
   </div>
 );

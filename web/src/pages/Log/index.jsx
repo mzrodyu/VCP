@@ -50,7 +50,7 @@ const Log = () => {
   };
 
   return (
-    <div className='mt-[60px] px-2'>
+    <div className='table-page'>
       <Tabs
         type='card'
         activeKey={activeTab}

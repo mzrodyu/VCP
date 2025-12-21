@@ -164,7 +164,7 @@ const Setting = () => {
     }
   }, [location.search]);
   return (
-    <div className='mt-[60px] px-2'>
+    <div className='page-container'>
       <Layout>
         <Layout.Content>
           <Tabs
