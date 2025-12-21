@@ -3078,16 +3078,44 @@ body[theme-mode='light'] .semi-layout-content {
   }
 }
 
-/* 卡片悬浮增强 */
+/* 卡片 - iOS 风格 */
 .semi-card {
-  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  background: var(--color-bg-elevated) !important;
+  border: none !important;
+  border-radius: 16px !important;
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.04),
+    0 4px 12px rgba(0, 0, 0, 0.06),
+    0 0 0 0.5px rgba(0, 0, 0, 0.08) !important;
+  transition: all 0.3s var(--ease-ios) !important;
+  overflow: visible !important;
 }
 
 .semi-card:hover {
-  transform: translateY(-4px) !important;
+  transform: translateY(-2px) !important;
   box-shadow:
-    0 20px 40px rgba(0, 0, 0, 0.15),
-    0 0 0 1px rgba(59, 130, 246, 0.1) !important;
+    0 2px 8px rgba(0, 0, 0, 0.06),
+    0 8px 24px rgba(0, 0, 0, 0.1),
+    0 0 0 0.5px rgba(0, 0, 0, 0.1) !important;
+}
+
+.semi-card:active {
+  transform: scale(0.99) !important;
+  transition: transform 0.1s var(--ease-ios) !important;
+}
+
+body[theme-mode='dark'] .semi-card {
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.2),
+    0 4px 12px rgba(0, 0, 0, 0.15),
+    0 0 0 0.5px rgba(255, 255, 255, 0.06) !important;
+}
+
+body[theme-mode='dark'] .semi-card:hover {
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.25),
+    0 8px 24px rgba(0, 0, 0, 0.2),
+    0 0 0 0.5px rgba(255, 255, 255, 0.08) !important;
 }
 
 /* 按钮 - iOS 风格 */
@@ -3153,12 +3181,51 @@ body[theme-mode='light'] .semi-layout-content {
   transform: scale(0.96) !important;
 }
 
-/* 输入框聚焦效果增强 */
+/* 输入框 - iOS 风格 */
+.semi-input-wrapper {
+  background: var(--color-bg-sunken) !important;
+  border: none !important;
+  border-radius: 12px !important;
+  transition: all 0.2s var(--ease-ios) !important;
+}
+
 .semi-input-wrapper:focus-within {
-  box-shadow:
-    0 0 0 3px rgba(59, 130, 246, 0.15),
-    0 4px 12px rgba(59, 130, 246, 0.1) !important;
-  border-color: #3b82f6 !important;
+  background: var(--color-bg-elevated) !important;
+  box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.2) !important;
+}
+
+.semi-input {
+  font-size: 16px !important;
+}
+
+/* 文本域 - iOS 风格 */
+.semi-input-textarea-wrapper {
+  background: var(--color-bg-sunken) !important;
+  border: none !important;
+  border-radius: 12px !important;
+  transition: all 0.2s var(--ease-ios) !important;
+}
+
+.semi-input-textarea-wrapper:focus-within {
+  background: var(--color-bg-elevated) !important;
+  box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.2) !important;
+}
+
+/* 选择器 - iOS 风格 */
+.semi-select {
+  border-radius: 12px !important;
+}
+
+.semi-select-selection {
+  background: var(--color-bg-sunken) !important;
+  border: none !important;
+  border-radius: 12px !important;
+  transition: all 0.2s var(--ease-ios) !important;
+}
+
+.semi-select-focus .semi-select-selection {
+  background: var(--color-bg-elevated) !important;
+  box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.2) !important;
 }
 
 /* 表格行悬浮效果增强 */
