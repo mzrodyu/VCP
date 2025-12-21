@@ -47,34 +47,37 @@ body:not([theme-mode]) {
   --glass-border: rgba(8, 145, 178, 0.15);
 }
 
-/* ==================== 暗色主题 - 柔和蓝灰 ==================== */
+/* ==================== 暗色主题 - 统一 Slate 色系 ==================== */
 body[theme-mode='dark'] {
-  --semi-color-bg-0: #0f1318;
-  --semi-color-bg-1: #151a21;
-  --semi-color-bg-2: #1c222b;
-  --semi-color-bg-3: #232a35;
-  --semi-color-bg-4: #2a323f;
-  --semi-color-fill-0: rgba(99, 139, 191, 0.06);
-  --semi-color-fill-1: rgba(99, 139, 191, 0.1);
-  --semi-color-fill-2: rgba(99, 139, 191, 0.14);
-  --semi-color-border: rgba(99, 139, 191, 0.12);
-  --semi-color-primary: #5b8def;
-  --semi-color-primary-hover: #6b9bff;
-  --semi-color-primary-active: #4a7ce0;
-  --semi-color-primary-light-default: rgba(91, 141, 239, 0.12);
-  --semi-color-primary-light-hover: rgba(91, 141, 239, 0.18);
-  --semi-color-text-0: #e2e8f0;
-  --semi-color-text-1: #a8b5c4;
-  --semi-color-text-2: #6b7a8a;
-  --semi-color-text-3: #4a5568;
-  --semi-color-link: #5b8def;
-  --semi-color-success: #4ade80;
-  --semi-color-warning: #fbbf24;
-  --semi-color-danger: #f87171;
-  --cyber-glow: 0 4px 20px rgba(91, 141, 239, 0.15);
-  --cyber-glow-strong: 0 8px 30px rgba(91, 141, 239, 0.25);
-  --glass-bg: rgba(21, 26, 33, 0.85);
-  --glass-border: rgba(99, 139, 191, 0.15);
+  --semi-color-bg-0: #0f172a; /* Slate 900 */
+  --semi-color-bg-1: #1e293b; /* Slate 800 */
+  --semi-color-bg-2: #334155; /* Slate 700 */
+  --semi-color-bg-3: #475569; /* Slate 600 */
+  --semi-color-bg-4: #64748b; /* Slate 500 */
+
+  --semi-color-fill-0: rgba(148, 163, 184, 0.1);
+  --semi-color-fill-1: rgba(148, 163, 184, 0.15);
+  --semi-color-fill-2: rgba(148, 163, 184, 0.2);
+
+  --semi-color-border: rgba(148, 163, 184, 0.15);
+  --semi-color-shadow: rgba(0, 0, 0, 0.25);
+
+  --semi-color-primary: #3b82f6; /* Blue 500 */
+  --semi-color-primary-hover: #60a5fa; /* Blue 400 */
+  --semi-color-primary-active: #2563eb; /* Blue 600 */
+  --semi-color-primary-light-default: rgba(59, 130, 246, 0.15);
+  --semi-color-primary-light-hover: rgba(59, 130, 246, 0.25);
+
+  --semi-color-text-0: #f8fafc; /* Slate 50 */
+  --semi-color-text-1: #e2e8f0; /* Slate 200 */
+  --semi-color-text-2: #94a3b8; /* Slate 400 */
+  --semi-color-text-3: #64748b; /* Slate 500 */
+
+  --semi-color-link: #3b82f6;
+
+  --glass-bg: rgba(30, 41, 59, 0.75); /* Slate 800 + opacity */
+  --glass-border: rgba(148, 163, 184, 0.1);
+  --cyber-glow: 0 0 20px rgba(59, 130, 246, 0.1);
 }
 
 code {
@@ -862,6 +865,17 @@ html.dark .with-pastel-balls::before {
 }
 
 /* ==================== 动画样式 ==================== */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -880,16 +894,32 @@ html.dark .with-pastel-balls::before {
   animation-fill-mode: both;
 }
 
-.delay-200 {
-  animation-delay: 0.2s;
+.animate-slide-up {
+  animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.delay-300 {
-  animation-delay: 0.3s;
+/* 仪表盘统计卡片优化 */
+.dashboard-stat-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.delay-1000 {
-  animation-delay: 1s;
+.dashboard-stat-card:hover {
+  transform: translateY(-4px);
+}
+
+body[theme-mode='dark'] .dashboard-stat-card {
+  background: var(--semi-color-bg-1);
+  border: 1px solid var(--semi-color-border);
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+body[theme-mode='dark'] .dashboard-stat-card:hover {
+  border-color: var(--semi-color-primary);
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
 /* ==================== 首页高级设计 ==================== */
@@ -1225,77 +1255,58 @@ html.dark .with-pastel-balls::before {
   background: var(--semi-color-bg-0);
 }
 
-/* ==================== 赛博朋克组件样式 ==================== */
+/* ==================== 暗色模式组件样式 - Slate 色系 ==================== */
 body[theme-mode='dark'] .semi-card {
-  background: linear-gradient(
-    145deg,
-    rgba(15, 20, 25, 0.9),
-    rgba(10, 14, 20, 0.95)
-  );
-  border: 1px solid rgba(91, 141, 239, 0.15);
-  box-shadow:
-    0 4px 20px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 rgba(91, 141, 239, 0.1);
+  background: #1e293b;
+  border: 1px solid #334155;
 }
 
 body[theme-mode='dark'] .semi-card:hover {
-  border-color: rgba(91, 141, 239, 0.3);
-  box-shadow:
-    0 4px 30px rgba(91, 141, 239, 0.15),
-    inset 0 1px 0 rgba(91, 141, 239, 0.15);
+  border-color: #475569;
 }
 
 body[theme-mode='dark'] .semi-button-primary {
-  background: #5b8def;
+  background: #3b82f6;
   border: none;
   color: #fff;
-  font-weight: 600;
-  box-shadow: 0 4px 12px rgba(91, 141, 239, 0.25);
+  font-weight: 500;
 }
 
 body[theme-mode='dark'] .semi-button-primary:hover {
-  background: #6b9bff;
-  box-shadow: 0 6px 16px rgba(91, 141, 239, 0.35);
+  background: #2563eb;
 }
 
 body[theme-mode='dark'] .semi-button-tertiary {
   background: transparent;
-  border: 1px solid rgba(91, 141, 239, 0.3);
-  color: #5b8def;
+  border: 1px solid #334155;
+  color: #e2e8f0;
 }
 
 body[theme-mode='dark'] .semi-button-tertiary:hover {
-  background: rgba(91, 141, 239, 0.1);
-  border-color: #5b8def;
+  background: #334155;
 }
 
 body[theme-mode='dark'] .semi-input-wrapper,
 body[theme-mode='dark'] .semi-select {
-  background: rgba(10, 14, 20, 0.8);
-  border: 1px solid rgba(91, 141, 239, 0.2);
+  background: #1e293b;
+  border: 1px solid #334155;
 }
 
 body[theme-mode='dark'] .semi-input-wrapper:focus-within,
 body[theme-mode='dark'] .semi-select:focus-within {
-  border-color: #5b8def;
-  box-shadow: 0 0 15px rgba(91, 141, 239, 0.2);
+  border-color: #3b82f6;
 }
 
 body[theme-mode='dark'] .semi-navigation {
-  background: linear-gradient(
-    180deg,
-    rgba(10, 14, 20, 0.98),
-    rgba(15, 20, 25, 0.95)
-  );
+  background: #0f172a;
 }
 
 body[theme-mode='dark'] .semi-navigation-item-selected {
-  background: rgba(91, 141, 239, 0.15) !important;
-  border-left: 2px solid #5b8def;
+  background: rgba(59, 130, 246, 0.15) !important;
 }
 
 body[theme-mode='dark'] .semi-navigation-item:hover {
-  background: rgba(91, 141, 239, 0.08);
+  background: rgba(59, 130, 246, 0.1);
 }
 
 body[theme-mode='dark'] .semi-table-tbody > .semi-table-row:hover {
@@ -1669,40 +1680,22 @@ body:not([theme-mode]) .semi-navigation-item:hover {
 
 /* 统计卡片样式 */
 .dashboard-stat-card {
-  border-radius: 20px !important;
-  background: var(--glass-bg) !important;
-  backdrop-filter: blur(20px) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-  border: 1px solid var(--glass-border) !important;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  border-radius: 16px !important;
+  background: var(--semi-color-bg-1) !important;
+  border: 1px solid var(--semi-color-border) !important;
+  transition: all 0.2s ease !important;
   position: relative;
   overflow: hidden;
 }
 
-.dashboard-stat-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(
-    90deg,
-    var(--semi-color-primary),
-    var(--semi-color-success)
-  );
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
 .dashboard-stat-card:hover {
-  transform: translateY(-6px) !important;
-  box-shadow: var(--cyber-glow-strong) !important;
+  transform: translateY(-2px) !important;
   border-color: var(--semi-color-primary) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
 }
 
-.dashboard-stat-card:hover::before {
-  opacity: 1;
+body[theme-mode='dark'] .dashboard-stat-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
 }
 
 /* 卡片标题 */
@@ -1750,43 +1743,18 @@ body:not([theme-mode]) .stat-item {
   gap: 12px;
 }
 
-/* 透明玻璃风格图标 */
+/* 图标包装器 */
 .stat-icon-wrapper {
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 14px;
-  background: linear-gradient(
-    135deg,
-    rgba(91, 141, 239, 0.1),
-    rgba(0, 255, 159, 0.05)
-  );
-  border: 1px solid rgba(91, 141, 239, 0.2);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  border-radius: 10px;
+  background: rgba(59, 130, 246, 0.1);
   color: var(--semi-color-primary);
-  font-size: 20px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  overflow: hidden;
-}
-
-.stat-icon-wrapper::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.1),
-    transparent
-  );
-  transition: left 0.5s;
+  font-size: 18px;
+  transition: all 0.2s ease;
 }
 
 .stat-item:hover .stat-icon-wrapper {
