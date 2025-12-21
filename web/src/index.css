@@ -2344,6 +2344,156 @@ code {
 .semi-avatar {
   border: 2px solid var(--color-border) !important;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  transition: all 0.3s ease !important;
+}
+
+.semi-avatar:hover {
+  transform: scale(1.05) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15) !important;
+}
+
+.semi-avatar-group .semi-avatar {
+  border: 2px solid var(--color-bg-elevated) !important;
+  margin-left: -8px !important;
+  transition: all 0.2s ease !important;
+}
+
+.semi-avatar-group .semi-avatar:hover {
+  transform: translateY(-4px) scale(1.1) !important;
+  z-index: 10 !important;
+}
+
+/* Collapse 折叠面板增强 */
+.semi-collapse {
+  border: none !important;
+  background: transparent !important;
+}
+
+.semi-collapse-item {
+  border: 1px solid var(--color-border) !important;
+  border-radius: 12px !important;
+  margin-bottom: 8px !important;
+  overflow: hidden !important;
+  transition: all 0.3s ease !important;
+}
+
+.semi-collapse-item:hover {
+  border-color: rgba(59, 130, 246, 0.3) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+}
+
+.semi-collapse-header {
+  padding: 16px 20px !important;
+  background: var(--color-bg-elevated) !important;
+  transition: all 0.2s ease !important;
+}
+
+.semi-collapse-header:hover {
+  background: var(--color-bg-sunken) !important;
+}
+
+.semi-collapse-content {
+  padding: 16px 20px !important;
+  background: var(--color-bg-page) !important;
+  border-top: 1px solid var(--color-border) !important;
+}
+
+.semi-collapse-header-icon {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Divider 分割线增强 */
+.semi-divider {
+  border-color: var(--color-border) !important;
+}
+
+.semi-divider-horizontal {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-border),
+    transparent
+  ) !important;
+  border: none !important;
+  height: 1px !important;
+}
+
+.semi-divider-with-text {
+  color: var(--color-text-muted) !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+}
+
+/* Tree 树形组件增强 */
+.semi-tree {
+  background: transparent !important;
+}
+
+.semi-tree-option {
+  border-radius: 8px !important;
+  margin: 2px 0 !important;
+  padding: 8px 12px !important;
+  transition: all 0.2s ease !important;
+}
+
+.semi-tree-option:hover {
+  background: var(--color-accent-muted) !important;
+}
+
+.semi-tree-option-selected {
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.15) 0%,
+    rgba(99, 102, 241, 0.1) 100%
+  ) !important;
+}
+
+.semi-tree-option-label {
+  font-weight: 500 !important;
+}
+
+/* Breadcrumb 面包屑增强 */
+.semi-breadcrumb {
+  padding: 12px 0 !important;
+}
+
+.semi-breadcrumb-item {
+  transition: all 0.2s ease !important;
+}
+
+.semi-breadcrumb-item:hover {
+  color: var(--color-accent) !important;
+}
+
+.semi-breadcrumb-item-active {
+  color: var(--color-text-primary) !important;
+  font-weight: 500 !important;
+}
+
+/* Anchor 锚点增强 */
+.semi-anchor-link {
+  padding: 8px 16px !important;
+  border-radius: 6px !important;
+  transition: all 0.2s ease !important;
+}
+
+.semi-anchor-link:hover {
+  background: var(--color-accent-muted) !important;
+}
+
+.semi-anchor-link-active {
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.15) 0%,
+    rgba(99, 102, 241, 0.1) 100%
+  ) !important;
+  color: var(--color-accent) !important;
+}
+
+.semi-anchor-ink {
+  background: linear-gradient(180deg, #3b82f6, #6366f1) !important;
+  width: 3px !important;
+  border-radius: 3px !important;
 }
 
 /* Tooltip 提示重构 */
