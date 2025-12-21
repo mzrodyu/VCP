@@ -18,7 +18,7 @@ For commercial licensing, please contact support@quantumnous.com
 */
 
 import { VChart } from '@visactor/react-vchart';
-import { Activity, BarChart3, PieChart, TrendingUp } from 'lucide-react';
+import { Activity, BarChart3, TrendingUp } from 'lucide-react';
 
 const ChartsPanel = ({
   activeChartTab,
@@ -36,7 +36,7 @@ const ChartsPanel = ({
   const tabs = [
     { key: '1', label: t('消耗分布'), icon: TrendingUp },
     { key: '2', label: t('消耗趋势'), icon: Activity },
-    { key: '3', label: t('调用分布'), icon: PieChart },
+    { key: '3', label: t('调用分布'), icon: PieChartIcon },
     { key: '4', label: t('调用排行'), icon: BarChart3 },
   ];
 
