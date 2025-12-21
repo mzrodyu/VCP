@@ -47,34 +47,34 @@ body:not([theme-mode]) {
   --glass-border: rgba(8, 145, 178, 0.15);
 }
 
-/* ==================== 赛博朋克暗色主题 ==================== */
+/* ==================== 暗色主题 - 柔和蓝灰 ==================== */
 body[theme-mode='dark'] {
-  --semi-color-bg-0: #0a0e14;
-  --semi-color-bg-1: #0f1419;
-  --semi-color-bg-2: #151b23;
-  --semi-color-bg-3: #1a222c;
-  --semi-color-bg-4: #1f2935;
-  --semi-color-fill-0: rgba(0, 255, 255, 0.05);
-  --semi-color-fill-1: rgba(0, 255, 255, 0.08);
-  --semi-color-fill-2: rgba(0, 255, 255, 0.12);
-  --semi-color-border: rgba(0, 255, 255, 0.12);
-  --semi-color-primary: #00d4ff;
-  --semi-color-primary-hover: #00e5ff;
-  --semi-color-primary-active: #00b8d4;
-  --semi-color-primary-light-default: rgba(0, 212, 255, 0.15);
-  --semi-color-primary-light-hover: rgba(0, 212, 255, 0.2);
-  --semi-color-text-0: #e6f1ff;
-  --semi-color-text-1: #b3c5d6;
-  --semi-color-text-2: #7a8b99;
+  --semi-color-bg-0: #0f1318;
+  --semi-color-bg-1: #151a21;
+  --semi-color-bg-2: #1c222b;
+  --semi-color-bg-3: #232a35;
+  --semi-color-bg-4: #2a323f;
+  --semi-color-fill-0: rgba(99, 139, 191, 0.06);
+  --semi-color-fill-1: rgba(99, 139, 191, 0.1);
+  --semi-color-fill-2: rgba(99, 139, 191, 0.14);
+  --semi-color-border: rgba(99, 139, 191, 0.12);
+  --semi-color-primary: #5b8def;
+  --semi-color-primary-hover: #6b9bff;
+  --semi-color-primary-active: #4a7ce0;
+  --semi-color-primary-light-default: rgba(91, 141, 239, 0.12);
+  --semi-color-primary-light-hover: rgba(91, 141, 239, 0.18);
+  --semi-color-text-0: #e2e8f0;
+  --semi-color-text-1: #a8b5c4;
+  --semi-color-text-2: #6b7a8a;
   --semi-color-text-3: #4a5568;
-  --semi-color-link: #00d4ff;
-  --semi-color-success: #00ff9f;
-  --semi-color-warning: #ffb800;
-  --semi-color-danger: #ff3d71;
-  --cyber-glow: 0 0 20px rgba(0, 212, 255, 0.3);
-  --cyber-glow-strong: 0 0 30px rgba(0, 212, 255, 0.5);
-  --glass-bg: rgba(15, 20, 25, 0.8);
-  --glass-border: rgba(0, 212, 255, 0.2);
+  --semi-color-link: #5b8def;
+  --semi-color-success: #4ade80;
+  --semi-color-warning: #fbbf24;
+  --semi-color-danger: #f87171;
+  --cyber-glow: 0 4px 20px rgba(91, 141, 239, 0.15);
+  --cyber-glow-strong: 0 8px 30px rgba(91, 141, 239, 0.25);
+  --glass-bg: rgba(21, 26, 33, 0.85);
+  --glass-border: rgba(99, 139, 191, 0.15);
 }
 
 code {
@@ -894,8 +894,8 @@ html.dark .with-pastel-balls::before {
 
 /* ==================== 首页高级设计 ==================== */
 .home-page {
-  --accent: #00d4ff;
-  --accent-dim: rgba(0, 212, 255, 0.1);
+  --accent: #5b8def;
+  --accent-dim: rgba(91, 141, 239, 0.1);
 }
 
 /* Hero Section */
@@ -1232,53 +1232,53 @@ body[theme-mode='dark'] .semi-card {
     rgba(15, 20, 25, 0.9),
     rgba(10, 14, 20, 0.95)
   );
-  border: 1px solid rgba(0, 212, 255, 0.15);
+  border: 1px solid rgba(91, 141, 239, 0.15);
   box-shadow:
     0 4px 20px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 rgba(0, 212, 255, 0.1);
+    inset 0 1px 0 rgba(91, 141, 239, 0.1);
 }
 
 body[theme-mode='dark'] .semi-card:hover {
-  border-color: rgba(0, 212, 255, 0.3);
+  border-color: rgba(91, 141, 239, 0.3);
   box-shadow:
-    0 4px 30px rgba(0, 212, 255, 0.15),
-    inset 0 1px 0 rgba(0, 212, 255, 0.15);
+    0 4px 30px rgba(91, 141, 239, 0.15),
+    inset 0 1px 0 rgba(91, 141, 239, 0.15);
 }
 
 body[theme-mode='dark'] .semi-button-primary {
-  background: linear-gradient(135deg, #00d4ff, #00a8cc);
+  background: linear-gradient(135deg, #5b8def, #00a8cc);
   border: none;
   color: #0a0e14;
   font-weight: 600;
-  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+  box-shadow: 0 0 20px rgba(91, 141, 239, 0.3);
 }
 
 body[theme-mode='dark'] .semi-button-primary:hover {
   background: linear-gradient(135deg, #00e5ff, #00b8d4);
-  box-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+  box-shadow: 0 0 30px rgba(91, 141, 239, 0.5);
 }
 
 body[theme-mode='dark'] .semi-button-tertiary {
   background: transparent;
-  border: 1px solid rgba(0, 212, 255, 0.3);
-  color: #00d4ff;
+  border: 1px solid rgba(91, 141, 239, 0.3);
+  color: #5b8def;
 }
 
 body[theme-mode='dark'] .semi-button-tertiary:hover {
-  background: rgba(0, 212, 255, 0.1);
-  border-color: #00d4ff;
+  background: rgba(91, 141, 239, 0.1);
+  border-color: #5b8def;
 }
 
 body[theme-mode='dark'] .semi-input-wrapper,
 body[theme-mode='dark'] .semi-select {
   background: rgba(10, 14, 20, 0.8);
-  border: 1px solid rgba(0, 212, 255, 0.2);
+  border: 1px solid rgba(91, 141, 239, 0.2);
 }
 
 body[theme-mode='dark'] .semi-input-wrapper:focus-within,
 body[theme-mode='dark'] .semi-select:focus-within {
-  border-color: #00d4ff;
-  box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);
+  border-color: #5b8def;
+  box-shadow: 0 0 15px rgba(91, 141, 239, 0.2);
 }
 
 body[theme-mode='dark'] .semi-navigation {
@@ -1290,45 +1290,45 @@ body[theme-mode='dark'] .semi-navigation {
 }
 
 body[theme-mode='dark'] .semi-navigation-item-selected {
-  background: rgba(0, 212, 255, 0.15) !important;
-  border-left: 2px solid #00d4ff;
+  background: rgba(91, 141, 239, 0.15) !important;
+  border-left: 2px solid #5b8def;
 }
 
 body[theme-mode='dark'] .semi-navigation-item:hover {
-  background: rgba(0, 212, 255, 0.08);
+  background: rgba(91, 141, 239, 0.08);
 }
 
 body[theme-mode='dark'] .semi-table-tbody > .semi-table-row:hover {
-  background: rgba(0, 212, 255, 0.05);
+  background: rgba(91, 141, 239, 0.05);
 }
 
 body[theme-mode='dark'] .semi-tag {
-  border: 1px solid rgba(0, 212, 255, 0.2);
+  border: 1px solid rgba(91, 141, 239, 0.2);
 }
 
 body[theme-mode='dark'] .semi-tag-light-blue {
-  background: rgba(0, 212, 255, 0.15);
-  color: #00d4ff;
+  background: rgba(91, 141, 239, 0.15);
+  color: #5b8def;
 }
 
 body[theme-mode='dark'] .semi-progress-track {
-  background: rgba(0, 212, 255, 0.1);
+  background: rgba(91, 141, 239, 0.1);
 }
 
 body[theme-mode='dark'] .semi-progress-line-bar {
-  background: linear-gradient(90deg, #00d4ff, #00ff9f);
+  background: linear-gradient(90deg, #5b8def, #4ade80);
 }
 
 /* 侧边栏赛博风格 */
 body[theme-mode='dark'] .semi-layout-sider {
   background: linear-gradient(180deg, #0a0e14, #0f1419) !important;
-  border-right: 1px solid rgba(0, 212, 255, 0.1);
+  border-right: 1px solid rgba(91, 141, 239, 0.1);
 }
 
 /* 顶部导航赛博风格 */
 body[theme-mode='dark'] .semi-layout-header {
   background: rgba(10, 14, 20, 0.95) !important;
-  border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+  border-bottom: 1px solid rgba(91, 141, 239, 0.1);
   backdrop-filter: blur(10px);
 }
 
@@ -1339,7 +1339,7 @@ body[theme-mode='dark'] .dashboard-stat-card {
     rgba(15, 20, 25, 0.9),
     rgba(10, 14, 20, 0.95)
   );
-  border: 1px solid rgba(0, 212, 255, 0.12);
+  border: 1px solid rgba(91, 141, 239, 0.12);
   border-radius: 12px;
   position: relative;
   overflow: hidden;
@@ -1352,31 +1352,31 @@ body[theme-mode='dark'] .dashboard-stat-card::before {
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, #00d4ff, transparent);
+  background: linear-gradient(90deg, transparent, #5b8def, transparent);
 }
 
 /* 图表容器 */
 body[theme-mode='dark'] .chart-container {
   background: rgba(10, 14, 20, 0.6);
-  border: 1px solid rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(91, 141, 239, 0.1);
   border-radius: 12px;
 }
 
 /* 青色高亮文字 */
 .cyber-text {
-  color: #00d4ff;
-  text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+  color: #5b8def;
+  text-shadow: 0 0 10px rgba(91, 141, 239, 0.5);
 }
 
 /* 青色边框发光效果 */
 .cyber-border {
-  border: 1px solid rgba(0, 212, 255, 0.3);
-  box-shadow: 0 0 15px rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(91, 141, 239, 0.3);
+  box-shadow: 0 0 15px rgba(91, 141, 239, 0.1);
 }
 
 /* 渐变背景 */
 .cyber-gradient {
-  background: linear-gradient(135deg, #00d4ff, #00ff9f);
+  background: linear-gradient(135deg, #5b8def, #4ade80);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -1444,10 +1444,10 @@ body[theme-mode='dark'] .chart-container {
 @keyframes pulse-glow {
   0%,
   100% {
-    box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+    box-shadow: 0 0 20px rgba(91, 141, 239, 0.3);
   }
   50% {
-    box-shadow: 0 0 40px rgba(0, 212, 255, 0.6);
+    box-shadow: 0 0 40px rgba(91, 141, 239, 0.6);
   }
 }
 
@@ -1475,10 +1475,10 @@ body[theme-mode='dark'] .chart-container {
 @keyframes border-glow {
   0%,
   100% {
-    border-color: rgba(0, 212, 255, 0.2);
+    border-color: rgba(91, 141, 239, 0.2);
   }
   50% {
-    border-color: rgba(0, 212, 255, 0.5);
+    border-color: rgba(91, 141, 239, 0.5);
   }
 }
 
@@ -1760,10 +1760,10 @@ body:not([theme-mode]) .stat-item {
   border-radius: 14px;
   background: linear-gradient(
     135deg,
-    rgba(0, 212, 255, 0.1),
+    rgba(91, 141, 239, 0.1),
     rgba(0, 255, 159, 0.05)
   );
-  border: 1px solid rgba(0, 212, 255, 0.2);
+  border: 1px solid rgba(91, 141, 239, 0.2);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   color: var(--semi-color-primary);
@@ -1792,7 +1792,7 @@ body:not([theme-mode]) .stat-item {
 .stat-item:hover .stat-icon-wrapper {
   transform: scale(1.1) rotate(5deg);
   border-color: var(--semi-color-primary);
-  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+  box-shadow: 0 0 20px rgba(91, 141, 239, 0.3);
 }
 
 .stat-item:hover .stat-icon-wrapper::before {
@@ -1958,7 +1958,7 @@ body:not([theme-mode]) .stat-item:hover .stat-icon-wrapper {
     rgba(10, 14, 20, 0.98),
     rgba(15, 20, 25, 0.95)
   ) !important;
-  border-right: 1px solid rgba(0, 212, 255, 0.08) !important;
+  border-right: 1px solid rgba(91, 141, 239, 0.08) !important;
   box-shadow: 4px 0 30px rgba(0, 0, 0, 0.3) !important;
 }
 
@@ -1999,14 +1999,14 @@ body:not([theme-mode]) .semi-layout-sider {
 }
 
 .semi-navigation-item:hover {
-  background: rgba(0, 212, 255, 0.08) !important;
+  background: rgba(91, 141, 239, 0.08) !important;
   transform: translateX(4px);
 }
 
 .semi-navigation-item-selected {
   background: linear-gradient(
     135deg,
-    rgba(0, 212, 255, 0.15),
+    rgba(91, 141, 239, 0.15),
     rgba(0, 255, 159, 0.08)
   ) !important;
 }
@@ -2046,7 +2046,7 @@ body:not([theme-mode]) .semi-navigation-item-selected {
     rgba(10, 14, 20, 0.95),
     rgba(15, 20, 25, 0.9)
   ) !important;
-  border-bottom: 1px solid rgba(0, 212, 255, 0.1) !important;
+  border-bottom: 1px solid rgba(91, 141, 239, 0.1) !important;
   backdrop-filter: blur(20px) !important;
   -webkit-backdrop-filter: blur(20px) !important;
 }
@@ -2071,14 +2071,14 @@ body:not([theme-mode]) .semi-layout-header {
 }
 
 .semi-button-primary {
-  background: linear-gradient(135deg, #00d4ff, #00a8cc) !important;
+  background: linear-gradient(135deg, #5b8def, #00a8cc) !important;
   border: none !important;
-  box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3) !important;
+  box-shadow: 0 4px 15px rgba(91, 141, 239, 0.3) !important;
 }
 
 .semi-button-primary:hover {
   transform: translateY(-2px) !important;
-  box-shadow: 0 6px 25px rgba(0, 212, 255, 0.4) !important;
+  box-shadow: 0 6px 25px rgba(91, 141, 239, 0.4) !important;
 }
 
 .semi-button-primary::after {
@@ -2129,13 +2129,13 @@ body:not([theme-mode]) .semi-button-primary:hover {
 .semi-button-secondary,
 .semi-button-tertiary {
   background: transparent !important;
-  border: 1px solid rgba(0, 212, 255, 0.3) !important;
+  border: 1px solid rgba(91, 141, 239, 0.3) !important;
   color: var(--semi-color-primary) !important;
 }
 
 .semi-button-secondary:hover,
 .semi-button-tertiary:hover {
-  background: rgba(0, 212, 255, 0.1) !important;
+  background: rgba(91, 141, 239, 0.1) !important;
   border-color: var(--semi-color-primary) !important;
   transform: translateY(-2px) !important;
 }
@@ -2143,20 +2143,20 @@ body:not([theme-mode]) .semi-button-primary:hover {
 /* 输入框高级样式 */
 .semi-input-wrapper {
   background: rgba(10, 14, 20, 0.6) !important;
-  border: 1px solid rgba(0, 212, 255, 0.15) !important;
+  border: 1px solid rgba(91, 141, 239, 0.15) !important;
   border-radius: 12px !important;
   transition: all 0.3s !important;
 }
 
 .semi-input-wrapper:hover {
-  border-color: rgba(0, 212, 255, 0.3) !important;
+  border-color: rgba(91, 141, 239, 0.3) !important;
 }
 
 .semi-input-wrapper:focus-within {
   border-color: var(--semi-color-primary) !important;
   box-shadow:
-    0 0 0 4px rgba(0, 212, 255, 0.1),
-    0 0 20px rgba(0, 212, 255, 0.1) !important;
+    0 0 0 4px rgba(91, 141, 239, 0.1),
+    0 0 20px rgba(91, 141, 239, 0.1) !important;
 }
 
 body[theme-mode='light'] .semi-input-wrapper,
@@ -2179,18 +2179,18 @@ body:not([theme-mode]) .semi-input-wrapper:focus-within {
 
 .semi-select-selection {
   background: rgba(10, 14, 20, 0.6) !important;
-  border: 1px solid rgba(0, 212, 255, 0.15) !important;
+  border: 1px solid rgba(91, 141, 239, 0.15) !important;
   border-radius: 12px !important;
   transition: all 0.3s !important;
 }
 
 .semi-select-selection:hover {
-  border-color: rgba(0, 212, 255, 0.3) !important;
+  border-color: rgba(91, 141, 239, 0.3) !important;
 }
 
 .semi-select-focus .semi-select-selection {
   border-color: var(--semi-color-primary) !important;
-  box-shadow: 0 0 0 4px rgba(0, 212, 255, 0.1) !important;
+  box-shadow: 0 0 0 4px rgba(91, 141, 239, 0.1) !important;
 }
 
 body[theme-mode='light'] .semi-select-selection,
@@ -2203,7 +2203,7 @@ body:not([theme-mode]) .semi-select-selection {
 .semi-select-option-list {
   background: rgba(15, 20, 25, 0.98) !important;
   backdrop-filter: blur(20px) !important;
-  border: 1px solid rgba(0, 212, 255, 0.15) !important;
+  border: 1px solid rgba(91, 141, 239, 0.15) !important;
   border-radius: 12px !important;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4) !important;
 }
@@ -2215,13 +2215,13 @@ body:not([theme-mode]) .semi-select-selection {
 }
 
 .semi-select-option:hover {
-  background: rgba(0, 212, 255, 0.1) !important;
+  background: rgba(91, 141, 239, 0.1) !important;
 }
 
 .semi-select-option-selected {
   background: linear-gradient(
     135deg,
-    rgba(0, 212, 255, 0.2),
+    rgba(91, 141, 239, 0.2),
     rgba(0, 255, 159, 0.1)
   ) !important;
 }
@@ -2241,29 +2241,29 @@ body:not([theme-mode]) .semi-select-option-list {
 
 .semi-table-container {
   background: rgba(10, 14, 20, 0.4) !important;
-  border: 1px solid rgba(0, 212, 255, 0.1) !important;
+  border: 1px solid rgba(91, 141, 239, 0.1) !important;
   border-radius: 16px !important;
 }
 
 .semi-table-thead > .semi-table-row > .semi-table-row-head {
   background: linear-gradient(
     135deg,
-    rgba(0, 212, 255, 0.08),
+    rgba(91, 141, 239, 0.08),
     rgba(0, 255, 159, 0.04)
   ) !important;
-  border-bottom: 1px solid rgba(0, 212, 255, 0.1) !important;
+  border-bottom: 1px solid rgba(91, 141, 239, 0.1) !important;
   font-weight: 600 !important;
 }
 
 .semi-table-tbody > .semi-table-row {
   transition: all 0.3s !important;
-  border-bottom: 1px solid rgba(0, 212, 255, 0.05) !important;
+  border-bottom: 1px solid rgba(91, 141, 239, 0.05) !important;
 }
 
 .semi-table-tbody > .semi-table-row:hover {
   background: linear-gradient(
     135deg,
-    rgba(0, 212, 255, 0.08),
+    rgba(91, 141, 239, 0.08),
     transparent
   ) !important;
   transform: scale(1.005);
@@ -2306,11 +2306,11 @@ body:not([theme-mode])
 .semi-tag-light-blue {
   background: linear-gradient(
     135deg,
-    rgba(0, 212, 255, 0.2),
-    rgba(0, 212, 255, 0.1)
+    rgba(91, 141, 239, 0.2),
+    rgba(91, 141, 239, 0.1)
   ) !important;
-  border: 1px solid rgba(0, 212, 255, 0.3) !important;
-  color: #00d4ff !important;
+  border: 1px solid rgba(91, 141, 239, 0.3) !important;
+  color: #5b8def !important;
 }
 
 .semi-tag-green,
@@ -2321,7 +2321,7 @@ body:not([theme-mode])
     rgba(0, 255, 159, 0.1)
   ) !important;
   border: 1px solid rgba(0, 255, 159, 0.3) !important;
-  color: #00ff9f !important;
+  color: #4ade80 !important;
 }
 
 .semi-tag-red,
@@ -2354,18 +2354,18 @@ body:not([theme-mode])
 
 .semi-page-item {
   border-radius: 10px !important;
-  border: 1px solid rgba(0, 212, 255, 0.15) !important;
+  border: 1px solid rgba(91, 141, 239, 0.15) !important;
   background: rgba(10, 14, 20, 0.4) !important;
   transition: all 0.2s !important;
 }
 
 .semi-page-item:hover {
   border-color: var(--semi-color-primary) !important;
-  background: rgba(0, 212, 255, 0.1) !important;
+  background: rgba(91, 141, 239, 0.1) !important;
 }
 
 .semi-page-item-active {
-  background: linear-gradient(135deg, #00d4ff, #00a8cc) !important;
+  background: linear-gradient(135deg, #5b8def, #00a8cc) !important;
   border: none !important;
   color: #0a0e14 !important;
   font-weight: 600 !important;
@@ -2374,7 +2374,7 @@ body:not([theme-mode])
 /* Tabs 高级样式 */
 .semi-tabs-bar {
   background: rgba(10, 14, 20, 0.4) !important;
-  border: 1px solid rgba(0, 212, 255, 0.1) !important;
+  border: 1px solid rgba(91, 141, 239, 0.1) !important;
   border-radius: 14px !important;
   padding: 6px !important;
 }
@@ -2386,13 +2386,13 @@ body:not([theme-mode])
 }
 
 .semi-tabs-tab:hover {
-  background: rgba(0, 212, 255, 0.1) !important;
+  background: rgba(91, 141, 239, 0.1) !important;
 }
 
 .semi-tabs-tab-active {
   background: linear-gradient(
     135deg,
-    rgba(0, 212, 255, 0.2),
+    rgba(91, 141, 239, 0.2),
     rgba(0, 255, 159, 0.1)
   ) !important;
   color: var(--semi-color-primary) !important;
@@ -2411,15 +2411,15 @@ body:not([theme-mode]) .semi-tabs-bar {
 }
 
 .semi-switch-checked {
-  background: linear-gradient(135deg, #00d4ff, #00a8cc) !important;
-  box-shadow: 0 0 15px rgba(0, 212, 255, 0.4) !important;
+  background: linear-gradient(135deg, #5b8def, #00a8cc) !important;
+  box-shadow: 0 0 15px rgba(91, 141, 239, 0.4) !important;
 }
 
 /* Tooltip 高级样式 */
 .semi-tooltip-wrapper {
   background: rgba(15, 20, 25, 0.95) !important;
   backdrop-filter: blur(10px) !important;
-  border: 1px solid rgba(0, 212, 255, 0.2) !important;
+  border: 1px solid rgba(91, 141, 239, 0.2) !important;
   border-radius: 10px !important;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3) !important;
 }
@@ -2428,7 +2428,7 @@ body:not([theme-mode]) .semi-tabs-bar {
 .semi-popover-wrapper {
   background: rgba(15, 20, 25, 0.98) !important;
   backdrop-filter: blur(20px) !important;
-  border: 1px solid rgba(0, 212, 255, 0.15) !important;
+  border: 1px solid rgba(91, 141, 239, 0.15) !important;
   border-radius: 16px !important;
   box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4) !important;
 }
@@ -2447,8 +2447,8 @@ body:not([theme-mode]) .semi-tabs-bar {
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(
     180deg,
-    rgba(0, 212, 255, 0.4),
-    rgba(0, 212, 255, 0.2)
+    rgba(91, 141, 239, 0.4),
+    rgba(91, 141, 239, 0.2)
   );
   border-radius: 4px;
 }
@@ -2456,8 +2456,8 @@ body:not([theme-mode]) .semi-tabs-bar {
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(
     180deg,
-    rgba(0, 212, 255, 0.6),
-    rgba(0, 212, 255, 0.4)
+    rgba(91, 141, 239, 0.6),
+    rgba(91, 141, 239, 0.4)
   );
 }
 
@@ -2483,7 +2483,7 @@ body:not([theme-mode]) .semi-tabs-bar {
 .semi-notification-wrapper {
   background: rgba(15, 20, 25, 0.98) !important;
   backdrop-filter: blur(20px) !important;
-  border: 1px solid rgba(0, 212, 255, 0.15) !important;
+  border: 1px solid rgba(91, 141, 239, 0.15) !important;
   border-radius: 16px !important;
   box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4) !important;
 }
@@ -2491,7 +2491,7 @@ body:not([theme-mode]) .semi-tabs-bar {
 .semi-toast-wrapper {
   background: rgba(15, 20, 25, 0.98) !important;
   backdrop-filter: blur(20px) !important;
-  border: 1px solid rgba(0, 212, 255, 0.15) !important;
+  border: 1px solid rgba(91, 141, 239, 0.15) !important;
   border-radius: 12px !important;
 }
 
@@ -2502,7 +2502,7 @@ body:not([theme-mode]) .semi-tabs-bar {
 
 .semi-empty-image {
   opacity: 0.6;
-  filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.2));
+  filter: drop-shadow(0 0 20px rgba(91, 141, 239, 0.2));
 }
 
 /* 加载状态高级样式 */
@@ -2512,20 +2512,20 @@ body:not([theme-mode]) .semi-tabs-bar {
 
 /* 进度条高级样式 */
 .semi-progress-track {
-  background: rgba(0, 212, 255, 0.1) !important;
+  background: rgba(91, 141, 239, 0.1) !important;
   border-radius: 10px !important;
 }
 
 .semi-progress-line-bar {
-  background: linear-gradient(90deg, #00d4ff, #00ff9f) !important;
+  background: linear-gradient(90deg, #5b8def, #4ade80) !important;
   border-radius: 10px !important;
-  box-shadow: 0 0 15px rgba(0, 212, 255, 0.4) !important;
+  box-shadow: 0 0 15px rgba(91, 141, 239, 0.4) !important;
 }
 
 /* 头像高级样式 */
 .semi-avatar {
-  border: 2px solid rgba(0, 212, 255, 0.2) !important;
-  box-shadow: 0 0 15px rgba(0, 212, 255, 0.1) !important;
+  border: 2px solid rgba(91, 141, 239, 0.2) !important;
+  box-shadow: 0 0 15px rgba(91, 141, 239, 0.1) !important;
   transition: all 0.3s !important;
 }
 
