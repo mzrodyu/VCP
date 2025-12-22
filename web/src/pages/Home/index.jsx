@@ -30,6 +30,8 @@ import { useActualTheme } from '../../context/Theme';
 import { API, copy, showError, showSuccess } from '../../helpers';
 import { useIsMobile } from '../../hooks/common/useIsMobile';
 
+const UI_VERSION = 'v1.0.1'; // 大圆框卡片版本
+
 const Home = () => {
   const { t, i18n } = useTranslation();
   const [statusState] = useContext(StatusContext);
@@ -113,6 +115,18 @@ const Home = () => {
           <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
             {/* Hero Section */}
             <div style={{ textAlign: 'center', marginBottom: '48px' }}>
+              <div style={{ 
+                display: 'inline-block', 
+                background: '#dcfce7', 
+                color: '#166534', 
+                padding: '4px 12px', 
+                borderRadius: '12px', 
+                fontSize: '12px', 
+                fontWeight: 600,
+                marginBottom: '16px'
+              }}>
+                {UI_VERSION}
+              </div>
               <h1 style={{
                 fontSize: isMobile ? '32px' : '48px',
                 fontWeight: 700,
