@@ -3497,151 +3497,14 @@ header.sticky,
   border-color: #007aff !important;
 }
 
-.semi-checkbox:active .semi-checkbox-inner {
-  transform: scale(0.9) !important;
-}
-
-.semi-checkbox-checked .semi-checkbox-inner {
-  background: #007aff !important;
-  border-color: #007aff !important;
-  box-shadow: none !important;
-}
-
-.semi-checkbox-inner-checked svg {
-  color: white !important;
-}
-
-/* Radio - iOS 风格 */
-.semi-radio-inner {
-  width: 22px !important;
-  height: 22px !important;
-  border: 2px solid rgba(120, 120, 128, 0.32) !important;
-  transition: all 0.2s var(--ease-ios) !important;
-  background: transparent !important;
-}
-
-.semi-radio:hover .semi-radio-inner {
-  border-color: #007aff !important;
-}
-
-.semi-radio:active .semi-radio-inner {
-  transform: scale(0.9) !important;
-}
-
-.semi-radio-checked .semi-radio-inner {
-  border-color: #007aff !important;
-  box-shadow: none !important;
-}
-
-.semi-radio-checked .semi-radio-inner-display {
-  background: #007aff !important;
-  width: 12px !important;
-  height: 12px !important;
-}
-
-/* Tag - iOS 风格 */
-.semi-tag {
-  border-radius: 6px !important;
-  font-weight: 500 !important;
-  font-size: 13px !important;
-  padding: 4px 10px !important;
-  border: none !important;
-  transition: all 0.15s var(--ease-ios) !important;
-}
-
-.semi-tag:active {
-  transform: scale(0.95) !important;
-}
-
-.semi-tag-light {
-  background: rgba(120, 120, 128, 0.12) !important;
-  color: var(--color-text-secondary) !important;
-}
-
-.semi-tag-primary {
-  background: rgba(0, 122, 255, 0.12) !important;
-  color: #007aff !important;
-}
-
-.semi-tag-success,
-.semi-tag-green {
-  background: rgba(52, 199, 89, 0.12) !important;
-  color: #34c759 !important;
-}
-
-.semi-tag-warning,
-.semi-tag-orange {
-  background: rgba(255, 149, 0, 0.12) !important;
-  color: #ff9500 !important;
-}
-
-.semi-tag-danger,
-.semi-tag-red {
-  background: rgba(255, 59, 48, 0.12) !important;
-  color: #ff3b30 !important;
-}
-
-/* Badge - iOS 风格 */
-.semi-badge-dot {
-  background: #ff3b30 !important;
-  width: 10px !important;
-  height: 10px !important;
-  box-shadow: none !important;
-  animation: none !important;
-}
-
-.semi-badge-count {
-  background: #ff3b30 !important;
-  font-weight: 600 !important;
-  font-size: 12px !important;
-  min-width: 18px !important;
-  height: 18px !important;
-  line-height: 18px !important;
-  padding: 0 5px !important;
-  border-radius: 9px !important;
-  box-shadow: none !important;
-}
-
-/* Toast 提示重构 */
-.semi-toast-wrapper {
-  background: var(--color-bg-elevated) !important;
-  border: 1px solid var(--color-border) !important;
-  border-radius: 12px !important;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2) !important;
-}
-
-/* Empty - iOS 风格 */
-.semi-empty {
-  padding: 60px 24px !important;
-  text-align: center !important;
-}
-
-.semi-empty-image {
-  margin-bottom: 20px !important;
-  opacity: 0.6 !important;
-}
-
-.semi-empty-title {
-  font-size: 17px !important;
-  font-weight: 600 !important;
-  color: var(--color-text-primary) !important;
-  margin-bottom: 8px !important;
-}
-
-.semi-empty-description {
-  font-size: 15px !important;
-  color: var(--color-text-muted) !important;
-  line-height: 1.5 !important;
-}
-
-/* Skeleton - iOS 风格 */
+/* ==================== Skeleton 骨架屏 ==================== */
 .semi-skeleton-paragraph-row {
-  background: rgba(120, 120, 128, 0.12) !important;
-  border-radius: 4px !important;
-  animation: ios-skeleton 1.5s ease-in-out infinite !important;
+  background: var(--bg-muted) !important;
+  border-radius: var(--radius-sm) !important;
+  animation: skeletonPulse 1.5s ease-in-out infinite !important;
 }
 
-@keyframes ios-skeleton {
+@keyframes skeletonPulse {
   0%,
   100% {
     opacity: 1;
@@ -3654,147 +3517,87 @@ header.sticky,
 .semi-skeleton-avatar,
 .semi-skeleton-image,
 .semi-skeleton-button {
-  background: rgba(120, 120, 128, 0.12) !important;
-  animation: ios-skeleton 1.5s ease-in-out infinite !important;
+  background: var(--bg-muted) !important;
+  animation: skeletonPulse 1.5s ease-in-out infinite !important;
 }
 
-/* Spin - iOS 风格 */
+/* ==================== Spin 加载 ==================== */
 .semi-spin-wrapper {
-  color: #007aff !important;
+  color: var(--accent) !important;
 }
 
-/* Popover 弹出框重构 */
-.semi-popover-wrapper {
-  background: var(--color-bg-elevated) !important;
-  border: 1px solid var(--color-border) !important;
-  border-radius: 12px !important;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15) !important;
-}
-
-/* Dropdown 下拉菜单重构 */
-.semi-dropdown-menu {
-  background: var(--color-bg-elevated) !important;
-  border: 1px solid var(--color-border) !important;
-  border-radius: 12px !important;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15) !important;
-  padding: 8px !important;
-}
-
-.semi-dropdown-item {
-  border-radius: 8px !important;
-  padding: 10px 14px !important;
-  transition: all 0.15s ease !important;
-}
-
-.semi-dropdown-item:hover {
-  background: var(--color-accent-muted) !important;
-}
-
-/* Form 表单项重构 */
+/* ==================== Form 表单 ==================== */
 .semi-form-field {
   margin-bottom: 20px !important;
 }
 
 .semi-form-field-label-text {
   font-weight: 500 !important;
-  color: var(--color-text-primary) !important;
+  font-size: 14px !important;
+  color: var(--fg-default) !important;
   margin-bottom: 8px !important;
 }
 
-/* Collapse 折叠面板重构 */
-.semi-collapse {
-  background: transparent !important;
-  border: none !important;
+.semi-form-field-error-message {
+  color: var(--error) !important;
+  font-size: 12px !important;
+  margin-top: 4px !important;
 }
 
-.semi-collapse-header {
-  background: var(--color-bg-elevated) !important;
-  border: 1px solid var(--color-border) !important;
-  border-radius: 12px !important;
-  padding: 16px 20px !important;
-  margin-bottom: 8px !important;
-}
-
-.semi-collapse-content {
-  background: var(--color-bg-elevated) !important;
-  border: 1px solid var(--color-border) !important;
-  border-radius: 12px !important;
-  margin-bottom: 8px !important;
-}
-
-/* 统计数字样式 */
+/* ==================== 统计数字 ==================== */
 .stat-number {
   font-size: 32px;
   font-weight: 700;
-  color: var(--color-accent);
+  color: var(--accent);
 }
 
-/* 渐变文字 */
+/* ==================== 渐变文字 ==================== */
 .gradient-text {
-  color: var(--color-accent);
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-/* 玻璃态效果 */
+/* ==================== 玻璃态效果 ==================== */
 .glass-effect {
-  background: rgba(255, 255, 255, 0.1) !important;
-  backdrop-filter: blur(10px) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  background: rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid var(--border-default) !important;
 }
 
 body[theme-mode='dark'] .glass-effect {
   background: rgba(30, 41, 59, 0.8) !important;
-  border: 1px solid rgba(148, 163, 184, 0.1) !important;
+  border: 1px solid var(--border-default) !important;
 }
 
-/* ==================== Gemini 布局组件 ==================== */
+/* ==================== 响应式设计 ==================== */
+@media (max-width: 768px) {
+  .semi-layout-header {
+    padding: 0 12px !important;
+  }
 
-/* 顶部导航栏 - Gemini 风格 */
-header.sticky,
-.semi-layout-header {
-  background: var(--bg-surface) !important;
-  border-bottom: none !important;
-  box-shadow: none !important;
-}
+  .semi-card {
+    border-radius: var(--radius-lg) !important;
+  }
 
-body[theme-mode='dark'] header.sticky,
-body[theme-mode='dark'] .semi-layout-header {
-  background: var(--bg-base) !important;
-}
+  .semi-card-header {
+    padding: 16px !important;
+  }
 
-/* 侧边栏 - Gemini 风格 */
-.semi-layout-sider,
-.sidebar-container {
-  background: var(--bg-sidebar, var(--bg-muted)) !important;
-  border-right: none !important;
-  box-shadow: none !important;
-}
+  .semi-card-body {
+    padding: 16px !important;
+  }
 
-body[theme-mode='dark'] .semi-layout-sider,
-body[theme-mode='dark'] .sidebar-container {
-  background: var(--bg-sidebar) !important;
-}
+  .semi-modal-content {
+    margin: 16px !important;
+    border-radius: var(--radius-xl) !important;
+  }
 
-/* 侧边栏菜单项 - Gemini 风格 */
-.semi-navigation-item {
-  margin: 2px 8px !important;
-  padding: 10px 16px !important;
-  border-radius: 24px !important;
-  transition: background 0.2s var(--ease-smooth) !important;
-  border: none !important;
-}
-
-.semi-navigation-item:hover {
-  background: var(--hover-bg) !important;
-}
-
-.semi-navigation-item:active {
-  background: var(--active-bg) !important;
-}
-
-.semi-navigation-item-selected {
-  background: var(--accent-muted) !important;
-  color: var(--accent) !important;
+  .dashboard-container {
+    padding: var(--space-4) !important;
+  }
 }
 
 .semi-navigation-item-selected:hover {
