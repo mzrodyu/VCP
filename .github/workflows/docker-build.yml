@@ -26,20 +26,12 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Get version
-        id: version
-        run: |
-          echo "version=$(cat VERSION)" >> $GITHUB_OUTPUT
-          echo "GHCR_REPO=${GITHUB_REPOSITORY,,}" >> $GITHUB_ENV
-
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
           context: .
           push: true
           platforms: linux/amd64
-          tags: |
-            ghcr.io/${{ env.GHCR_REPO }}:latest
-            ghcr.io/${{ env.GHCR_REPO }}:${{ steps.version.outputs.version }}
+          tags: ghcr.io/mzrodyu/vcp:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
