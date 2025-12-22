@@ -48,26 +48,16 @@ const UptimePanel = ({
   return (
     <Card
       {...CARD_PROPS}
-      className='!rounded-2xl lg:col-span-1'
+      className='!rounded-xl lg:col-span-1'
       style={{
-        border: '1px solid #dcfce7',
-        boxShadow: '0 4px 15px rgba(34, 197, 94, 0.1)'
+        background: '#fff',
+        border: '1px solid #e5e7eb',
+        boxShadow: '0 1px 3px rgba(0,0,0,0.05)'
       }}
       title={
         <div className='flex items-center justify-between w-full gap-2'>
-          <div className='flex items-center gap-2' style={{ color: '#166534', fontWeight: 600 }}>
-            <div 
-              style={{ 
-                background: 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)',
-                padding: '6px',
-                borderRadius: '8px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}
-            >
-              <Gauge size={16} color="white" />
-            </div>
+          <div className='flex items-center gap-2' style={{ color: '#374151', fontWeight: 600 }}>
+            <Gauge size={16} style={{ color: '#10b981' }} />
             {t('服务可用性')}
           </div>
           <Button
@@ -75,12 +65,7 @@ const UptimePanel = ({
             onClick={loadUptimeData}
             loading={uptimeLoading}
             size='small'
-            theme='solid'
-            style={{
-              background: 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)',
-              border: 'none',
-              borderRadius: '8px'
-            }}
+            theme='light'
           />
         </div>
       }

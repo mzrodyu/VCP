@@ -38,26 +38,15 @@ const ApiInfoPanel = ({
   return (
     <Card
       {...CARD_PROPS}
-      className='!rounded-2xl'
+      className='!rounded-xl'
       style={{
-        background: 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)',
-        border: '1px solid #bbf7d0',
-        boxShadow: '0 4px 15px rgba(34, 197, 94, 0.1)'
+        background: '#fff',
+        border: '1px solid #e5e7eb',
+        boxShadow: '0 1px 3px rgba(0,0,0,0.05)'
       }}
       title={
-        <div className={FLEX_CENTER_GAP2} style={{ color: '#166534', fontWeight: 600 }}>
-          <div 
-            style={{ 
-              background: 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)',
-              padding: '6px',
-              borderRadius: '8px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center'
-            }}
-          >
-            <Server size={16} color="white" />
-          </div>
+        <div className={FLEX_CENTER_GAP2} style={{ color: '#374151', fontWeight: 600 }}>
+          <Server size={16} style={{ color: '#10b981' }} />
           {t('API信息')}
         </div>
       }
@@ -75,7 +64,7 @@ const ApiInfoPanel = ({
                 </div>
                 <div className='flex-1'>
                   <div className='flex flex-wrap items-center justify-between mb-1 w-full gap-2'>
-                    <span className='text-sm font-medium text-gray-900 !font-bold break-all'>
+                    <span className='text-sm font-bold text-gray-900 break-all'>
                       {api.route}
                     </span>
                     <div className='flex items-center gap-1 mt-1 lg:mt-0'>

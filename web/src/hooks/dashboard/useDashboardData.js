@@ -17,12 +17,12 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 For commercial licensing, please contact support@quantumnous.com
 */
 
-import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
+import { TIME_OPTIONS } from '../../constants/dashboard.constants';
 import { API, isAdmin, showError, timestamp2string } from '../../helpers';
 import { getDefaultTime, getInitialTimestamp } from '../../helpers/dashboard';
-import { TIME_OPTIONS } from '../../constants/dashboard.constants';
 import { useIsMobile } from '../common/useIsMobile';
 import { useMinimumLoadingTime } from '../common/useMinimumLoadingTime';
 
@@ -134,7 +134,7 @@ export const useDashboardData = (userState, userDispatch, statusState) => {
     }
 
     const username = userState?.user?.username || '';
-    return `👋${greeting}，${username}`;
+    return `${greeting}，${username}`;
   }, [t, userState?.user?.username]);
 
   // ========== 回调函数 ==========
