@@ -45,7 +45,7 @@ const Home = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [acMode, setAcMode] = useState('Cooling');
 
-  const rooms = ['Living Room', 'Bed Room 1', 'Bed Room 2', 'Kitchen', 'Bed Room 3', 'Garage'];
+  const rooms = ['GPT-4', 'Claude', 'Gemini', 'Midjourney', 'DALL-E', 'Suno'];
 
   const displayHomePageContent = async () => {
     setHomePageContent(localStorage.getItem('home_page_content') || '');
@@ -179,8 +179,8 @@ const Home = () => {
               </div>
 
               <div className="greeting-section">
-                <h1 className="greeting-title">Hi Isabella,</h1>
-                <h2 className="greeting-subtitle">Have a great day</h2>
+                <h1 className="greeting-title">NailongAPI</h1>
+                <h2 className="greeting-subtitle">强大的 AI 模型聚合平台</h2>
               </div>
 
               {/* Room Tabs */}
@@ -199,108 +199,106 @@ const Home = () => {
 
               {/* Device Cards */}
               <div className="device-grid">
-                {/* Main Light Card */}
+                {/* GPT-4 Card */}
                 <div className="device-card light-card">
                   <div className="light-visual">
                     <div className="light-bar orange"></div>
                     <div className="light-bar blue"></div>
                   </div>
                   <div className="light-control">
-                    <div className="brightness-icon">☀</div>
+                    <div className="brightness-icon">🤖</div>
                     <div className="brightness-slider"></div>
                   </div>
                   <div className="card-footer">
                     <div className="card-info">
-                      <span className="card-name">Main light</span>
-                      <span className="card-sub">4 Devices</span>
-                    </div>
-                    <button className="power-btn">⏻</button>
-                  </div>
-                </div>
-
-                {/* AC Card */}
-                <div className="device-card ac-card">
-                  <div className="ac-temp-control">
-                    <button className="temp-btn">−</button>
-                    <span className="temp-display">19<sup>°C</sup></span>
-                    <button className="temp-btn">+</button>
-                  </div>
-                  <div className="card-footer">
-                    <div className="card-info">
-                      <span className="card-name">Air Conditioner</span>
-                      <span className="card-sub">Cooling to 19°</span>
+                      <span className="card-name">GPT-4 Turbo</span>
+                      <span className="card-sub">128K Context</span>
                     </div>
                     <button className="power-btn active">⏻</button>
                   </div>
                 </div>
 
-                {/* Speaker Card */}
-                <div className="device-card speaker-card">
-                  <div className="speaker-info">
-                    <div className="now-playing">in - Still I'm Sure We'll Love...</div>
-                    <div className="speaker-artist">Dewa 19</div>
-                  </div>
-                  <div className="speaker-controls">
-                    <button className="sp-btn">◀◀</button>
-                    <button className="sp-btn play">▶</button>
-                    <button className="sp-btn">▶▶</button>
+                {/* Claude Card */}
+                <div className="device-card ac-card">
+                  <div className="ac-temp-control">
+                    <span className="temp-display" style={{fontSize: '28px'}}>Claude 3.5</span>
                   </div>
                   <div className="card-footer">
                     <div className="card-info">
-                      <span className="card-name">Speaker</span>
-                      <span className="card-sub">Paused</span>
+                      <span className="card-name">Anthropic</span>
+                      <span className="card-sub">Sonnet / Opus</span>
                     </div>
-                    <div className="spotify-icon">🎵</div>
+                    <button className="power-btn active">⏻</button>
                   </div>
                 </div>
 
-                {/* Nest Wifi Card */}
+                {/* Midjourney Card */}
+                <div className="device-card speaker-card">
+                  <div className="speaker-info">
+                    <div className="now-playing">Midjourney V6.1</div>
+                    <div className="speaker-artist">AI 绘画</div>
+                  </div>
+                  <div className="speaker-controls">
+                    <button className="sp-btn">🎨</button>
+                    <button className="sp-btn play">✨</button>
+                    <button className="sp-btn">🖼</button>
+                  </div>
+                  <div className="card-footer">
+                    <div className="card-info">
+                      <span className="card-name">绘画模型</span>
+                      <span className="card-sub">在线</span>
+                    </div>
+                    <div className="spotify-icon">🎨</div>
+                  </div>
+                </div>
+
+                {/* API Status Card */}
                 <div className="device-card wifi-card">
                   <div className="wifi-stats">
                     <div className="wifi-stat">
                       <span className="stat-icon up">↑</span>
-                      <span>2.4 MB/sec</span>
+                      <span>99.9% 可用</span>
                     </div>
                     <div className="wifi-stat">
-                      <span className="stat-icon down">↓</span>
-                      <span>3.1 MB/sec</span>
+                      <span className="stat-icon down">⚡</span>
+                      <span>低延迟</span>
                     </div>
                   </div>
-                  <div className="wifi-icon-big">📶</div>
+                  <div className="wifi-icon-big">🚀</div>
                   <div className="card-footer">
                     <div className="card-info">
-                      <span className="card-name">Nest Wifi</span>
-                      <span className="card-sub">Online</span>
+                      <span className="card-name">API 状态</span>
+                      <span className="card-sub">运行中</span>
                     </div>
-                    <span className="device-count">6 Devices</span>
+                    <span className="device-count">50+ 模型</span>
                   </div>
                 </div>
 
-                {/* Air Quality Card */}
+                {/* Pricing Card */}
                 <div className="device-card quality-card">
-                  <div className="quality-badge">Good Air Quality</div>
+                  <div className="quality-badge">超低价格</div>
                   <div className="quality-metrics">
                     <div className="metric">
-                      <span className="metric-label">PM 2.5</span>
-                      <span className="metric-value">10</span>
-                      <span className="metric-unit">μg/m2</span>
+                      <span className="metric-label">GPT-4</span>
+                      <span className="metric-value">¥0.01</span>
+                      <span className="metric-unit">/1K tokens</span>
                     </div>
                   </div>
                   <div className="card-footer">
                     <div className="card-info">
-                      <span className="card-name">Air Purifier</span>
-                      <span className="card-sub">Auto</span>
+                      <span className="card-name">按量计费</span>
+                      <span className="card-sub">无月费</span>
                     </div>
-                    <button className="power-btn">⏻</button>
+                    <button className="power-btn active">💰</button>
                   </div>
                 </div>
 
-                {/* Front Door Card */}
+                {/* Support Card */}
                 <div className="device-card door-card">
-                  <div className="door-icon">🚪</div>
+                  <div className="door-icon">💬</div>
                   <div className="door-status">
-                    <span className="status-label">Front Door</span>
-                    <span className="status-time">Last opened on 07:21 am</span>
+                    <span className="status-label">7x24 客服</span>
+                    <span className="status-time">随时为您服务</span>
                   </div>
                 </div>
               </div>
@@ -330,9 +328,9 @@ const Home = () => {
             <div className="content-right">
               <div className="ac-panel">
                 <div className="ac-panel-header">
-                  <h3>Air Conditioner</h3>
+                  <h3>模型配额</h3>
                   <div className="ac-device-select">
-                    <span>Samsung AR10 WindFree</span>
+                    <span>当前余额</span>
                     <span className="dropdown-arrow">▾</span>
                   </div>
                   <div className="power-toggle active">
@@ -347,28 +345,28 @@ const Home = () => {
                       <circle cx="60" cy="60" r="54" className="ring-fill" strokeDasharray="339" strokeDashoffset="100" />
                     </svg>
                     <div className="temp-value">
-                      <span className="snowflake">❄</span>
-                      <span className="big-temp">19</span>
-                      <span className="temp-unit">°C</span>
+                      <span className="snowflake">💎</span>
+                      <span className="big-temp">∞</span>
+                      <span className="temp-unit"></span>
                     </div>
                   </div>
                   <div className="humidity-badge">
-                    <span>48%</span>
-                    <span className="humidity-icon">💧</span>
+                    <span>无限</span>
+                    <span className="humidity-icon">🔥</span>
                   </div>
                 </div>
 
                 <div className="ac-modes">
-                  {['Wind', 'Cooling', 'Dry'].map((mode) => (
+                  {['Chat', 'Image', 'Audio'].map((mode) => (
                     <button
                       key={mode}
                       className={`mode-btn ${acMode === mode ? 'active' : ''}`}
                       onClick={() => setAcMode(mode)}
                     >
                       <span className="mode-icon">
-                        {mode === 'Wind' && '🌀'}
-                        {mode === 'Cooling' && '❄'}
-                        {mode === 'Dry' && '💨'}
+                        {mode === 'Chat' && '💬'}
+                        {mode === 'Image' && '🎨'}
+                        {mode === 'Audio' && '🎵'}
                       </span>
                       {mode}
                     </button>
@@ -376,23 +374,23 @@ const Home = () => {
                 </div>
 
                 <div className="ac-actions">
-                  <button className="action-btn">
-                    <span>🔄</span> Auto
-                  </button>
                   <button className="action-btn active">
-                    <span>↔</span> Swing
+                    <span>⚡</span> 快速
                   </button>
                   <button className="action-btn">
-                    <span>⏱</span> Timer
+                    <span>🔒</span> 安全
+                  </button>
+                  <button className="action-btn">
+                    <span>📊</span> 统计
                   </button>
                 </div>
 
                 <div className="ac-power-info">
                   <div className="power-stat">
-                    <span className="bolt">⚡</span>
-                    <span className="power-val">600 W</span>
+                    <span className="bolt">🚀</span>
+                    <span className="power-val">50+ 模型</span>
                   </div>
-                  <span className="power-label">Active since 2 hour ago</span>
+                  <span className="power-label">GPT / Claude / Gemini / MJ / SD...</span>
                 </div>
               </div>
 
