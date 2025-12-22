@@ -1,0 +1,1239 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Home Dashboard</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100vh;
+        background: linear-gradient(
+          135deg,
+          #e8eef5 0%,
+          #d4dce8 50%,
+          #c8d4e3 100%
+        );
+        padding: 24px;
+        font-family:
+          -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI',
+          Roboto, sans-serif;
+      }
+
+      .smart-home {
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      /* Header */
+      .smart-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 20px;
+      }
+
+      .header-left {
+        display: flex;
+        align-items: center;
+      }
+
+      /* Toggle Switch */
+      .toggle-switch {
+        width: 52px;
+        height: 28px;
+        background: #ccc;
+        border-radius: 14px;
+        position: relative;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+
+      .toggle-switch.active {
+        background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+      }
+
+      .toggle-knob {
+        width: 24px;
+        height: 24px;
+        background: white;
+        border-radius: 50%;
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        transition: transform 0.3s ease;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .toggle-switch.active .toggle-knob {
+        transform: translateX(24px);
+      }
+
+      /* Music Player Mini */
+      .music-player-mini {
+        display: flex;
+        gap: 16px;
+        background: rgba(40, 50, 60, 0.95);
+        backdrop-filter: blur(20px);
+        padding: 16px 20px;
+        border-radius: 20px;
+        min-width: 320px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      }
+
+      .music-info {
+        flex: 1;
+        color: white;
+      }
+
+      .music-title {
+        font-size: 13px;
+        font-weight: 600;
+        margin-bottom: 2px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 180px;
+      }
+
+      .music-artist {
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.6);
+        margin-bottom: 10px;
+      }
+
+      .music-progress {
+        margin-bottom: 12px;
+      }
+
+      .progress-bar {
+        height: 3px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 2px;
+        margin-bottom: 4px;
+      }
+
+      .progress-fill {
+        height: 100%;
+        background: white;
+        border-radius: 2px;
+        width: 30%;
+      }
+
+      .progress-time {
+        display: flex;
+        justify-content: space-between;
+        font-size: 9px;
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      .music-controls {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .control-btn {
+        background: none;
+        border: none;
+        color: rgba(255, 255, 255, 0.8);
+        cursor: pointer;
+        padding: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+      }
+
+      .control-btn:hover {
+        color: white;
+        transform: scale(1.1);
+      }
+
+      .play-btn {
+        width: 36px;
+        height: 36px;
+        background: white;
+        border-radius: 50%;
+        color: #1a1a1a !important;
+      }
+
+      .play-btn:hover {
+        transform: scale(1.1);
+      }
+
+      .music-cover {
+        width: 80px;
+        height: 80px;
+        border-radius: 12px;
+        overflow: hidden;
+        flex-shrink: 0;
+        background: linear-gradient(135deg, #f59e0b, #ea580c);
+      }
+
+      .music-cover img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* Main Content */
+      .smart-content {
+        display: grid;
+        grid-template-columns: 1fr 340px;
+        gap: 24px;
+      }
+
+      /* Left Section */
+      .content-left {
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* Weather & Greeting */
+      .weather-greeting {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 8px;
+      }
+
+      .weather-info {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
+        color: #64748b;
+      }
+
+      .weather-icon {
+        font-size: 16px;
+      }
+
+      .weather-temp {
+        font-weight: 600;
+        color: #334155;
+      }
+
+      .weather-humidity {
+        color: #94a3b8;
+      }
+
+      .mic-btn {
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #64748b;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        border: none;
+      }
+
+      .mic-btn:hover {
+        background: white;
+        transform: scale(1.05);
+      }
+
+      /* Greeting */
+      .greeting {
+        margin-bottom: 24px;
+      }
+
+      .greeting h1 {
+        font-size: 36px;
+        font-weight: 700;
+        color: #1e293b;
+        margin-bottom: 4px;
+        letter-spacing: -0.5px;
+      }
+
+      .greeting h2 {
+        font-size: 36px;
+        font-weight: 400;
+        color: #64748b;
+        letter-spacing: -0.5px;
+      }
+
+      /* Room Tabs */
+      .room-tabs {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 24px;
+        flex-wrap: wrap;
+      }
+
+      .room-tab {
+        padding: 10px 20px;
+        background: rgba(255, 255, 255, 0.6);
+        border: none;
+        border-radius: 24px;
+        font-size: 13px;
+        font-weight: 500;
+        color: #64748b;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .room-tab:hover {
+        background: rgba(255, 255, 255, 0.9);
+        color: #334155;
+      }
+
+      .room-tab.active {
+        background: white;
+        color: #1e293b;
+        font-weight: 600;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Device Grid */
+      .device-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+      }
+
+      /* Device Cards */
+      .device-card {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        border-radius: 24px;
+        padding: 20px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        min-height: 140px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .device-card:hover {
+        background: rgba(255, 255, 255, 0.9);
+        transform: translateY(-4px);
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+      }
+
+      .card-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 12px;
+      }
+
+      .device-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+      }
+
+      .card-title {
+        font-size: 13px;
+        font-weight: 600;
+        color: #334155;
+      }
+
+      .card-status {
+        font-size: 12px;
+        color: #64748b;
+        margin-top: auto;
+      }
+
+      /* Temperature Card */
+      .temp-card {
+        background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .temp-card .device-icon {
+        background: rgba(251, 191, 36, 0.3);
+        color: #b45309;
+      }
+
+      .temp-display {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        margin: 8px 0;
+      }
+
+      .temp-value {
+        font-size: 48px;
+        font-weight: 300;
+        color: #92400e;
+        line-height: 1;
+      }
+
+      .temp-unit {
+        font-size: 24px;
+        color: #b45309;
+        margin-top: 8px;
+      }
+
+      .music-mini-player {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(0, 0, 0, 0.1);
+        padding: 8px 12px;
+        border-radius: 12px;
+        margin-top: auto;
+      }
+
+      .mini-cover {
+        width: 28px;
+        height: 28px;
+        border-radius: 6px;
+        object-fit: cover;
+        background: linear-gradient(135deg, #f59e0b, #ea580c);
+      }
+
+      .mini-title {
+        font-size: 10px;
+        color: #92400e;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      /* AC Card */
+      .ac-card {
+        background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+      }
+
+      .ac-card .device-icon {
+        background: rgba(59, 130, 246, 0.3);
+        color: #1d4ed8;
+      }
+
+      .ac-card .card-title {
+        color: #1e40af;
+      }
+
+      .ac-card .card-status {
+        color: #3b82f6;
+      }
+
+      /* Air Quality Card */
+      .quality-card {
+        background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%);
+        grid-column: span 2;
+        padding: 20px 24px;
+      }
+
+      .quality-badge {
+        display: inline-block;
+        padding: 6px 14px;
+        background: rgba(74, 222, 128, 0.2);
+        color: #4ade80;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+        margin-bottom: 16px;
+      }
+
+      .quality-stats {
+        display: flex;
+        gap: 24px;
+      }
+
+      .quality-stats .stat-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .quality-stats .stat-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .devices-icon {
+        background: rgba(96, 165, 250, 0.2);
+        color: #60a5fa;
+      }
+
+      .aqi-icon {
+        background: rgba(74, 222, 128, 0.2);
+        color: #4ade80;
+      }
+
+      .quality-stats .stat-info {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .quality-stats .stat-value {
+        font-size: 24px;
+        font-weight: 700;
+        color: white;
+      }
+
+      .quality-stats .stat-label {
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      /* Heart Card */
+      .heart-card {
+        background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);
+      }
+
+      .heart-card .device-icon {
+        background: rgba(236, 72, 153, 0.3);
+        color: #db2777;
+      }
+
+      .heart-card .card-title {
+        color: #9d174d;
+      }
+
+      /* Wifi Card */
+      .wifi-card {
+        background: rgba(255, 255, 255, 0.7);
+      }
+
+      .wifi-card .device-icon {
+        background: rgba(99, 102, 241, 0.2);
+        color: #6366f1;
+      }
+
+      /* Purifier Card */
+      .purifier-card {
+        background: rgba(255, 255, 255, 0.7);
+      }
+
+      .purifier-card .device-icon {
+        background: rgba(20, 184, 166, 0.2);
+        color: #14b8a6;
+      }
+
+      /* Door Card */
+      .door-card {
+        background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+      }
+
+      .door-card .device-icon {
+        background: rgba(251, 191, 36, 0.3);
+        color: #b45309;
+      }
+
+      .door-card .card-title {
+        color: #92400e;
+      }
+
+      /* Right Section - AC Control */
+      .content-right {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(20px);
+        border-radius: 32px;
+        padding: 28px;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+        position: relative;
+      }
+
+      .ac-header {
+        margin-bottom: 24px;
+      }
+
+      .ac-header h3 {
+        font-size: 20px;
+        font-weight: 700;
+        color: #1e293b;
+        margin-bottom: 8px;
+      }
+
+      .ac-device {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 13px;
+        color: #64748b;
+        cursor: pointer;
+      }
+
+      .ac-device:hover {
+        color: #334155;
+      }
+
+      /* AC Temperature Display */
+      .ac-temp-display {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 32px;
+        position: relative;
+      }
+
+      .ac-temp-circle {
+        position: relative;
+        width: 180px;
+        height: 180px;
+      }
+
+      .temp-progress {
+        width: 100%;
+        height: 100%;
+        transform: rotate(-90deg);
+      }
+
+      .temp-bg {
+        fill: none;
+        stroke: #e2e8f0;
+        stroke-width: 8;
+      }
+
+      .temp-fill {
+        fill: none;
+        stroke: #3b82f6;
+        stroke-width: 8;
+        stroke-linecap: round;
+      }
+
+      .temp-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        align-items: flex-start;
+      }
+
+      .temp-number {
+        font-size: 64px;
+        font-weight: 200;
+        color: #1e293b;
+        line-height: 1;
+      }
+
+      .temp-degree {
+        font-size: 32px;
+        color: #64748b;
+        margin-top: 8px;
+      }
+
+      .humidity-indicator {
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        color: #64748b;
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      /* AC Controls */
+      .ac-controls {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        margin-bottom: 24px;
+      }
+
+      .ac-control-btn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        padding: 16px 24px;
+        background: rgba(241, 245, 249, 0.8);
+        border: none;
+        border-radius: 16px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        min-width: 80px;
+      }
+
+      .ac-control-btn:hover {
+        background: #e2e8f0;
+      }
+
+      .ac-control-btn.active {
+        background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+        color: white;
+      }
+
+      .ac-control-btn .control-label {
+        font-size: 12px;
+        font-weight: 500;
+        color: #64748b;
+      }
+
+      .ac-control-btn.active .control-label {
+        color: white;
+      }
+
+      .ac-control-btn svg {
+        color: #64748b;
+      }
+
+      .ac-control-btn.active svg {
+        color: white;
+      }
+
+      /* Power Usage */
+      .power-usage {
+        text-align: center;
+        margin-bottom: 24px;
+      }
+
+      .power-value {
+        font-size: 28px;
+        font-weight: 600;
+        color: #1e293b;
+        margin-bottom: 4px;
+      }
+
+      .power-label {
+        font-size: 12px;
+        color: #94a3b8;
+      }
+
+      /* Volume Slider */
+      .volume-slider {
+        position: absolute;
+        right: -56px;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        background: rgba(30, 41, 59, 0.95);
+        padding: 16px 12px;
+        border-radius: 24px;
+        color: white;
+      }
+
+      .slider-track {
+        width: 6px;
+        height: 120px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 3px;
+        position: relative;
+      }
+
+      .slider-fill {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 48%;
+        background: linear-gradient(to top, #3b82f6, #8b5cf6);
+        border-radius: 3px;
+      }
+
+      .slider-thumb {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 48%;
+        width: 14px;
+        height: 14px;
+        background: white;
+        border-radius: 50%;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Responsive */
+      @media (max-width: 1200px) {
+        .smart-content {
+          grid-template-columns: 1fr;
+        }
+
+        .content-right {
+          order: -1;
+        }
+
+        .device-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .volume-slider {
+          display: none;
+        }
+      }
+
+      @media (max-width: 768px) {
+        body {
+          padding: 16px;
+        }
+
+        .device-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .quality-card {
+          grid-column: span 2;
+        }
+
+        .greeting h1,
+        .greeting h2 {
+          font-size: 28px;
+        }
+
+        .music-player-mini {
+          min-width: unset;
+          flex-direction: column;
+        }
+
+        .music-cover {
+          width: 100%;
+          height: 120px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .device-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .quality-card {
+          grid-column: span 1;
+        }
+
+        .room-tabs {
+          overflow-x: auto;
+          flex-wrap: nowrap;
+          padding-bottom: 8px;
+        }
+
+        .room-tab {
+          flex-shrink: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="smart-home">
+      <!-- Header -->
+      <div class="smart-header">
+        <div class="header-left">
+          <div
+            class="toggle-switch active"
+            onclick="this.classList.toggle('active')"
+          >
+            <div class="toggle-knob"></div>
+          </div>
+        </div>
+        <div class="header-right">
+          <!-- Music Player Mini -->
+          <div class="music-player-mini">
+            <div class="music-info">
+              <div class="music-title">Still I'm Sure We'll Love Again</div>
+              <div class="music-artist">Olivia M</div>
+              <div class="music-progress">
+                <div class="progress-bar">
+                  <div class="progress-fill"></div>
+                </div>
+                <div class="progress-time">
+                  <span>2:40</span>
+                  <span>4:20</span>
+                </div>
+              </div>
+              <div class="music-controls">
+                <button class="control-btn">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    width="16"
+                    height="16"
+                  >
+                    <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z" />
+                  </svg>
+                </button>
+                <button class="control-btn play-btn">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    width="20"
+                    height="20"
+                  >
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </button>
+                <button class="control-btn">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    width="16"
+                    height="16"
+                  >
+                    <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="music-cover">
+              <img
+                src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=100&h=100&fit=crop"
+                alt="Album Cover"
+                onerror="this.style.display = 'none'"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="smart-content">
+        <!-- Left Section -->
+        <div class="content-left">
+          <!-- Weather & Greeting -->
+          <div class="weather-greeting">
+            <div class="weather-info">
+              <span class="weather-icon">☀️</span>
+              <span class="weather-temp">0°C</span>
+              <span class="weather-humidity">59°</span>
+            </div>
+            <button class="mic-btn">
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                width="20"
+                height="20"
+              >
+                <path
+                  d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm-1-9c0-.55.45-1 1-1s1 .45 1 1v6c0 .55-.45 1-1 1s-1-.45-1-1V5zm6 6c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"
+                />
+              </svg>
+            </button>
+          </div>
+
+          <div class="greeting">
+            <h1>Hi Isabella,</h1>
+            <h2>Have a great day</h2>
+          </div>
+
+          <!-- Room Tabs -->
+          <div class="room-tabs">
+            <button class="room-tab active">Living Room</button>
+            <button class="room-tab">Bed Room 1</button>
+            <button class="room-tab">Bed Room 2</button>
+            <button class="room-tab">Kitchen</button>
+            <button class="room-tab">Bed Room 3</button>
+            <button class="room-tab">Gym</button>
+          </div>
+
+          <!-- Device Cards Grid -->
+          <div class="device-grid">
+            <!-- Temperature Card -->
+            <div class="device-card temp-card">
+              <div class="card-header">
+                <div class="device-icon">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    width="24"
+                    height="24"
+                  >
+                    <path
+                      d="M15 13V5c0-1.66-1.34-3-3-3S9 3.34 9 5v8c-1.21.91-2 2.37-2 4 0 2.76 2.24 5 5 5s5-2.24 5-5c0-1.63-.79-3.09-2-4zm-4-8c0-.55.45-1 1-1s1 .45 1 1h-1v1h1v2h-1v1h1v2h-2V5z"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div class="temp-display">
+                <span class="temp-value">19</span>
+                <span class="temp-unit">°</span>
+              </div>
+              <div class="music-mini-player">
+                <div class="mini-cover"></div>
+                <span class="mini-title">Still I'm Sure We'll L...</span>
+              </div>
+            </div>
+
+            <!-- Air Conditioner Card -->
+            <div class="device-card ac-card">
+              <div class="card-header">
+                <div class="device-icon">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    width="24"
+                    height="24"
+                  >
+                    <path
+                      d="M22 11h-4.17l3.24-3.24-1.41-1.42L15 11h-2V9l4.66-4.66-1.42-1.41L13 6.17V2h-2v4.17L7.76 2.93 6.34 4.34 11 9v2H9L4.34 6.34 2.93 7.76 6.17 11H2v2h4.17l-3.24 3.24 1.41 1.42L9 13h2v2l-4.66 4.66 1.42 1.41L11 17.83V22h2v-4.17l3.24 3.24 1.42-1.41L13 15v-2h2l4.66 4.66 1.41-1.42L17.83 13H22z"
+                    />
+                  </svg>
+                </div>
+                <span class="card-title">Air Conditioner</span>
+              </div>
+              <div class="card-status">Cooling to 19°</div>
+            </div>
+
+            <!-- Air Quality Card -->
+            <div class="device-card quality-card">
+              <div class="quality-badge">Good Air Quality</div>
+              <div class="quality-stats">
+                <div class="stat-item">
+                  <div class="stat-icon devices-icon">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      width="16"
+                      height="16"
+                    >
+                      <path
+                        d="M4 6h18V4H4c-1.1 0-2 .9-2 2v11H0v3h14v-3H4V6zm19 2h-6c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h6c.55 0 1-.45 1-1V9c0-.55-.45-1-1-1zm-1 9h-4v-7h4v7z"
+                      />
+                    </svg>
+                  </div>
+                  <div class="stat-info">
+                    <span class="stat-value">6</span>
+                    <span class="stat-label">Devices</span>
+                  </div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-icon aqi-icon">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      width="16"
+                      height="16"
+                    >
+                      <path
+                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+                      />
+                    </svg>
+                  </div>
+                  <div class="stat-info">
+                    <span class="stat-value">10</span>
+                    <span class="stat-label">AQI</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Heart With Card -->
+            <div class="device-card heart-card">
+              <div class="card-header">
+                <div class="device-icon">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    width="24"
+                    height="24"
+                  >
+                    <path
+                      d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                    />
+                  </svg>
+                </div>
+                <span class="card-title">Heart With</span>
+              </div>
+            </div>
+
+            <!-- Nest Wifi Card -->
+            <div class="device-card wifi-card">
+              <div class="card-header">
+                <div class="device-icon">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    width="24"
+                    height="24"
+                  >
+                    <path
+                      d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"
+                    />
+                  </svg>
+                </div>
+                <span class="card-title">Nest Wifi</span>
+              </div>
+            </div>
+
+            <!-- Air Purifier Card -->
+            <div class="device-card purifier-card">
+              <div class="card-header">
+                <div class="device-icon">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    width="24"
+                    height="24"
+                  >
+                    <path
+                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                    />
+                  </svg>
+                </div>
+                <span class="card-title">Air Purifier</span>
+              </div>
+            </div>
+
+            <!-- Food Door Card -->
+            <div class="device-card door-card">
+              <div class="card-header">
+                <div class="device-icon">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    width="24"
+                    height="24"
+                  >
+                    <path
+                      d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"
+                    />
+                  </svg>
+                </div>
+                <span class="card-title">Food Door</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Section - Air Conditioner Control -->
+        <div class="content-right">
+          <!-- AC Header -->
+          <div class="ac-header">
+            <h3>Air Conditioner</h3>
+            <div class="ac-device">
+              <span>Samsung ARIO WindFree</span>
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                width="16"
+                height="16"
+              >
+                <path d="M7 10l5 5 5-5z" />
+              </svg>
+            </div>
+          </div>
+
+          <!-- AC Temperature Display -->
+          <div class="ac-temp-display">
+            <div class="ac-temp-circle">
+              <svg class="temp-progress" viewBox="0 0 120 120">
+                <circle class="temp-bg" cx="60" cy="60" r="54" />
+                <circle
+                  class="temp-fill"
+                  cx="60"
+                  cy="60"
+                  r="54"
+                  stroke-dasharray="339.3"
+                  stroke-dashoffset="85"
+                />
+              </svg>
+              <div class="temp-content">
+                <span class="temp-number">19</span>
+                <span class="temp-degree">°</span>
+              </div>
+            </div>
+            <div class="humidity-indicator">
+              <span>48%</span>
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                width="16"
+                height="16"
+              >
+                <path
+                  d="M12 2c-5.33 4.55-8 8.48-8 11.8 0 4.98 3.8 8.2 8 8.2s8-3.22 8-8.2c0-3.32-2.67-7.25-8-11.8zm0 18c-3.35 0-6-2.57-6-6.2 0-2.34 1.95-5.44 6-9.14 4.05 3.7 6 6.79 6 9.14 0 3.63-2.65 6.2-6 6.2z"
+                />
+              </svg>
+            </div>
+          </div>
+
+          <!-- AC Controls -->
+          <div class="ac-controls">
+            <button class="ac-control-btn active">
+              <span class="control-label">Auto</span>
+            </button>
+            <button class="ac-control-btn">
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                width="20"
+                height="20"
+              >
+                <path
+                  d="M12 6v3l4-4-4-4v3c-4.42 0-8 3.58-8 8 0 1.57.46 3.03 1.24 4.26L6.7 14.8c-.45-.83-.7-1.79-.7-2.8 0-3.31 2.69-6 6-6zm6.76 1.74L17.3 9.2c.44.84.7 1.79.7 2.8 0 3.31-2.69 6-6 6v-3l-4 4 4 4v-3c4.42 0 8-3.58 8-8 0-1.57-.46-3.03-1.24-4.26z"
+                />
+              </svg>
+              <span class="control-label">Swing</span>
+            </button>
+            <button class="ac-control-btn">
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                width="20"
+                height="20"
+              >
+                <path
+                  d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"
+                />
+              </svg>
+              <span class="control-label">Timer</span>
+            </button>
+          </div>
+
+          <!-- Power Usage -->
+          <div class="power-usage">
+            <div class="power-value">600 W</div>
+            <div class="power-label">Automation Ener save</div>
+          </div>
+
+          <!-- Volume Slider -->
+          <div class="volume-slider">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+              <path
+                d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"
+              />
+            </svg>
+            <div class="slider-track">
+              <div class="slider-fill"></div>
+              <div class="slider-thumb"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Room tab click handler
+      document.querySelectorAll('.room-tab').forEach((tab) => {
+        tab.addEventListener('click', function () {
+          document
+            .querySelectorAll('.room-tab')
+            .forEach((t) => t.classList.remove('active'));
+          this.classList.add('active');
+        });
+      });
+
+      // AC control button click handler
+      document.querySelectorAll('.ac-control-btn').forEach((btn) => {
+        btn.addEventListener('click', function () {
+          document
+            .querySelectorAll('.ac-control-btn')
+            .forEach((b) => b.classList.remove('active'));
+          this.classList.add('active');
+        });
+      });
+    </script>
+  </body>
+</html>
