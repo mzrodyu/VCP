@@ -1190,3 +1190,207 @@ html.dark .with-pastel-balls::before {
   border-radius: 20px;
   transform: rotate(-15deg);
 }
+
+/* ==================== 后台控制台绿色主题 ==================== */
+/* 侧边栏绿色主题 */
+.sidebar-nav .semi-navigation-item-selected,
+.sidebar-nav .semi-navigation-item-selected:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(34, 197, 94, 0.15) 0%,
+    rgba(22, 163, 74, 0.1) 100%
+  ) !important;
+  color: #16a34a !important;
+}
+
+.sidebar-nav .semi-navigation-item-selected .sidebar-icon-container svg,
+.sidebar-nav .semi-navigation-item-selected span {
+  color: #16a34a !important;
+}
+
+.sidebar-nav .semi-navigation-item:hover {
+  background: rgba(34, 197, 94, 0.08) !important;
+}
+
+/* 主色调覆盖为绿色 */
+.semi-button-primary {
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%) !important;
+  border: none !important;
+}
+
+.semi-button-primary:hover {
+  background: linear-gradient(135deg, #16a34a 0%, #15803d 100%) !important;
+}
+
+.semi-button-primary:active {
+  background: linear-gradient(135deg, #15803d 0%, #166534 100%) !important;
+}
+
+/* 链接和强调色 */
+.semi-typography-link,
+a.semi-typography {
+  color: #16a34a !important;
+}
+
+.semi-typography-link:hover {
+  color: #15803d !important;
+}
+
+/* 标签页选中 */
+.semi-tabs-tab-active {
+  color: #16a34a !important;
+}
+
+.semi-tabs-ink-bar {
+  background: #16a34a !important;
+}
+
+/* 开关按钮 */
+.semi-switch-checked {
+  background: #22c55e !important;
+}
+
+/* 复选框和单选框 */
+.semi-checkbox-inner-checked,
+.semi-radio-inner-checked {
+  background: #22c55e !important;
+  border-color: #22c55e !important;
+}
+
+/* 进度条 */
+.semi-progress-line-inner {
+  background: linear-gradient(90deg, #22c55e 0%, #16a34a 100%) !important;
+}
+
+/* 标签 */
+.semi-tag-light-green,
+.semi-tag-green {
+  background: rgba(34, 197, 94, 0.15) !important;
+  color: #16a34a !important;
+}
+
+/* 输入框聚焦 */
+.semi-input-wrapper:focus-within,
+.semi-select:focus-within {
+  border-color: #22c55e !important;
+}
+
+/* 卡片头部渐变背景 */
+.console-card-header {
+  background: linear-gradient(135deg, #059669 0%, #047857 50%, #065f46 100%);
+  border-radius: 16px 16px 0 0;
+  padding: 24px;
+  color: white;
+}
+
+/* 用户信息卡片 */
+.user-profile-card {
+  background: linear-gradient(
+    135deg,
+    #059669 0%,
+    #047857 50%,
+    #065f46 100%
+  ) !important;
+  border-radius: 16px !important;
+  color: white !important;
+  border: none !important;
+}
+
+.user-profile-card .semi-card-body {
+  color: white !important;
+}
+
+/* 余额显示 */
+.balance-display {
+  font-size: 32px;
+  font-weight: 700;
+  color: white;
+}
+
+.balance-label {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* 统计卡片 */
+.stat-card {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s;
+}
+
+.stat-card:hover {
+  border-color: #22c55e;
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.15);
+}
+
+.stat-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.stat-label {
+  font-size: 13px;
+  color: #64748b;
+}
+
+/* 绿色徽章 */
+.green-badge {
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* 设置项卡片 */
+.settings-card {
+  background: white;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  overflow: hidden;
+}
+
+.settings-card-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid #f1f5f9;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.settings-card-body {
+  padding: 20px;
+}
+
+/* 绑定状态 */
+.bind-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.bind-status.bound {
+  background: rgba(34, 197, 94, 0.1);
+  color: #16a34a;
+}
+
+.bind-status.unbound {
+  background: rgba(100, 116, 139, 0.1);
+  color: #64748b;
+}
+
+/* 头部导航绿色主题 */
+.semi-navigation-horizontal .semi-navigation-item-selected {
+  color: #16a34a !important;
+}
+
+.semi-navigation-horizontal .semi-navigation-item-selected::after {
+  background: #16a34a !important;
+}
