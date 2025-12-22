@@ -3881,73 +3881,75 @@ body[theme-mode='dark'] .semi-layout-content {
   opacity: 0.9 !important;
 }
 
-/* ==================== Gemini 输入框样式 ==================== */
+/* ==================== 输入框 - Twisty 风格 ==================== */
 .semi-input-wrapper {
-  background: var(--bg-surface) !important;
-  border: 1px solid var(--border-default) !important;
-  border-radius: 8px !important;
-  transition: border-color 0.2s var(--ease-smooth) !important;
+  background: var(--bg-muted) !important;
+  border: none !important;
+  border-radius: var(--radius-lg) !important;
+  transition: all 0.2s var(--ease-smooth) !important;
+  padding: 12px 16px !important;
 }
 
 .semi-input-wrapper:hover {
-  border-color: var(--border-strong) !important;
+  background: var(--bg-subtle) !important;
 }
 
 .semi-input-wrapper:focus-within {
-  border-color: var(--accent) !important;
-  box-shadow: none !important;
+  background: var(--bg-surface) !important;
+  box-shadow: 0 0 0 2px var(--accent) !important;
 }
 
 .semi-input {
   font-size: 14px !important;
   color: var(--fg-default) !important;
+  background: transparent !important;
 }
 
-/* 文本域样式 */
+/* 文本域 */
 .semi-input-textarea-wrapper {
-  background: var(--bg-surface) !important;
-  border: 1px solid var(--border-default) !important;
-  border-radius: 8px !important;
-  transition: border-color 0.2s var(--ease-smooth) !important;
+  background: var(--bg-muted) !important;
+  border: none !important;
+  border-radius: var(--radius-lg) !important;
+  transition: all 0.2s var(--ease-smooth) !important;
 }
 
 .semi-input-textarea-wrapper:hover {
-  border-color: var(--border-strong) !important;
+  background: var(--bg-subtle) !important;
 }
 
 .semi-input-textarea-wrapper:focus-within {
-  border-color: var(--accent) !important;
-  box-shadow: none !important;
+  background: var(--bg-surface) !important;
+  box-shadow: 0 0 0 2px var(--accent) !important;
 }
 
-/* 选择器 - iOS 风格 */
+/* 选择器 */
 .semi-select {
-  border-radius: 12px !important;
+  border-radius: var(--radius-lg) !important;
 }
 
 .semi-select-selection {
-  background: var(--color-bg-sunken) !important;
+  background: var(--bg-muted) !important;
   border: none !important;
-  border-radius: 12px !important;
-  transition: all 0.2s var(--ease-ios) !important;
+  border-radius: var(--radius-lg) !important;
+  transition: all 0.2s var(--ease-smooth) !important;
 }
 
 .semi-select-focus .semi-select-selection {
-  background: var(--color-bg-elevated) !important;
-  box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.2) !important;
+  background: var(--bg-surface) !important;
+  box-shadow: 0 0 0 2px var(--accent) !important;
 }
 
-/* ==================== Gemini 表格样式 ==================== */
+/* ==================== 表格 - Sequence 风格 ==================== */
 .semi-table {
   background: transparent !important;
 }
 
 .semi-table-container {
   background: var(--bg-surface) !important;
-  border: 1px solid var(--border-default) !important;
-  border-radius: 8px !important;
+  border: none !important;
+  border-radius: var(--radius-xl) !important;
   overflow: hidden !important;
-  box-shadow: none !important;
+  box-shadow: var(--shadow-card) !important;
 }
 
 .semi-table-thead > .semi-table-row > .semi-table-row-head {
