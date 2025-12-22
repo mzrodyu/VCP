@@ -13,21 +13,21 @@
   @tailwind utilities;
 }
 
-/* ==================== 现代化设计系统 v2.0 ==================== */
+/* ==================== Gemini Design System ==================== */
 :root {
   /* 布局尺寸 */
   --sidebar-width: 260px;
-  --sidebar-width-collapsed: 76px;
+  --sidebar-width-collapsed: 72px;
   --sidebar-current-width: var(--sidebar-width);
-  --header-height: 60px;
+  --header-height: 64px;
 
-  /* 圆角系统 */
-  --radius-xs: 6px;
+  /* 圆角系统 - Gemini 风格 */
+  --radius-xs: 4px;
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
-  --radius-xl: 20px;
-  --radius-2xl: 24px;
+  --radius-xl: 24px;
+  --radius-2xl: 28px;
   --radius-full: 9999px;
 
   /* 间距系统 */
@@ -42,22 +42,23 @@
   --space-12: 48px;
   --space-16: 64px;
 
-  /* 动画曲线 - 更流畅 */
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
-  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-  --ease-bounce: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  /* 动画曲线 - Google 风格 */
+  --ease-out: cubic-bezier(0.2, 0, 0, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.2, 0, 0, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 
   /* 动画时长 */
-  --duration-fast: 150ms;
-  --duration-normal: 250ms;
-  --duration-slow: 400ms;
-  --duration-slower: 600ms;
+  --duration-fast: 100ms;
+  --duration-normal: 200ms;
+  --duration-slow: 300ms;
+  --duration-slower: 400ms;
 
-  /* 字体系统 */
+  /* 字体系统 - Google Sans */
   --font-sans:
-    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+    'Google Sans', 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    sans-serif;
+  --font-mono: 'Roboto Mono', 'SF Mono', 'Consolas', monospace;
 
   /* 字重 */
   --font-normal: 400;
@@ -67,7 +68,7 @@
 
   /* 字号 */
   --text-xs: 11px;
-  --text-sm: 13px;
+  --text-sm: 12px;
   --text-base: 14px;
   --text-lg: 16px;
   --text-xl: 18px;
@@ -79,81 +80,61 @@
   --leading-tight: 1.25;
   --leading-normal: 1.5;
   --leading-relaxed: 1.75;
-
-  /* 毛玻璃效果 */
-  --glass-blur: 20px;
-  --glass-saturate: 180%;
 }
 
 body.sidebar-collapsed {
   --sidebar-current-width: var(--sidebar-width-collapsed);
 }
 
-/* ==================== 浅色主题 ==================== */
+/* ==================== Gemini 浅色主题 ==================== */
 body[theme-mode='light'],
 body:not([theme-mode]) {
-  /* 背景层级 */
-  --bg-base: #f8fafc;
+  /* 背景层级 - Gemini Light */
+  --bg-base: #ffffff;
   --bg-surface: #ffffff;
   --bg-elevated: #ffffff;
-  --bg-muted: #f1f5f9;
-  --bg-subtle: #e2e8f0;
+  --bg-muted: #f0f4f9;
+  --bg-subtle: #e8eaed;
+  --bg-sidebar: #f0f4f9;
 
-  /* 前景/文字 */
-  --fg-default: #0f172a;
-  --fg-muted: #475569;
-  --fg-subtle: #64748b;
-  --fg-faint: #94a3b8;
+  /* 前景/文字 - Gemini */
+  --fg-default: #1f1f1f;
+  --fg-muted: #444746;
+  --fg-subtle: #5f6368;
+  --fg-faint: #80868b;
 
-  /* 边框 */
-  --border-default: rgba(15, 23, 42, 0.08);
-  --border-muted: rgba(15, 23, 42, 0.05);
-  --border-strong: rgba(15, 23, 42, 0.12);
+  /* 边框 - Gemini */
+  --border-default: #e0e0e0;
+  --border-muted: #f0f0f0;
+  --border-strong: #dadce0;
 
-  /* 主题色 */
-  --accent: #6366f1;
-  --accent-hover: #4f46e5;
-  --accent-active: #4338ca;
-  --accent-muted: rgba(99, 102, 241, 0.1);
-  --accent-subtle: rgba(99, 102, 241, 0.06);
+  /* 主题色 - Google Blue */
+  --accent: #1a73e8;
+  --accent-hover: #1557b0;
+  --accent-active: #174ea6;
+  --accent-muted: rgba(26, 115, 232, 0.08);
+  --accent-subtle: rgba(26, 115, 232, 0.04);
 
   /* 语义色 */
-  --success: #10b981;
-  --success-muted: rgba(16, 185, 129, 0.1);
-  --warning: #f59e0b;
-  --warning-muted: rgba(245, 158, 11, 0.1);
-  --error: #ef4444;
-  --error-muted: rgba(239, 68, 68, 0.1);
-  --info: #3b82f6;
-  --info-muted: rgba(59, 130, 246, 0.1);
+  --success: #1e8e3e;
+  --success-muted: rgba(30, 142, 62, 0.08);
+  --warning: #f9ab00;
+  --warning-muted: rgba(249, 171, 0, 0.08);
+  --error: #d93025;
+  --error-muted: rgba(217, 48, 37, 0.08);
+  --info: #1a73e8;
+  --info-muted: rgba(26, 115, 232, 0.08);
 
-  /* 阴影 */
-  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
-  --shadow-md:
-    0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
-  --shadow-lg:
-    0 10px 25px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
-  --shadow-xl:
-    0 20px 40px -5px rgba(0, 0, 0, 0.1), 0 10px 15px -3px rgba(0, 0, 0, 0.04);
-  --shadow-glow: 0 0 40px rgba(99, 102, 241, 0.15);
-
-  /* 毛玻璃 */
-  --glass-bg: rgba(255, 255, 255, 0.8);
-  --glass-border: rgba(255, 255, 255, 0.5);
+  /* 阴影 - Gemini 风格（极简） */
+  --shadow-xs: none;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 8px 16px rgba(0, 0, 0, 0.12);
 
   /* 悬浮效果 */
-  --hover-bg: rgba(0, 0, 0, 0.03);
-  --active-bg: rgba(0, 0, 0, 0.06);
-
-  /* 渐变 */
-  --gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-  --gradient-secondary: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
-  --gradient-surface: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(248, 250, 252, 1) 100%
-  );
+  --hover-bg: rgba(0, 0, 0, 0.04);
+  --active-bg: rgba(0, 0, 0, 0.08);
 
   /* Semi UI 变量映射 */
   --semi-color-bg-0: var(--bg-base);
@@ -197,70 +178,54 @@ body:not([theme-mode]) {
   --shadow-lg: var(--shadow-lg);
 }
 
-/* ==================== 暗色主题 ==================== */
+/* ==================== Gemini 暗色主题 ==================== */
 body[theme-mode='dark'] {
-  /* 背景层级 */
-  --bg-base: #09090b;
-  --bg-surface: #18181b;
-  --bg-elevated: #1f1f23;
-  --bg-muted: #27272a;
-  --bg-subtle: #3f3f46;
+  /* 背景层级 - Gemini Dark */
+  --bg-base: #1e1f20;
+  --bg-surface: #282a2c;
+  --bg-elevated: #303134;
+  --bg-muted: #3c4043;
+  --bg-subtle: #5f6368;
+  --bg-sidebar: #131314;
 
-  /* 前景/文字 */
-  --fg-default: #fafafa;
-  --fg-muted: #a1a1aa;
-  --fg-subtle: #71717a;
-  --fg-faint: #52525b;
+  /* 前景/文字 - Gemini Dark */
+  --fg-default: #e3e3e3;
+  --fg-muted: #bdc1c6;
+  --fg-subtle: #9aa0a6;
+  --fg-faint: #80868b;
 
-  /* 边框 */
-  --border-default: rgba(255, 255, 255, 0.08);
-  --border-muted: rgba(255, 255, 255, 0.04);
-  --border-strong: rgba(255, 255, 255, 0.12);
+  /* 边框 - Gemini Dark */
+  --border-default: #3c4043;
+  --border-muted: #303134;
+  --border-strong: #5f6368;
 
-  /* 主题色 */
-  --accent: #818cf8;
-  --accent-hover: #a5b4fc;
-  --accent-active: #6366f1;
-  --accent-muted: rgba(129, 140, 248, 0.15);
-  --accent-subtle: rgba(129, 140, 248, 0.08);
+  /* 主题色 - Google Blue (Dark) */
+  --accent: #8ab4f8;
+  --accent-hover: #aecbfa;
+  --accent-active: #669df6;
+  --accent-muted: rgba(138, 180, 248, 0.12);
+  --accent-subtle: rgba(138, 180, 248, 0.06);
 
   /* 语义色 */
-  --success: #34d399;
-  --success-muted: rgba(52, 211, 153, 0.15);
-  --warning: #fbbf24;
-  --warning-muted: rgba(251, 191, 36, 0.15);
-  --error: #f87171;
-  --error-muted: rgba(248, 113, 113, 0.15);
-  --info: #60a5fa;
-  --info-muted: rgba(96, 165, 250, 0.15);
+  --success: #81c995;
+  --success-muted: rgba(129, 201, 149, 0.12);
+  --warning: #fdd663;
+  --warning-muted: rgba(253, 214, 99, 0.12);
+  --error: #f28b82;
+  --error-muted: rgba(242, 139, 130, 0.12);
+  --info: #8ab4f8;
+  --info-muted: rgba(138, 180, 248, 0.12);
 
-  /* 阴影 */
-  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.3);
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3);
-  --shadow-md:
-    0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.4);
-  --shadow-lg:
-    0 10px 25px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
-  --shadow-xl:
-    0 20px 40px -5px rgba(0, 0, 0, 0.6), 0 10px 15px -3px rgba(0, 0, 0, 0.4);
-  --shadow-glow: 0 0 60px rgba(129, 140, 248, 0.2);
-
-  /* 毛玻璃 */
-  --glass-bg: rgba(24, 24, 27, 0.85);
-  --glass-border: rgba(255, 255, 255, 0.06);
+  /* 阴影 - Gemini Dark（极简） */
+  --shadow-xs: none;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 2px 6px rgba(0, 0, 0, 0.25);
+  --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 8px 24px rgba(0, 0, 0, 0.35);
 
   /* 悬浮效果 */
-  --hover-bg: rgba(255, 255, 255, 0.05);
-  --active-bg: rgba(255, 255, 255, 0.08);
-
-  /* 渐变 */
-  --gradient-primary: linear-gradient(135deg, #818cf8 0%, #a78bfa 100%);
-  --gradient-secondary: linear-gradient(135deg, #60a5fa 0%, #22d3ee 100%);
-  --gradient-surface: linear-gradient(
-    180deg,
-    rgba(24, 24, 27, 0) 0%,
-    rgba(9, 9, 11, 1) 100%
-  );
+  --hover-bg: rgba(255, 255, 255, 0.08);
+  --active-bg: rgba(255, 255, 255, 0.12);
 
   /* Semi UI 变量映射 */
   --semi-color-bg-0: var(--bg-base);
@@ -2511,56 +2476,51 @@ body[theme-mode='light'] .semi-message {
 }
 
 .semi-button-primary {
-  background: var(--color-accent) !important;
+  background: var(--accent) !important;
   color: #ffffff !important;
   border: none !important;
-  box-shadow: none !important;
 }
 
 .semi-button-primary:hover {
-  background: var(--color-accent-hover) !important;
-  transform: none !important;
-  box-shadow: none !important;
+  background: var(--accent-hover) !important;
 }
 
 .semi-button-tertiary {
-  background: var(--color-bg-sunken) !important;
-  color: var(--color-text-primary) !important;
-  border: 1px solid var(--color-border) !important;
+  background: transparent !important;
+  color: var(--accent) !important;
+  border: 1px solid var(--border-default) !important;
 }
 
 .semi-button-tertiary:hover {
-  background: var(--color-bg-muted) !important;
-  border-color: var(--color-border-hover) !important;
+  background: var(--accent-subtle) !important;
+  border-color: var(--accent) !important;
 }
 
 .semi-button-danger {
-  background: #ef4444 !important;
+  background: var(--error) !important;
   color: #ffffff !important;
-  box-shadow: none !important;
 }
 
 .semi-button-warning {
-  background: #f59e0b !important;
-  color: #ffffff !important;
-  box-shadow: none !important;
+  background: var(--warning) !important;
+  color: #202124 !important;
 }
 
-/* 输入框全面重构 */
+/* Gemini 输入框 */
 .semi-input-wrapper {
-  background: var(--color-bg-elevated) !important;
-  border: 1px solid var(--color-border) !important;
-  border-radius: 10px !important;
-  transition: all 0.2s ease !important;
+  background: var(--bg-surface) !important;
+  border: 1px solid var(--border-default) !important;
+  border-radius: 8px !important;
+  transition: border-color 0.2s ease !important;
 }
 
 .semi-input-wrapper:hover {
-  border-color: var(--color-border-hover) !important;
+  border-color: var(--border-strong) !important;
 }
 
 .semi-input-wrapper:focus-within {
-  border-color: var(--color-accent) !important;
-  box-shadow: 0 0 0 4px var(--color-accent-muted) !important;
+  border-color: var(--accent) !important;
+  box-shadow: none !important;
 }
 
 .semi-input {
@@ -3396,98 +3356,67 @@ body[theme-mode='dark'] .glass-effect {
   border: 1px solid rgba(148, 163, 184, 0.1) !important;
 }
 
-/* ==================== 顶部导航栏 - 赛博朋克风格 ==================== */
+/* ==================== Gemini 布局组件 ==================== */
+
+/* 顶部导航栏 - Gemini 风格 */
 header.sticky,
 .semi-layout-header {
-  background: var(--color-bg-elevated) !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  border-bottom: 1px solid var(--color-border) !important;
+  background: var(--bg-surface) !important;
+  border-bottom: none !important;
   box-shadow: none !important;
 }
 
-body[theme-mode='light'] header.sticky,
-body[theme-mode='light'] .semi-layout-header {
-  background: var(--color-bg-elevated) !important;
-  border-bottom: 1px solid var(--color-border) !important;
-  box-shadow: none !important;
+body[theme-mode='dark'] header.sticky,
+body[theme-mode='dark'] .semi-layout-header {
+  background: var(--bg-base) !important;
 }
 
-/* 侧边栏 - 赛博朋克风格 */
+/* 侧边栏 - Gemini 风格 */
 .semi-layout-sider,
 .sidebar-container {
-  background: var(--color-bg-elevated) !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  border-right: 1px solid var(--color-border) !important;
+  background: var(--bg-sidebar, var(--bg-muted)) !important;
+  border-right: none !important;
   box-shadow: none !important;
 }
 
-body[theme-mode='light'] .semi-layout-sider,
-body[theme-mode='light'] .sidebar-container {
-  background: var(--color-bg-elevated) !important;
-  border-right: 1px solid var(--color-border) !important;
-  box-shadow: none !important;
+body[theme-mode='dark'] .semi-layout-sider,
+body[theme-mode='dark'] .sidebar-container {
+  background: var(--bg-sidebar) !important;
 }
 
-/* 侧边栏菜单项 - 赛博朋克风格 */
+/* 侧边栏菜单项 - Gemini 风格 */
 .semi-navigation-item {
-  margin: 4px 12px !important;
-  padding: 14px 16px !important;
-  border-radius: 12px !important;
-  transition:
-    background var(--transition-fast),
-    color var(--transition-fast),
-    border-color var(--transition-fast) !important;
-  position: relative !important;
-  overflow: hidden !important;
-  border: 1px solid transparent !important;
-}
-
-.semi-navigation-item::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  opacity: 0;
-  width: 3px;
-  height: 60%;
-  background: var(--color-accent);
-  border-radius: 0 3px 3px 0;
-  transition: opacity var(--transition-fast);
+  margin: 2px 8px !important;
+  padding: 10px 16px !important;
+  border-radius: 24px !important;
+  transition: background 0.2s var(--ease-smooth) !important;
+  border: none !important;
 }
 
 .semi-navigation-item:hover {
-  background: var(--color-bg-sunken) !important;
-  border-color: var(--color-border) !important;
-  transform: none !important;
+  background: var(--hover-bg) !important;
 }
 
 .semi-navigation-item:active {
-  transform: none !important;
+  background: var(--active-bg) !important;
 }
 
 .semi-navigation-item-selected {
-  background: var(--color-accent-muted) !important;
-  color: var(--color-accent) !important;
-}
-
-.semi-navigation-item-selected::before {
-  opacity: 1;
+  background: var(--accent-muted) !important;
+  color: var(--accent) !important;
 }
 
 .semi-navigation-item-selected:hover {
-  transform: none !important;
+  background: var(--accent-muted) !important;
 }
 
-/* 内容区域 */
+/* 内容区域 - Gemini 风格 */
 .semi-layout-content {
-  background: var(--color-bg-page) !important;
+  background: var(--bg-base) !important;
 }
 
-body[theme-mode='light'] .semi-layout-content {
-  background: var(--color-bg-page) !important;
+body[theme-mode='dark'] .semi-layout-content {
+  background: var(--bg-base) !important;
 }
 
 /* 页面容器动画增强 */
@@ -3508,135 +3437,132 @@ body[theme-mode='light'] .semi-layout-content {
   }
 }
 
-/* 卡片 - 赛博朋克风格 */
+/* 卡片 - Gemini 风格 */
 .semi-card {
-  background: var(--color-bg-elevated) !important;
-  border: 1px solid var(--color-border) !important;
-  border-radius: 20px !important;
-  box-shadow: var(--shadow-md) !important;
-  transition: all 0.4s var(--ease-spring) !important;
-  overflow: visible !important;
-  position: relative !important;
+  background: var(--bg-surface) !important;
+  border: 1px solid var(--border-default) !important;
+  border-radius: 12px !important;
+  box-shadow: none !important;
+  transition: border-color 0.2s var(--ease-smooth) !important;
 }
 
 .semi-card:hover {
-  transform: none !important;
-  border-color: var(--color-border-hover) !important;
-  box-shadow: none !important;
-}
-
-.semi-card:active {
-  transform: none !important;
+  border-color: var(--border-strong) !important;
 }
 
 body[theme-mode='dark'] .semi-card {
-  box-shadow: none !important;
+  background: var(--bg-surface) !important;
+  border-color: var(--border-default) !important;
 }
 
-body[theme-mode='dark'] .semi-card:hover {
-  box-shadow: none !important;
-}
-
-/* 按钮样式 */
+/* ==================== Gemini 按钮样式 ==================== */
 .semi-button {
-  border-radius: 12px !important;
-  font-weight: 600 !important;
-  transition: all 0.2s var(--ease-smooth) !important;
+  border-radius: 20px !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  padding: 8px 16px !important;
+  transition: background 0.2s var(--ease-smooth) !important;
+  box-shadow: none !important;
 }
 
 .semi-button:active {
-  transform: scale(0.96) !important;
+  transform: none !important;
 }
 
-/* 主要按钮 */
+/* 主要按钮 - Gemini Blue */
 .semi-button-primary {
-  background: var(--color-accent) !important;
+  background: var(--accent) !important;
   color: #ffffff !important;
   border: none !important;
-  box-shadow: none !important;
 }
 
 .semi-button-primary:hover {
-  background: var(--color-accent-hover) !important;
-  box-shadow: none !important;
+  background: var(--accent-hover) !important;
 }
 
-/* 次要按钮 */
+body[theme-mode='dark'] .semi-button-primary {
+  background: var(--accent) !important;
+  color: #202124 !important;
+}
+
+body[theme-mode='dark'] .semi-button-primary:hover {
+  background: var(--accent-hover) !important;
+}
+
+/* 次要按钮 - Gemini 风格 */
 .semi-button-secondary,
 .semi-button-tertiary {
-  background: var(--color-bg-sunken) !important;
-  color: var(--color-text-primary) !important;
-  border: 1px solid var(--color-border) !important;
+  background: transparent !important;
+  color: var(--accent) !important;
+  border: 1px solid var(--border-default) !important;
 }
 
 .semi-button-secondary:hover,
 .semi-button-tertiary:hover {
-  background: var(--color-bg-muted) !important;
-  border-color: var(--color-border-hover) !important;
+  background: var(--accent-subtle) !important;
+  border-color: var(--accent) !important;
 }
 
 /* 危险按钮 */
 .semi-button-danger {
-  background: #ef4444 !important;
+  background: var(--error) !important;
   color: #ffffff !important;
   border: none !important;
-  box-shadow: none !important;
 }
 
 .semi-button-danger:hover {
-  background: #dc2626 !important;
+  background: var(--error) !important;
+  opacity: 0.9 !important;
 }
 
 /* 警告按钮 */
 .semi-button-warning {
-  background: #f59e0b !important;
-  color: #ffffff !important;
+  background: var(--warning) !important;
+  color: #202124 !important;
   border: none !important;
-  box-shadow: none !important;
 }
 
 .semi-button-warning:hover {
-  background: #d97706 !important;
+  opacity: 0.9 !important;
 }
 
-/* 输入框样式 */
+/* ==================== Gemini 输入框样式 ==================== */
 .semi-input-wrapper {
-  background: var(--color-bg-sunken) !important;
-  border: 1px solid var(--color-border) !important;
-  border-radius: 12px !important;
-  transition: all 0.2s var(--ease-smooth) !important;
+  background: var(--bg-surface) !important;
+  border: 1px solid var(--border-default) !important;
+  border-radius: 8px !important;
+  transition: border-color 0.2s var(--ease-smooth) !important;
 }
 
 .semi-input-wrapper:hover {
-  border-color: var(--color-border-hover) !important;
+  border-color: var(--border-strong) !important;
 }
 
 .semi-input-wrapper:focus-within {
-  background: var(--color-bg-elevated) !important;
-  border-color: var(--color-accent) !important;
-  box-shadow: 0 0 0 3px var(--color-accent-muted) !important;
+  border-color: var(--accent) !important;
+  box-shadow: none !important;
 }
 
 .semi-input {
-  font-size: 15px !important;
+  font-size: 14px !important;
+  color: var(--fg-default) !important;
 }
 
 /* 文本域样式 */
 .semi-input-textarea-wrapper {
-  background: var(--color-bg-sunken) !important;
-  border: 1px solid var(--color-border) !important;
-  border-radius: 12px !important;
-  transition: all 0.2s var(--ease-smooth) !important;
+  background: var(--bg-surface) !important;
+  border: 1px solid var(--border-default) !important;
+  border-radius: 8px !important;
+  transition: border-color 0.2s var(--ease-smooth) !important;
 }
 
 .semi-input-textarea-wrapper:hover {
-  border-color: var(--color-border-hover) !important;
+  border-color: var(--border-strong) !important;
 }
 
 .semi-input-textarea-wrapper:focus-within {
-  background: var(--color-bg-elevated) !important;
-  border-color: var(--color-accent) !important;
-  box-shadow: 0 0 0 3px var(--color-accent-muted) !important;
+  border-color: var(--accent) !important;
+  box-shadow: none !important;
 }
 
 /* 选择器 - iOS 风格 */
@@ -3656,85 +3582,77 @@ body[theme-mode='dark'] .semi-card:hover {
   box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.2) !important;
 }
 
-/* 表格 - 赛博朋克风格 */
+/* ==================== Gemini 表格样式 ==================== */
 .semi-table {
   background: transparent !important;
 }
 
 .semi-table-container {
-  background: var(--color-bg-elevated) !important;
-  border: 1px solid var(--color-border) !important;
-  border-radius: 12px !important;
+  background: var(--bg-surface) !important;
+  border: 1px solid var(--border-default) !important;
+  border-radius: 8px !important;
   overflow: hidden !important;
   box-shadow: none !important;
 }
 
 .semi-table-thead > .semi-table-row > .semi-table-row-head {
-  background: var(--color-bg-sunken) !important;
-  font-weight: 600 !important;
+  background: var(--bg-muted) !important;
+  font-weight: 500 !important;
   font-size: 12px !important;
-  color: var(--color-text-secondary) !important;
+  color: var(--fg-subtle) !important;
   text-transform: none !important;
   letter-spacing: normal !important;
-  border-bottom: 1px solid var(--color-border) !important;
-  padding: 16px !important;
+  border-bottom: 1px solid var(--border-default) !important;
+  padding: 12px 16px !important;
 }
 
 .semi-table-tbody > .semi-table-row {
-  transition: background var(--transition-fast) !important;
+  transition: background 0.15s var(--ease-smooth) !important;
 }
 
 .semi-table-tbody > .semi-table-row:hover {
-  background: var(--color-bg-sunken) !important;
-  box-shadow: none !important;
-}
-
-.semi-table-tbody > .semi-table-row:active {
-  background: var(--color-bg-sunken) !important;
+  background: var(--hover-bg) !important;
 }
 
 .semi-table-tbody > .semi-table-row > .semi-table-row-cell {
-  border-bottom: 1px solid var(--color-border) !important;
-  padding: 18px 16px !important;
+  border-bottom: 1px solid var(--border-muted) !important;
+  padding: 14px 16px !important;
+  color: var(--fg-default) !important;
 }
 
 .semi-table-tbody > .semi-table-row:last-child > .semi-table-row-cell {
   border-bottom: none !important;
 }
 
-/* 标签页 - iOS 风格 */
+/* ==================== Gemini 标签页样式 ==================== */
 .semi-tabs-bar {
-  border-bottom: 0.5px solid var(--color-border) !important;
+  border-bottom: 1px solid var(--border-default) !important;
+  background: transparent !important;
 }
 
 .semi-tabs-tab {
   padding: 12px 16px !important;
   font-weight: 500 !important;
-  color: var(--color-text-muted) !important;
-  transition: all 0.2s var(--ease-ios) !important;
+  color: var(--fg-subtle) !important;
+  transition: color 0.2s var(--ease-smooth) !important;
   border-radius: 0 !important;
-  position: relative !important;
 }
 
 .semi-tabs-tab:hover {
-  color: var(--color-text-primary) !important;
+  color: var(--fg-default) !important;
   background: transparent !important;
-}
-
-.semi-tabs-tab:active {
-  opacity: 0.7 !important;
 }
 
 .semi-tabs-tab-active {
-  color: #007aff !important;
+  color: var(--accent) !important;
   background: transparent !important;
-  font-weight: 600 !important;
+  font-weight: 500 !important;
 }
 
 .semi-tabs-ink-bar {
-  background: #007aff !important;
-  height: 2px !important;
-  border-radius: 2px 2px 0 0 !important;
+  background: var(--accent) !important;
+  height: 3px !important;
+  border-radius: 3px 3px 0 0 !important;
 }
 
 /* DatePicker 日期选择器增强 */
