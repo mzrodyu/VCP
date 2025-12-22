@@ -37,7 +37,7 @@ const ChartsPanel = ({
   return (
     <Card
       {...CARD_PROPS}
-      className={`!rounded-xl ${hasApiInfoPanel ? 'lg:col-span-3' : ''}`}
+      className={`!rounded-3xl ${hasApiInfoPanel ? 'lg:col-span-3' : ''}`}
       style={{
         background: '#fff',
         border: '1px solid #e5e7eb',

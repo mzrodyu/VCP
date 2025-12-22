@@ -37,7 +37,7 @@ const FaqPanel = ({
   return (
     <Card
       {...CARD_PROPS}
-      className='!rounded-xl lg:col-span-1'
+      className='!rounded-3xl lg:col-span-1'
       style={{
         background: '#fff',
         border: '1px solid #e5e7eb',

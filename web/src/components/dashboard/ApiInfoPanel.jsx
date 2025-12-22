@@ -38,7 +38,7 @@ const ApiInfoPanel = ({
   return (
     <Card
       {...CARD_PROPS}
-      className='!rounded-xl'
+      className='!rounded-3xl'
       style={{
         background: '#fff',
         border: '1px solid #e5e7eb',

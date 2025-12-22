@@ -43,7 +43,7 @@ const StatsCards = ({
             <Card
               key={idx}
               {...CARD_PROPS}
-              className='!rounded-xl w-full'
+              className='!rounded-3xl w-full'
               style={{
                 background: '#fff',
                 border: '1px solid #e5e7eb',

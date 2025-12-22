@@ -130,75 +130,75 @@ const Home = () => {
               </p>
               <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
                 <Link to="/console">
-                  <Button theme="solid" type="primary" size="large" icon={<IconPlay />}>
+                  <Button theme="solid" type="primary" size="large" icon={<IconPlay />} style={{ borderRadius: '24px', padding: '0 32px' }}>
                     {t('获取密钥')}
                   </Button>
                 </Link>
                 {docsLink && (
-                  <Button size="large" icon={<IconFile />} onClick={() => window.open(docsLink, '_blank')}>
+                  <Button size="large" icon={<IconFile />} onClick={() => window.open(docsLink, '_blank')} style={{ borderRadius: '24px', padding: '0 32px' }}>
                     {t('文档')}
                   </Button>
                 )}
               </div>
             </div>
 
-            {/* Feature Cards */}
+            {/* Feature Cards - 大圆框 */}
             <div style={{
               display: 'grid',
               gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)',
               gap: '20px',
               marginBottom: '48px'
             }}>
-              <Card style={{ borderRadius: '16px', border: 'none', boxShadow: '0 4px 20px rgba(0,0,0,0.08)' }}>
+              <Card style={{ borderRadius: '24px', border: 'none', boxShadow: '0 8px 32px rgba(0,0,0,0.1)', padding: '8px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
                   <div style={{
-                    width: '48px', height: '48px', borderRadius: '12px',
+                    width: '56px', height: '56px', borderRadius: '18px',
                     background: 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)',
                     display: 'flex', alignItems: 'center', justifyContent: 'center'
                   }}>
-                    <Bot size={24} color="white" />
+                    <Bot size={28} color="white" />
                   </div>
                   <div>
-                    <div style={{ fontWeight: 600, color: '#1e293b', fontSize: '16px' }}>50+ AI {t('模型')}</div>
+                    <div style={{ fontWeight: 700, color: '#1e293b', fontSize: '18px' }}>50+ AI {t('模型')}</div>
                     <div style={{ color: '#64748b', fontSize: '14px' }}>GPT-4 / Claude / Gemini</div>
                   </div>
                 </div>
               </Card>
 
-              <Card style={{ borderRadius: '16px', border: 'none', boxShadow: '0 4px 20px rgba(0,0,0,0.08)' }}>
+              <Card style={{ borderRadius: '24px', border: 'none', boxShadow: '0 8px 32px rgba(0,0,0,0.1)', padding: '8px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
                   <div style={{
-                    width: '48px', height: '48px', borderRadius: '12px',
+                    width: '56px', height: '56px', borderRadius: '18px',
                     background: 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)',
                     display: 'flex', alignItems: 'center', justifyContent: 'center'
                   }}>
-                    <Palette size={24} color="white" />
+                    <Palette size={28} color="white" />
                   </div>
                   <div>
-                    <div style={{ fontWeight: 600, color: '#1e293b', fontSize: '16px' }}>{t('绘画模型')}</div>
+                    <div style={{ fontWeight: 700, color: '#1e293b', fontSize: '18px' }}>{t('绘画模型')}</div>
                     <div style={{ color: '#64748b', fontSize: '14px' }}>Midjourney / DALL-E / SD</div>
                   </div>
                 </div>
               </Card>
 
-              <Card style={{ borderRadius: '16px', border: 'none', boxShadow: '0 4px 20px rgba(0,0,0,0.08)' }}>
+              <Card style={{ borderRadius: '24px', border: 'none', boxShadow: '0 8px 32px rgba(0,0,0,0.1)', padding: '8px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
                   <div style={{
-                    width: '48px', height: '48px', borderRadius: '12px',
+                    width: '56px', height: '56px', borderRadius: '18px',
                     background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
                     display: 'flex', alignItems: 'center', justifyContent: 'center'
                   }}>
-                    <Music size={24} color="white" />
+                    <Music size={28} color="white" />
                   </div>
                   <div>
-                    <div style={{ fontWeight: 600, color: '#1e293b', fontSize: '16px' }}>{t('音频模型')}</div>
+                    <div style={{ fontWeight: 700, color: '#1e293b', fontSize: '18px' }}>{t('音频模型')}</div>
                     <div style={{ color: '#64748b', fontSize: '14px' }}>Suno / TTS / Whisper</div>
                   </div>
                 </div>
               </Card>
             </div>
 
-            {/* Stats Section */}
+            {/* Stats Section - 大圆框 */}
             <div style={{
               display: 'grid',
               gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)',
@@ -207,60 +207,61 @@ const Home = () => {
             }}>
               <div style={{
                 background: 'white',
-                borderRadius: '12px',
-                padding: '20px',
+                borderRadius: '24px',
+                padding: '28px 20px',
                 textAlign: 'center',
-                boxShadow: '0 2px 12px rgba(0,0,0,0.06)'
+                boxShadow: '0 8px 32px rgba(0,0,0,0.08)'
               }}>
-                <Zap size={28} color="#22c55e" style={{ marginBottom: '8px' }} />
-                <div style={{ fontSize: '24px', fontWeight: 700, color: '#1e293b' }}>99.9%</div>
-                <div style={{ fontSize: '13px', color: '#64748b' }}>{t('可用性')}</div>
+                <Zap size={32} color="#22c55e" style={{ marginBottom: '12px' }} />
+                <div style={{ fontSize: '28px', fontWeight: 700, color: '#1e293b' }}>99.9%</div>
+                <div style={{ fontSize: '14px', color: '#64748b' }}>{t('可用性')}</div>
               </div>
 
               <div style={{
                 background: 'white',
-                borderRadius: '12px',
-                padding: '20px',
+                borderRadius: '24px',
+                padding: '28px 20px',
                 textAlign: 'center',
-                boxShadow: '0 2px 12px rgba(0,0,0,0.06)'
+                boxShadow: '0 8px 32px rgba(0,0,0,0.08)'
               }}>
-                <Clock size={28} color="#22c55e" style={{ marginBottom: '8px' }} />
-                <div style={{ fontSize: '24px', fontWeight: 700, color: '#1e293b' }}>&lt;100ms</div>
-                <div style={{ fontSize: '13px', color: '#64748b' }}>{t('响应延迟')}</div>
+                <Clock size={32} color="#22c55e" style={{ marginBottom: '12px' }} />
+                <div style={{ fontSize: '28px', fontWeight: 700, color: '#1e293b' }}>&lt;100ms</div>
+                <div style={{ fontSize: '14px', color: '#64748b' }}>{t('响应延迟')}</div>
               </div>
 
               <div style={{
                 background: 'white',
-                borderRadius: '12px',
-                padding: '20px',
+                borderRadius: '24px',
+                padding: '28px 20px',
                 textAlign: 'center',
-                boxShadow: '0 2px 12px rgba(0,0,0,0.06)'
+                boxShadow: '0 8px 32px rgba(0,0,0,0.08)'
               }}>
-                <Shield size={28} color="#22c55e" style={{ marginBottom: '8px' }} />
-                <div style={{ fontSize: '24px', fontWeight: 700, color: '#1e293b' }}>7x24</div>
-                <div style={{ fontSize: '13px', color: '#64748b' }}>{t('技术支持')}</div>
+                <Shield size={32} color="#22c55e" style={{ marginBottom: '12px' }} />
+                <div style={{ fontSize: '28px', fontWeight: 700, color: '#1e293b' }}>7x24</div>
+                <div style={{ fontSize: '14px', color: '#64748b' }}>{t('技术支持')}</div>
               </div>
 
               <div style={{
                 background: 'white',
-                borderRadius: '12px',
-                padding: '20px',
+                borderRadius: '24px',
+                padding: '28px 20px',
                 textAlign: 'center',
-                boxShadow: '0 2px 12px rgba(0,0,0,0.06)'
+                boxShadow: '0 8px 32px rgba(0,0,0,0.08)'
               }}>
-                <Sparkles size={28} color="#22c55e" style={{ marginBottom: '8px' }} />
-                <div style={{ fontSize: '24px', fontWeight: 700, color: '#1e293b' }}>{t('超低')}</div>
-                <div style={{ fontSize: '13px', color: '#64748b' }}>{t('价格')}</div>
+                <Sparkles size={32} color="#22c55e" style={{ marginBottom: '12px' }} />
+                <div style={{ fontSize: '28px', fontWeight: 700, color: '#1e293b' }}>{t('超低')}</div>
+                <div style={{ fontSize: '14px', color: '#64748b' }}>{t('价格')}</div>
               </div>
             </div>
 
-            {/* API URL Section */}
+            {/* API URL Section - 大圆框 */}
             <Card style={{
-              borderRadius: '16px',
+              borderRadius: '24px',
               border: 'none',
-              boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+              boxShadow: '0 8px 32px rgba(0,0,0,0.1)',
               background: 'linear-gradient(135deg, #166534 0%, #15803d 100%)',
-              color: 'white'
+              color: 'white',
+              padding: '8px'
             }}>
               <div style={{
                 display: 'flex',
@@ -270,7 +271,7 @@ const Home = () => {
                 gap: '16px'
               }}>
                 <div>
-                  <div style={{ fontSize: '18px', fontWeight: 600, marginBottom: '8px' }}>
+                  <div style={{ fontSize: '20px', fontWeight: 700, marginBottom: '12px' }}>
                     {t('开始使用 API')}
                   </div>
                   <div
@@ -280,9 +281,9 @@ const Home = () => {
                       opacity: 0.9,
                       cursor: 'pointer',
                       fontFamily: 'monospace',
-                      background: 'rgba(255,255,255,0.15)',
-                      padding: '8px 16px',
-                      borderRadius: '8px',
+                      background: 'rgba(255,255,255,0.2)',
+                      padding: '12px 20px',
+                      borderRadius: '16px',
                       display: 'inline-block'
                     }}
                   >
@@ -292,7 +293,7 @@ const Home = () => {
                 <Link to="/console">
                   <Button
                     theme="solid"
-                    style={{ background: 'white', color: '#166534' }}
+                    style={{ background: 'white', color: '#166534', borderRadius: '16px', padding: '0 28px', height: '44px' }}
                     icon={<IconPlay />}
                   >
                     {t('获取密钥')}
