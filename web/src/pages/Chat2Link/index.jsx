@@ -17,6 +17,7 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 For commercial licensing, please contact support@quantumnous.com
 */
 
+import React from 'react';
 import { useTokenKeys } from '../../hooks/chat/useTokenKeys';
 
 const chat2page = () => {
@@ -35,7 +36,7 @@ const chat2page = () => {
   }
 
   return (
-    <div className='page-container'>
+    <div className='mt-[60px] px-2'>
       <h3>正在加载，请稍候...</h3>
     </div>
   );

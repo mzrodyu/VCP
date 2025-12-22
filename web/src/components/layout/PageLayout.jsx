@@ -17,26 +17,26 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 For commercial licensing, please contact support@quantumnous.com
 */
 
+import HeaderBar from './headerbar';
 import { Layout } from '@douyinfe/semi-ui';
-import { useContext, useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useLocation } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
+import SiderBar from './SiderBar';
 import App from '../../App';
-import { StatusContext } from '../../context/Status';
-import { UserContext } from '../../context/User';
-import {
-    API,
-    getLogo,
-    getSystemName,
-    setStatusData,
-    showError,
-} from '../../helpers';
+import FooterBar from './Footer';
+import { ToastContainer } from 'react-toastify';
+import React, { useContext, useEffect, useState } from 'react';
 import { useIsMobile } from '../../hooks/common/useIsMobile';
 import { useSidebarCollapsed } from '../../hooks/common/useSidebarCollapsed';
-import FooterBar from './Footer';
-import HeaderBar from './headerbar';
-import SiderBar from './SiderBar';
+import { useTranslation } from 'react-i18next';
+import {
+  API,
+  getLogo,
+  getSystemName,
+  showError,
+  setStatusData,
+} from '../../helpers';
+import { UserContext } from '../../context/User';
+import { StatusContext } from '../../context/Status';
+import { useLocation } from 'react-router-dom';
 const { Sider, Content, Header } = Layout;
 
 const PageLayout = () => {
@@ -120,16 +120,50 @@ const PageLayout = () => {
   }, [i18n]);
 
   return (
-    <Layout className='app-layout'>
-      <Header className='app-header'>
+    <Layout
+      style={{
+        height: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        overflow: isMobile ? 'visible' : 'hidden',
+      }}
+    >
+      <Header
+        style={{
+          padding: 0,
+          height: 'auto',
+          lineHeight: 'normal',
+          position: 'fixed',
+          width: '100%',
+          top: 0,
+          zIndex: 100,
+        }}
+      >
         <HeaderBar
           onMobileMenuToggle={() => setDrawerOpen((prev) => !prev)}
           drawerOpen={drawerOpen}
         />
       </Header>
-      <Layout className='app-body'>
+      <Layout
+        style={{
+          overflow: isMobile ? 'visible' : 'auto',
+          display: 'flex',
+          flexDirection: 'column',
+        }}
+      >
         {showSider && (
-          <Sider className='app-sider'>
+          <Sider
+            style={{
+              position: 'fixed',
+              left: 0,
+              top: '64px',
+              zIndex: 99,
+              border: 'none',
+              paddingRight: '0',
+              height: 'calc(100vh - 64px)',
+              width: 'var(--sidebar-current-width)',
+            }}
+          >
             <SiderBar
               onNavigate={() => {
                 if (isMobile) setDrawerOpen(false);
@@ -138,25 +172,35 @@ const PageLayout = () => {
           </Sider>
         )}
         <Layout
-          className='app-main'
           style={{
             marginLeft: isMobile
               ? '0'
               : showSider
                 ? 'var(--sidebar-current-width)'
                 : '0',
+            flex: '1 1 auto',
+            display: 'flex',
+            flexDirection: 'column',
           }}
         >
           <Content
-            className='app-content'
             style={{
-              padding: shouldInnerPadding ? (isMobile ? '12px' : '24px') : '0',
+              flex: '1 0 auto',
+              overflowY: isMobile ? 'visible' : 'hidden',
+              WebkitOverflowScrolling: 'touch',
+              padding: shouldInnerPadding ? (isMobile ? '5px' : '24px') : '0',
+              position: 'relative',
             }}
           >
             <App />
           </Content>
           {!shouldHideFooter && (
-            <Layout.Footer className='app-footer'>
+            <Layout.Footer
+              style={{
+                flex: '0 0 auto',
+                width: '100%',
+              }}
+            >
               <FooterBar />
             </Layout.Footer>
           )}

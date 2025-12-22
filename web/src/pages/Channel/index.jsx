@@ -17,11 +17,12 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 For commercial licensing, please contact support@quantumnous.com
 */
 
+import React from 'react';
 import ChannelsTable from '../../components/table/channels';
 
 const File = () => {
   return (
-    <div className='table-page'>
+    <div className='mt-[60px] px-2'>
       <ChannelsTable />
     </div>
   );

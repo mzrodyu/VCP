@@ -207,8 +207,8 @@ func (a *Adaptor) SetupRequestHeader(c *gin.Context, header *http.Header, info *
 		header.Set("Authorization", "Bearer "+info.ApiKey)
 	}
 	if info.ChannelType == constant.ChannelTypeOpenRouter {
-		header.Set("HTTP-Referer", "https://www.nailong.ai")
-		header.Set("X-Title", "NaiLong API")
+		header.Set("HTTP-Referer", "https://www.newapi.ai")
+		header.Set("X-Title", "New API")
 	}
 	return nil
 }

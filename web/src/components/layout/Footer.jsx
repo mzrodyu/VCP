@@ -17,11 +17,11 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 For commercial licensing, please contact support@quantumnous.com
 */
 
-import { Typography } from '@douyinfe/semi-ui';
-import { useContext, useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState, useMemo, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
-import { StatusContext } from '../../context/Status';
+import { Typography } from '@douyinfe/semi-ui';
 import { getFooterHTML, getLogo, getSystemName } from '../../helpers';
+import { StatusContext } from '../../context/Status';
 
 const FooterBar = () => {
   const { t } = useTranslation();
@@ -205,7 +205,7 @@ const FooterBar = () => {
               rel='noopener noreferrer'
               className='!text-semi-color-primary font-medium'
             >
-              NaiLong API
+              New API
             </a>
           </div>
         </div>
@@ -234,7 +234,7 @@ const FooterBar = () => {
               rel='noopener noreferrer'
               className='!text-semi-color-primary font-medium'
             >
-              NaiLong API
+              New API
             </a>
           </div>
         </div>

@@ -17,39 +17,39 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 For commercial licensing, please contact support@quantumnous.com
 */
 
-import { useContext, useEffect } from 'react';
-import { StatusContext } from '../../context/Status';
-import { UserContext } from '../../context/User';
+import React, { useContext, useEffect } from 'react';
 import { getRelativeTime } from '../../helpers';
+import { UserContext } from '../../context/User';
+import { StatusContext } from '../../context/Status';
 
-import AnnouncementsPanel from './AnnouncementsPanel';
-import ApiInfoPanel from './ApiInfoPanel';
-import ChartsPanel from './ChartsPanel';
 import DashboardHeader from './DashboardHeader';
-import FaqPanel from './FaqPanel';
 import StatsCards from './StatsCards';
+import ChartsPanel from './ChartsPanel';
+import ApiInfoPanel from './ApiInfoPanel';
+import AnnouncementsPanel from './AnnouncementsPanel';
+import FaqPanel from './FaqPanel';
 import UptimePanel from './UptimePanel';
 import SearchModal from './modals/SearchModal';
 
-import { useDashboardCharts } from '../../hooks/dashboard/useDashboardCharts';
 import { useDashboardData } from '../../hooks/dashboard/useDashboardData';
 import { useDashboardStats } from '../../hooks/dashboard/useDashboardStats';
+import { useDashboardCharts } from '../../hooks/dashboard/useDashboardCharts';
 
 import {
-    ANNOUNCEMENT_LEGEND_DATA,
-    CARD_PROPS,
-    CHART_CONFIG,
-    FLEX_CENTER_GAP2,
-    ILLUSTRATION_SIZE,
-    UPTIME_STATUS_MAP,
+  CHART_CONFIG,
+  CARD_PROPS,
+  FLEX_CENTER_GAP2,
+  ILLUSTRATION_SIZE,
+  ANNOUNCEMENT_LEGEND_DATA,
+  UPTIME_STATUS_MAP,
 } from '../../constants/dashboard.constants';
 import {
-    getTrendSpec,
-    getUptimeStatusColor,
-    getUptimeStatusText,
-    handleCopyUrl,
-    handleSpeedTest,
-    renderMonitorList,
+  getTrendSpec,
+  handleCopyUrl,
+  handleSpeedTest,
+  getUptimeStatusColor,
+  getUptimeStatusText,
+  renderMonitorList,
 } from '../../helpers/dashboard';
 
 const Dashboard = () => {
@@ -139,7 +139,7 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <div className='dashboard-container'>
+    <div className='h-full'>
       <DashboardHeader
         getGreeting={dashboardData.getGreeting}
         greetingVisible={dashboardData.greetingVisible}

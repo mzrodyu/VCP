@@ -17,10 +17,11 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 For commercial licensing, please contact support@quantumnous.com
 */
 
-import { Card, Skeleton, Tag } from '@douyinfe/semi-ui';
+import React from 'react';
+import { Card, Avatar, Skeleton, Tag } from '@douyinfe/semi-ui';
 import { VChart } from '@visactor/react-vchart';
-import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const StatsCards = ({
   groupedStatsData,
@@ -32,30 +33,33 @@ const StatsCards = ({
   const navigate = useNavigate();
   const { t } = useTranslation();
   return (
-    <div className='dashboard-stats-section'>
-      <div className='dashboard-stats-grid'>
+    <div className='mb-4'>
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
         {groupedStatsData.map((group, idx) => (
           <Card
             key={idx}
             {...CARD_PROPS}
-            className={`dashboard-stat-card ${group.color} animate-fade-in-up`}
-            style={{ animationDelay: `${idx * 0.1}s` }}
-            title={<span className="stat-card-title">{group.title}</span>}
+            className={`${group.color} border-0 !rounded-2xl w-full`}
+            title={group.title}
           >
-            <div className='stat-card-content'>
+            <div className='space-y-4'>
               {group.items.map((item, itemIdx) => (
                 <div
                   key={itemIdx}
-                  className='stat-item'
+                  className='flex items-center justify-between cursor-pointer'
                   onClick={item.onClick}
                 >
-                  <div className='stat-item-left'>
-                    <div className='stat-icon-wrapper'>
+                  <div className='flex items-center'>
+                    <Avatar
+                      className='mr-3'
+                      size='small'
+                      color={item.avatarColor}
+                    >
                       {item.icon}
-                    </div>
-                    <div className='stat-info'>
-                      <div className='stat-label'>{item.title}</div>
-                      <div className='stat-value'>
+                    </Avatar>
+                    <div>
+                      <div className='text-xs text-gray-500'>{item.title}</div>
+                      <div className='text-lg font-semibold'>
                         <Skeleton
                           loading={loading}
                           active
@@ -76,30 +80,29 @@ const StatsCards = ({
                       </div>
                     </div>
                   </div>
-                  <div className='stat-item-right'>
-                    {item.title === t('当前余额') ? (
-                      <Tag
-                        className='topup-tag'
-                        shape='circle'
-                        size='large'
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          navigate('/console/topup');
-                        }}
-                      >
-                        {t('充值')}
-                      </Tag>
-                    ) : (
-                      item.trendData && item.trendData.length > 0 && (
-                        <div className='stat-chart'>
-                          <VChart
-                            spec={getTrendSpec(item.trendData, item.trendColor)}
-                            option={CHART_CONFIG}
-                          />
-                        </div>
-                      )
-                    )}
-                  </div>
+                  {item.title === t('当前余额') ? (
+                    <Tag
+                      color='white'
+                      shape='circle'
+                      size='large'
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        navigate('/console/topup');
+                      }}
+                    >
+                      {t('充值')}
+                    </Tag>
+                  ) : (
+                    (loading ||
+                      (item.trendData && item.trendData.length > 0)) && (
+                      <div className='w-24 h-10'>
+                        <VChart
+                          spec={getTrendSpec(item.trendData, item.trendColor)}
+                          option={CHART_CONFIG}
+                        />
+                      </div>
+                    )
+                  )}
                 </div>
               ))}
             </div>

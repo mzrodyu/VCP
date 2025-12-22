@@ -14,8 +14,6 @@ func SetRelayRouter(router *gin.Engine) {
 	router.Use(middleware.CORS())
 	router.Use(middleware.DecompressRequestMiddleware())
 	router.Use(middleware.StatsMiddleware())
-	// 防呆设计：自动补全 /v1 前缀，无论用户是否添加 /v1 都能正常访问
-	router.Use(middleware.PathRewriteMiddleware())
 	// https://platform.openai.com/docs/api-reference/introduction
 	modelsRouter := router.Group("/v1/models")
 	modelsRouter.Use(middleware.TokenAuth())

@@ -17,9 +17,10 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 For commercial licensing, please contact support@quantumnous.com
 */
 
-import { Card, TabPane, Tabs } from '@douyinfe/semi-ui';
-import { VChart } from '@visactor/react-vchart';
+import React from 'react';
+import { Card, Tabs, TabPane } from '@douyinfe/semi-ui';
 import { PieChart } from 'lucide-react';
+import { VChart } from '@visactor/react-vchart';
 
 const ChartsPanel = ({
   activeChartTab,

@@ -17,85 +17,40 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 For commercial licensing, please contact support@quantumnous.com
 */
 
-import { Collapse, Layout, TabPane, Tabs } from '@douyinfe/semi-ui';
-import {
-    Calculator,
-    Cog,
-    CreditCard,
-    Settings,
-} from 'lucide-react';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Layout, TabPane, Tabs } from '@douyinfe/semi-ui';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useLocation, useNavigate } from 'react-router-dom';
+import {
+  Settings,
+  Calculator,
+  Gauge,
+  Shapes,
+  Cog,
+  MoreHorizontal,
+  LayoutDashboard,
+  MessageSquare,
+  Palette,
+  CreditCard,
+} from 'lucide-react';
 
-import ChatsSetting from '../../components/settings/ChatsSetting';
-import DashboardSetting from '../../components/settings/DashboardSetting';
-import DrawingSetting from '../../components/settings/DrawingSetting';
-import ModelSetting from '../../components/settings/ModelSetting';
-import OperationSetting from '../../components/settings/OperationSetting';
-import OtherSetting from '../../components/settings/OtherSetting';
-import PaymentSetting from '../../components/settings/PaymentSetting';
-import RateLimitSetting from '../../components/settings/RateLimitSetting';
-import RatioSetting from '../../components/settings/RatioSetting';
 import SystemSetting from '../../components/settings/SystemSetting';
 import { isRoot } from '../../helpers';
-
-// 合并的功能设置组件
-const FeatureSetting = () => {
-  const { t } = useTranslation();
-  return (
-    <Collapse defaultActiveKey={['dashboard']}>
-      <Collapse.Panel header={t('仪表盘设置')} itemKey='dashboard'>
-        <DashboardSetting />
-      </Collapse.Panel>
-      <Collapse.Panel header={t('聊天设置')} itemKey='chats'>
-        <ChatsSetting />
-      </Collapse.Panel>
-      <Collapse.Panel header={t('绘图设置')} itemKey='drawing'>
-        <DrawingSetting />
-      </Collapse.Panel>
-    </Collapse>
-  );
-};
-
-// 合并的模型设置组件
-const ModelFullSetting = () => {
-  const { t } = useTranslation();
-  return (
-    <Collapse defaultActiveKey={['ratio']}>
-      <Collapse.Panel header={t('分组与定价')} itemKey='ratio'>
-        <RatioSetting />
-      </Collapse.Panel>
-      <Collapse.Panel header={t('速率限制')} itemKey='ratelimit'>
-        <RateLimitSetting />
-      </Collapse.Panel>
-      <Collapse.Panel header={t('模型配置')} itemKey='models'>
-        <ModelSetting />
-      </Collapse.Panel>
-    </Collapse>
-  );
-};
-
-// 合并的系统设置组件
-const SystemFullSetting = () => {
-  const { t } = useTranslation();
-  return (
-    <Collapse defaultActiveKey={['system']}>
-      <Collapse.Panel header={t('系统设置')} itemKey='system'>
-        <SystemSetting />
-      </Collapse.Panel>
-      <Collapse.Panel header={t('其他设置')} itemKey='other'>
-        <OtherSetting />
-      </Collapse.Panel>
-    </Collapse>
-  );
-};
+import OtherSetting from '../../components/settings/OtherSetting';
+import OperationSetting from '../../components/settings/OperationSetting';
+import RateLimitSetting from '../../components/settings/RateLimitSetting';
+import ModelSetting from '../../components/settings/ModelSetting';
+import DashboardSetting from '../../components/settings/DashboardSetting';
+import RatioSetting from '../../components/settings/RatioSetting';
+import ChatsSetting from '../../components/settings/ChatsSetting';
+import DrawingSetting from '../../components/settings/DrawingSetting';
+import PaymentSetting from '../../components/settings/PaymentSetting';
 
 const Setting = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();
-  const [tabActiveKey, setTabActiveKey] = useState('operation');
+  const [tabActiveKey, setTabActiveKey] = useState('1');
   let panes = [];
 
   if (isRoot()) {
@@ -112,12 +67,32 @@ const Setting = () => {
     panes.push({
       tab: (
         <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-          <Cog size={18} />
-          {t('功能设置')}
+          <LayoutDashboard size={18} />
+          {t('仪表盘设置')}
         </span>
       ),
-      content: <FeatureSetting />,
-      itemKey: 'feature',
+      content: <DashboardSetting />,
+      itemKey: 'dashboard',
+    });
+    panes.push({
+      tab: (
+        <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+          <MessageSquare size={18} />
+          {t('聊天设置')}
+        </span>
+      ),
+      content: <ChatsSetting />,
+      itemKey: 'chats',
+    });
+    panes.push({
+      tab: (
+        <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+          <Palette size={18} />
+          {t('绘图设置')}
+        </span>
+      ),
+      content: <DrawingSetting />,
+      itemKey: 'drawing',
     });
     panes.push({
       tab: (
@@ -133,11 +108,31 @@ const Setting = () => {
       tab: (
         <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
           <Calculator size={18} />
-          {t('模型设置')}
+          {t('分组与模型定价设置')}
         </span>
       ),
-      content: <ModelFullSetting />,
-      itemKey: 'model',
+      content: <RatioSetting />,
+      itemKey: 'ratio',
+    });
+    panes.push({
+      tab: (
+        <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+          <Gauge size={18} />
+          {t('速率限制设置')}
+        </span>
+      ),
+      content: <RateLimitSetting />,
+      itemKey: 'ratelimit',
+    });
+    panes.push({
+      tab: (
+        <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+          <Shapes size={18} />
+          {t('模型相关设置')}
+        </span>
+      ),
+      content: <ModelSetting />,
+      itemKey: 'models',
     });
     panes.push({
       tab: (
@@ -146,8 +141,18 @@ const Setting = () => {
           {t('系统设置')}
         </span>
       ),
-      content: <SystemFullSetting />,
+      content: <SystemSetting />,
       itemKey: 'system',
+    });
+    panes.push({
+      tab: (
+        <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+          <MoreHorizontal size={18} />
+          {t('其他设置')}
+        </span>
+      ),
+      content: <OtherSetting />,
+      itemKey: 'other',
     });
   }
   const onChangeTab = (key) => {
@@ -164,7 +169,7 @@ const Setting = () => {
     }
   }, [location.search]);
   return (
-    <div className='page-container'>
+    <div className='mt-[60px] px-2'>
       <Layout>
         <Layout.Content>
           <Tabs

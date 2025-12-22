@@ -17,13 +17,13 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 For commercial licensing, please contact support@quantumnous.com
 */
 
-import {
-    IllustrationConstruction,
-    IllustrationConstructionDark,
-} from '@douyinfe/semi-illustrations';
-import { Avatar, Card, Divider, Empty, Tag } from '@douyinfe/semi-ui';
-import { ExternalLink, Gauge, Server } from 'lucide-react';
 import React from 'react';
+import { Card, Avatar, Tag, Divider, Empty } from '@douyinfe/semi-ui';
+import { Server, Gauge, ExternalLink } from 'lucide-react';
+import {
+  IllustrationConstruction,
+  IllustrationConstructionDark,
+} from '@douyinfe/semi-illustrations';
 import ScrollableContainer from '../common/ui/ScrollableContainer';
 
 const ApiInfoPanel = ({

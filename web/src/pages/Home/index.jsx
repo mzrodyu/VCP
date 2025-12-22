@@ -17,294 +17,406 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 For commercial licensing, please contact support@quantumnous.com
 */
 
-import { useState } from 'react';
+import { IconFile, IconPlay } from '@douyinfe/semi-icons';
+import { Button } from '@douyinfe/semi-ui';
+import { marked } from 'marked';
+import { useContext, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
+import NoticeModal from '../../components/layout/NoticeModal';
+import { StatusContext } from '../../context/Status';
+import { useActualTheme } from '../../context/Theme';
+import { API, copy, showError, showSuccess } from '../../helpers';
+import { useIsMobile } from '../../hooks/common/useIsMobile';
 import '../../styles/smart-home.css';
 
 const Home = () => {
-  const [activeRoom, setActiveRoom] = useState('Living Room');
-  const [acEnabled, setAcEnabled] = useState(true);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const acTemp = 19;
+  const { t, i18n } = useTranslation();
+  const [statusState] = useContext(StatusContext);
+  const actualTheme = useActualTheme();
+  const [homePageContentLoaded, setHomePageContentLoaded] = useState(false);
+  const [homePageContent, setHomePageContent] = useState('');
+  const [noticeVisible, setNoticeVisible] = useState(false);
+  const isMobile = useIsMobile();
+  const docsLink = statusState?.status?.docs_link || '';
+  const serverAddress = statusState?.status?.server_address || `${window.location.origin}`;
 
-  const rooms = ['Living Room', 'Bed Room 1', 'Bed Room 2', 'Kitchen', 'Bed Room 3', 'Gym'];
+  const [activeRoom, setActiveRoom] = useState('Living Room');
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [acMode, setAcMode] = useState('Cooling');
+
+  const rooms = ['Living Room', 'Bed Room 1', 'Bed Room 2', 'Kitchen', 'Bed Room 3', 'Garage'];
+
+  const displayHomePageContent = async () => {
+    setHomePageContent(localStorage.getItem('home_page_content') || '');
+    const res = await API.get('/api/home_page_content');
+    const { success, message, data } = res.data;
+    if (success) {
+      let content = data;
+      if (!data.startsWith('https://')) {
+        content = marked.parse(data);
+      }
+      setHomePageContent(content);
+      localStorage.setItem('home_page_content', content);
+      if (data.startsWith('https://')) {
+        const iframe = document.querySelector('iframe');
+        if (iframe) {
+          iframe.onload = () => {
+            iframe.contentWindow.postMessage({ themeMode: actualTheme }, '*');
+            iframe.contentWindow.postMessage({ lang: i18n.language }, '*');
+          };
+        }
+      }
+    } else {
+      showError(message);
+      setHomePageContent('加载首页内容失败...');
+    }
+    setHomePageContentLoaded(true);
+  };
+
+  const handleCopyURL = async () => {
+    const ok = await copy(serverAddress);
+    if (ok) showSuccess(t('已复制到剪切板'));
+  };
+
+  useEffect(() => {
+    const checkNoticeAndShow = async () => {
+      const lastCloseDate = localStorage.getItem('notice_close_date');
+      const today = new Date().toDateString();
+      if (lastCloseDate !== today) {
+        try {
+          const res = await API.get('/api/notice');
+          const { success, data } = res.data;
+          if (success && data && data.trim() !== '') {
+            setNoticeVisible(true);
+          }
+        } catch (error) {
+          console.error('获取公告失败:', error);
+        }
+      }
+    };
+    checkNoticeAndShow();
+  }, []);
+
+  useEffect(() => {
+    displayHomePageContent().then();
+  }, []);
 
   return (
-    <div className="smart-home">
-      {/* Header */}
-      <div className="smart-header">
-        <div className="header-left">
-          <div 
-            className={`toggle-switch ${acEnabled ? 'active' : ''}`}
-            onClick={() => setAcEnabled(!acEnabled)}
-          >
-            <div className="toggle-knob"></div>
-          </div>
-        </div>
-        <div className="header-right">
-          {/* Music Player Mini */}
-          <div className="music-player-mini">
-            <div className="music-info">
-              <div className="music-title">Still I'm Sure We'll Love Again</div>
-              <div className="music-artist">Olivia M</div>
-              <div className="music-progress">
-                <div className="progress-bar">
-                  <div className="progress-fill" style={{ width: '30%' }}></div>
+    <div className="smart-home-wrapper">
+      <NoticeModal
+        visible={noticeVisible}
+        onClose={() => setNoticeVisible(false)}
+        isMobile={isMobile}
+      />
+      {homePageContentLoaded && homePageContent === '' ? (
+        <div className="smart-home">
+          {/* Header */}
+          <div className="smart-header">
+            <div className="header-left">
+              <div className="toggle-switch active">
+                <div className="toggle-knob"></div>
+              </div>
+            </div>
+            <div className="header-right">
+              {/* Music Player */}
+              <div className="music-player-card">
+                <div className="music-info">
+                  <div className="music-title">Still I'm Sure We'll Love Again</div>
+                  <div className="music-artist">Dewa 19</div>
+                  <div className="music-progress">
+                    <span>0:48</span>
+                    <div className="progress-bar">
+                      <div className="progress-fill" style={{ width: '20%' }}></div>
+                    </div>
+                    <span>3:56</span>
+                  </div>
+                  <div className="music-controls">
+                    <button className="ctrl-btn">
+                      <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                        <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/>
+                      </svg>
+                    </button>
+                    <button className="ctrl-btn play-btn" onClick={() => setIsPlaying(!isPlaying)}>
+                      {isPlaying ? (
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                          <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                        </svg>
+                      ) : (
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                          <path d="M8 5v14l11-7z"/>
+                        </svg>
+                      )}
+                    </button>
+                    <button className="ctrl-btn">
+                      <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                        <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/>
+                      </svg>
+                    </button>
+                  </div>
                 </div>
-                <div className="progress-time">
-                  <span>2:40</span>
-                  <span>4:20</span>
+                <div className="music-cover">
+                  <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=120&h=120&fit=crop" alt="Album" />
                 </div>
               </div>
-              <div className="music-controls">
-                <button className="control-btn">
-                  <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
-                    <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/>
-                  </svg>
-                </button>
-                <button className="control-btn play-btn" onClick={() => setIsPlaying(!isPlaying)}>
-                  {isPlaying ? (
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
-                      <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-                    </svg>
-                  ) : (
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
-                      <path d="M8 5v14l11-7z"/>
-                    </svg>
+            </div>
+          </div>
+
+          {/* Main Content */}
+          <div className="smart-content">
+            {/* Left Panel */}
+            <div className="content-left">
+              <div className="weather-row">
+                <div className="weather-info">
+                  <span className="weather-icon">☀</span>
+                  <span className="weather-val">51%</span>
+                  <span className="weather-icon">🌡</span>
+                  <span className="weather-val">22°</span>
+                </div>
+                <div className="user-avatar">
+                  <img src="https://i.pravatar.cc/40" alt="User" />
+                </div>
+              </div>
+
+              <div className="greeting-section">
+                <h1 className="greeting-title">Hi Isabella,</h1>
+                <h2 className="greeting-subtitle">Have a great day</h2>
+              </div>
+
+              {/* Room Tabs */}
+              <div className="room-tabs">
+                <button className="add-room-btn">+</button>
+                {rooms.map((room) => (
+                  <button
+                    key={room}
+                    className={`room-tab ${activeRoom === room ? 'active' : ''}`}
+                    onClick={() => setActiveRoom(room)}
+                  >
+                    {room}
+                  </button>
+                ))}
+              </div>
+
+              {/* Device Cards */}
+              <div className="device-grid">
+                {/* Main Light Card */}
+                <div className="device-card light-card">
+                  <div className="light-visual">
+                    <div className="light-bar orange"></div>
+                    <div className="light-bar blue"></div>
+                  </div>
+                  <div className="light-control">
+                    <div className="brightness-icon">☀</div>
+                    <div className="brightness-slider"></div>
+                  </div>
+                  <div className="card-footer">
+                    <div className="card-info">
+                      <span className="card-name">Main light</span>
+                      <span className="card-sub">4 Devices</span>
+                    </div>
+                    <button className="power-btn">⏻</button>
+                  </div>
+                </div>
+
+                {/* AC Card */}
+                <div className="device-card ac-card">
+                  <div className="ac-temp-control">
+                    <button className="temp-btn">−</button>
+                    <span className="temp-display">19<sup>°C</sup></span>
+                    <button className="temp-btn">+</button>
+                  </div>
+                  <div className="card-footer">
+                    <div className="card-info">
+                      <span className="card-name">Air Conditioner</span>
+                      <span className="card-sub">Cooling to 19°</span>
+                    </div>
+                    <button className="power-btn active">⏻</button>
+                  </div>
+                </div>
+
+                {/* Speaker Card */}
+                <div className="device-card speaker-card">
+                  <div className="speaker-info">
+                    <div className="now-playing">in - Still I'm Sure We'll Love...</div>
+                    <div className="speaker-artist">Dewa 19</div>
+                  </div>
+                  <div className="speaker-controls">
+                    <button className="sp-btn">◀◀</button>
+                    <button className="sp-btn play">▶</button>
+                    <button className="sp-btn">▶▶</button>
+                  </div>
+                  <div className="card-footer">
+                    <div className="card-info">
+                      <span className="card-name">Speaker</span>
+                      <span className="card-sub">Paused</span>
+                    </div>
+                    <div className="spotify-icon">🎵</div>
+                  </div>
+                </div>
+
+                {/* Nest Wifi Card */}
+                <div className="device-card wifi-card">
+                  <div className="wifi-stats">
+                    <div className="wifi-stat">
+                      <span className="stat-icon up">↑</span>
+                      <span>2.4 MB/sec</span>
+                    </div>
+                    <div className="wifi-stat">
+                      <span className="stat-icon down">↓</span>
+                      <span>3.1 MB/sec</span>
+                    </div>
+                  </div>
+                  <div className="wifi-icon-big">📶</div>
+                  <div className="card-footer">
+                    <div className="card-info">
+                      <span className="card-name">Nest Wifi</span>
+                      <span className="card-sub">Online</span>
+                    </div>
+                    <span className="device-count">6 Devices</span>
+                  </div>
+                </div>
+
+                {/* Air Quality Card */}
+                <div className="device-card quality-card">
+                  <div className="quality-badge">Good Air Quality</div>
+                  <div className="quality-metrics">
+                    <div className="metric">
+                      <span className="metric-label">PM 2.5</span>
+                      <span className="metric-value">10</span>
+                      <span className="metric-unit">μg/m2</span>
+                    </div>
+                  </div>
+                  <div className="card-footer">
+                    <div className="card-info">
+                      <span className="card-name">Air Purifier</span>
+                      <span className="card-sub">Auto</span>
+                    </div>
+                    <button className="power-btn">⏻</button>
+                  </div>
+                </div>
+
+                {/* Front Door Card */}
+                <div className="device-card door-card">
+                  <div className="door-icon">🚪</div>
+                  <div className="door-status">
+                    <span className="status-label">Front Door</span>
+                    <span className="status-time">Last opened on 07:21 am</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* CTA Section */}
+              <div className="cta-section">
+                <div className="cta-text">
+                  <h3>{t('开始使用 API')}</h3>
+                  <p className="api-url" onClick={handleCopyURL}>{serverAddress}</p>
+                </div>
+                <div className="cta-buttons">
+                  <Link to="/console">
+                    <Button theme="solid" type="primary" icon={<IconPlay />} className="cta-btn">
+                      {t('获取密钥')}
+                    </Button>
+                  </Link>
+                  {docsLink && (
+                    <Button icon={<IconFile />} onClick={() => window.open(docsLink, '_blank')} className="cta-btn-outline">
+                      {t('文档')}
+                    </Button>
                   )}
-                </button>
-                <button className="control-btn">
-                  <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
-                    <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/>
-                  </svg>
-                </button>
-              </div>
-            </div>
-            <div className="music-cover">
-              <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=100&h=100&fit=crop" alt="Album Cover" />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Content */}
-      <div className="smart-content">
-        {/* Left Section */}
-        <div className="content-left">
-          {/* Weather & Greeting */}
-          <div className="weather-greeting">
-            <div className="weather-info">
-              <span className="weather-icon">☀️</span>
-              <span className="weather-temp">0°C</span>
-              <span className="weather-humidity">59°</span>
-            </div>
-            <button className="mic-btn">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
-                <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm-1-9c0-.55.45-1 1-1s1 .45 1 1v6c0 .55-.45 1-1 1s-1-.45-1-1V5zm6 6c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
-              </svg>
-            </button>
-          </div>
-
-          <div className="greeting">
-            <h1>Hi Isabella,</h1>
-            <h2>Have a great day</h2>
-          </div>
-
-          {/* Room Tabs */}
-          <div className="room-tabs">
-            {rooms.map((room) => (
-              <button
-                key={room}
-                className={`room-tab ${activeRoom === room ? 'active' : ''}`}
-                onClick={() => setActiveRoom(room)}
-              >
-                {room}
-              </button>
-            ))}
-          </div>
-
-          {/* Device Cards Grid */}
-          <div className="device-grid">
-            {/* Temperature Card */}
-            <div className="device-card temp-card">
-              <div className="card-header">
-                <div className="device-icon">
-                  <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                    <path d="M15 13V5c0-1.66-1.34-3-3-3S9 3.34 9 5v8c-1.21.91-2 2.37-2 4 0 2.76 2.24 5 5 5s5-2.24 5-5c0-1.63-.79-3.09-2-4zm-4-8c0-.55.45-1 1-1s1 .45 1 1h-1v1h1v2h-1v1h1v2h-2V5z"/>
-                  </svg>
                 </div>
               </div>
-              <div className="temp-display">
-                <span className="temp-value">19</span>
-                <span className="temp-unit">°</span>
-              </div>
-              <div className="music-mini-player">
-                <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=40&h=40&fit=crop" alt="" className="mini-cover" />
-                <span className="mini-title">Still I'm Sure We'll L...</span>
-              </div>
             </div>
 
-            {/* Air Conditioner Card */}
-            <div className="device-card ac-card">
-              <div className="card-header">
-                <div className="device-icon ac-icon">
-                  <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                    <path d="M22 11h-4.17l3.24-3.24-1.41-1.42L15 11h-2V9l4.66-4.66-1.42-1.41L13 6.17V2h-2v4.17L7.76 2.93 6.34 4.34 11 9v2H9L4.34 6.34 2.93 7.76 6.17 11H2v2h4.17l-3.24 3.24 1.41 1.42L9 13h2v2l-4.66 4.66 1.42 1.41L11 17.83V22h2v-4.17l3.24 3.24 1.42-1.41L13 15v-2h2l4.66 4.66 1.41-1.42L17.83 13H22z"/>
-                  </svg>
+            {/* Right Panel - AC Control */}
+            <div className="content-right">
+              <div className="ac-panel">
+                <div className="ac-panel-header">
+                  <h3>Air Conditioner</h3>
+                  <div className="ac-device-select">
+                    <span>Samsung AR10 WindFree</span>
+                    <span className="dropdown-arrow">▾</span>
+                  </div>
+                  <div className="power-toggle active">
+                    <span className="toggle-dot"></span>
+                  </div>
                 </div>
-                <span className="card-title">Air Conditioner</span>
-              </div>
-              <div className="card-status">Cooling to 19°</div>
-            </div>
 
-            {/* Air Quality Card */}
-            <div className="device-card quality-card">
-              <div className="quality-badge">Good Air Quality</div>
-              <div className="quality-stats">
-                <div className="stat-item">
-                  <div className="stat-icon devices-icon">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
-                      <path d="M4 6h18V4H4c-1.1 0-2 .9-2 2v11H0v3h14v-3H4V6zm19 2h-6c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h6c.55 0 1-.45 1-1V9c0-.55-.45-1-1-1zm-1 9h-4v-7h4v7z"/>
+                <div className="ac-display">
+                  <div className="ac-temp-ring">
+                    <svg viewBox="0 0 120 120" className="temp-ring-svg">
+                      <circle cx="60" cy="60" r="54" className="ring-bg" />
+                      <circle cx="60" cy="60" r="54" className="ring-fill" strokeDasharray="339" strokeDashoffset="100" />
                     </svg>
+                    <div className="temp-value">
+                      <span className="snowflake">❄</span>
+                      <span className="big-temp">19</span>
+                      <span className="temp-unit">°C</span>
+                    </div>
                   </div>
-                  <div className="stat-info">
-                    <span className="stat-value">6</span>
-                    <span className="stat-label">Devices</span>
-                  </div>
-                </div>
-                <div className="stat-item">
-                  <div className="stat-icon aqi-icon">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
-                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                    </svg>
-                  </div>
-                  <div className="stat-info">
-                    <span className="stat-value">10</span>
-                    <span className="stat-label">AQI</span>
+                  <div className="humidity-badge">
+                    <span>48%</span>
+                    <span className="humidity-icon">💧</span>
                   </div>
                 </div>
-              </div>
-            </div>
 
-            {/* Heart With Card */}
-            <div className="device-card heart-card">
-              <div className="card-header">
-                <div className="device-icon heart-icon">
-                  <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                  </svg>
+                <div className="ac-modes">
+                  {['Wind', 'Cooling', 'Dry'].map((mode) => (
+                    <button
+                      key={mode}
+                      className={`mode-btn ${acMode === mode ? 'active' : ''}`}
+                      onClick={() => setAcMode(mode)}
+                    >
+                      <span className="mode-icon">
+                        {mode === 'Wind' && '🌀'}
+                        {mode === 'Cooling' && '❄'}
+                        {mode === 'Dry' && '💨'}
+                      </span>
+                      {mode}
+                    </button>
+                  ))}
                 </div>
-                <span className="card-title">Heart With</span>
-              </div>
-            </div>
 
-            {/* Nest Wifi Card */}
-            <div className="device-card wifi-card">
-              <div className="card-header">
-                <div className="device-icon wifi-icon">
-                  <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                    <path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/>
-                  </svg>
+                <div className="ac-actions">
+                  <button className="action-btn">
+                    <span>🔄</span> Auto
+                  </button>
+                  <button className="action-btn active">
+                    <span>↔</span> Swing
+                  </button>
+                  <button className="action-btn">
+                    <span>⏱</span> Timer
+                  </button>
                 </div>
-                <span className="card-title">Nest Wifi</span>
-              </div>
-            </div>
 
-            {/* Air Purifier Card */}
-            <div className="device-card purifier-card">
-              <div className="card-header">
-                <div className="device-icon purifier-icon">
-                  <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>
-                  </svg>
+                <div className="ac-power-info">
+                  <div className="power-stat">
+                    <span className="bolt">⚡</span>
+                    <span className="power-val">600 W</span>
+                  </div>
+                  <span className="power-label">Active since 2 hour ago</span>
                 </div>
-                <span className="card-title">Air Purifier</span>
               </div>
-            </div>
 
-            {/* Food Door Card */}
-            <div className="device-card door-card">
-              <div className="card-header">
-                <div className="device-icon door-icon">
-                  <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                    <path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/>
-                  </svg>
+              {/* Volume Slider */}
+              <div className="volume-control">
+                <span className="vol-icon">🔊</span>
+                <div className="vol-slider">
+                  <div className="vol-fill" style={{ height: '48%' }}></div>
+                  <div className="vol-thumb" style={{ bottom: '48%' }}></div>
                 </div>
-                <span className="card-title">Food Door</span>
+                <span className="vol-percent">48%</span>
               </div>
             </div>
           </div>
         </div>
-
-        {/* Right Section - Air Conditioner Control */}
-        <div className="content-right">
-          {/* AC Header */}
-          <div className="ac-header">
-            <h3>Air Conditioner</h3>
-            <div className="ac-device">
-              <span>Samsung ARIO WindFree</span>
-              <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
-                <path d="M7 10l5 5 5-5z"/>
-              </svg>
-            </div>
-          </div>
-
-          {/* AC Temperature Display */}
-          <div className="ac-temp-display">
-            <div className="ac-temp-circle">
-              <svg className="temp-progress" viewBox="0 0 120 120">
-                <circle className="temp-bg" cx="60" cy="60" r="54" />
-                <circle className="temp-fill" cx="60" cy="60" r="54" strokeDasharray="339.3" strokeDashoffset="85" />
-              </svg>
-              <div className="temp-content">
-                <span className="temp-number">{acTemp}</span>
-                <span className="temp-degree">°</span>
-              </div>
-            </div>
-            <div className="humidity-indicator">
-              <span>48%</span>
-              <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
-                <path d="M12 2c-5.33 4.55-8 8.48-8 11.8 0 4.98 3.8 8.2 8 8.2s8-3.22 8-8.2c0-3.32-2.67-7.25-8-11.8zm0 18c-3.35 0-6-2.57-6-6.2 0-2.34 1.95-5.44 6-9.14 4.05 3.7 6 6.79 6 9.14 0 3.63-2.65 6.2-6 6.2z"/>
-              </svg>
-            </div>
-          </div>
-
-          {/* AC Controls */}
-          <div className="ac-controls">
-            <button className="ac-control-btn active">
-              <span className="control-label">Auto</span>
-            </button>
-            <button className="ac-control-btn">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
-                <path d="M12 6v3l4-4-4-4v3c-4.42 0-8 3.58-8 8 0 1.57.46 3.03 1.24 4.26L6.7 14.8c-.45-.83-.7-1.79-.7-2.8 0-3.31 2.69-6 6-6zm6.76 1.74L17.3 9.2c.44.84.7 1.79.7 2.8 0 3.31-2.69 6-6 6v-3l-4 4 4 4v-3c4.42 0 8-3.58 8-8 0-1.57-.46-3.03-1.24-4.26z"/>
-              </svg>
-              <span className="control-label">Swing</span>
-            </button>
-            <button className="ac-control-btn">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
-                <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
-              </svg>
-              <span className="control-label">Timer</span>
-            </button>
-          </div>
-
-          {/* Power Usage */}
-          <div className="power-usage">
-            <div className="power-value">600 W</div>
-            <div className="power-label">Automation Ener save</div>
-          </div>
-
-          {/* Volume Slider */}
-          <div className="volume-slider">
-            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
-              <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
-            </svg>
-            <div className="slider-track">
-              <div className="slider-fill" style={{ height: '48%' }}></div>
-              <div className="slider-thumb" style={{ bottom: '48%' }}></div>
-            </div>
-          </div>
+      ) : (
+        <div className="custom-content">
+          {homePageContent.startsWith('https://') ? (
+            <iframe src={homePageContent} className="content-iframe" title="Home" />
+          ) : (
+            <div className="html-content" dangerouslySetInnerHTML={{ __html: homePageContent }} />
+          )}
         </div>
-      </div>
+      )}
     </div>
   );
 };

@@ -17,18 +17,18 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 For commercial licensing, please contact support@quantumnous.com
 */
 
-import { ChevronLeft } from 'lucide-react';
-import { useEffect, useMemo, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { isAdmin, isRoot, showError } from '../../helpers';
+import { useTranslation } from 'react-i18next';
 import { getLucideIcon } from '../../helpers/render';
-import { useMinimumLoadingTime } from '../../hooks/common/useMinimumLoadingTime';
-import { useSidebar } from '../../hooks/common/useSidebar';
+import { ChevronLeft } from 'lucide-react';
 import { useSidebarCollapsed } from '../../hooks/common/useSidebarCollapsed';
+import { useSidebar } from '../../hooks/common/useSidebar';
+import { useMinimumLoadingTime } from '../../hooks/common/useMinimumLoadingTime';
+import { isAdmin, isRoot, showError } from '../../helpers';
 import SkeletonWrapper from './components/SkeletonWrapper';
 
-import { Button, Divider, Nav } from '@douyinfe/semi-ui';
+import { Nav, Divider, Button } from '@douyinfe/semi-ui';
 
 const routerMap = {
   home: '/',
@@ -83,9 +83,25 @@ const SiderBar = ({ onNavigate = () => {} }) => {
         to: '/token',
       },
       {
-        text: t('日志'),
+        text: t('使用日志'),
         itemKey: 'log',
         to: '/log',
+      },
+      {
+        text: t('绘图日志'),
+        itemKey: 'midjourney',
+        to: '/midjourney',
+        className:
+          localStorage.getItem('enable_drawing') === 'true'
+            ? ''
+            : 'tableHiddle',
+      },
+      {
+        text: t('任务日志'),
+        itemKey: 'task',
+        to: '/task',
+        className:
+          localStorage.getItem('enable_task') === 'true' ? '' : 'tableHiddle',
       },
     ];
 
@@ -98,6 +114,8 @@ const SiderBar = ({ onNavigate = () => {} }) => {
     return filteredItems;
   }, [
     localStorage.getItem('enable_data_export'),
+    localStorage.getItem('enable_drawing'),
+    localStorage.getItem('enable_task'),
     t,
     isModuleVisible,
   ]);
@@ -381,6 +399,7 @@ const SiderBar = ({ onNavigate = () => {} }) => {
             const to =
               routerMapState[props.itemKey] || routerMap[props.itemKey];
 
+            // 如果没有路由，直接返回元素
             if (!to) return itemElement;
 
             return (
@@ -394,6 +413,7 @@ const SiderBar = ({ onNavigate = () => {} }) => {
             );
           }}
           onSelect={(key) => {
+            // 如果点击的是已经展开的子菜单的父项，则收起子菜单
             if (openedKeys.includes(key.itemKey)) {
               setOpenedKeys(openedKeys.filter((k) => k !== key.itemKey));
             }
@@ -441,7 +461,7 @@ const SiderBar = ({ onNavigate = () => {} }) => {
             </>
           )}
 
-          {/* 管理员区域 */}
+          {/* 管理员区域 - 只在管理员时显示且配置允许时显示 */}
           {isAdmin() && hasSectionVisibleModules('admin') && (
             <>
               <Divider className='sidebar-divider' />

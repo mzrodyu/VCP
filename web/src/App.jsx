@@ -17,34 +17,36 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 For commercial licensing, please contact support@quantumnous.com
 */
 
-import { lazy, Suspense, useContext, useMemo } from 'react';
+import React, { lazy, Suspense, useContext, useMemo } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
-import LoginForm from './components/auth/LoginForm';
-import RegisterForm from './components/auth/RegisterForm';
 import Loading from './components/common/ui/Loading';
-import { StatusContext } from './context/Status';
-import { AdminRoute, AuthRedirect, PrivateRoute } from './helpers';
-import Forbidden from './pages/Forbidden';
-import NotFound from './pages/NotFound';
-import Setting from './pages/Setting';
 import User from './pages/User';
+import { AuthRedirect, PrivateRoute, AdminRoute } from './helpers';
+import RegisterForm from './components/auth/RegisterForm';
+import LoginForm from './components/auth/LoginForm';
+import NotFound from './pages/NotFound';
+import Forbidden from './pages/Forbidden';
+import Setting from './pages/Setting';
+import { StatusContext } from './context/Status';
 
-import OAuth2Callback from './components/auth/OAuth2Callback';
-import PasswordResetConfirm from './components/auth/PasswordResetConfirm';
 import PasswordResetForm from './components/auth/PasswordResetForm';
-import SetupCheck from './components/layout/SetupCheck';
-import PersonalSetting from './components/settings/PersonalSetting';
+import PasswordResetConfirm from './components/auth/PasswordResetConfirm';
 import Channel from './pages/Channel';
+import Token from './pages/Token';
+import Redemption from './pages/Redemption';
+import TopUp from './pages/TopUp';
+import Log from './pages/Log';
 import Chat from './pages/Chat';
 import Chat2Link from './pages/Chat2Link';
-import Log from './pages/Log';
+import Midjourney from './pages/Midjourney';
+import Pricing from './pages/Pricing';
+import Task from './pages/Task';
 import ModelPage from './pages/Model';
 import Playground from './pages/Playground';
-import Pricing from './pages/Pricing';
-import Redemption from './pages/Redemption';
+import OAuth2Callback from './components/auth/OAuth2Callback';
+import PersonalSetting from './components/settings/PersonalSetting';
 import Setup from './pages/Setup';
-import Token from './pages/Token';
-import TopUp from './pages/TopUp';
+import SetupCheck from './components/layout/SetupCheck';
 
 const Home = lazy(() => import('./pages/Home'));
 const Dashboard = lazy(() => import('./pages/Dashboard'));
@@ -262,12 +264,13 @@ function App() {
             </PrivateRoute>
           }
         />
-        {/* 兼容旧路由，重定向到统一日志页 */}
         <Route
           path='/console/midjourney'
           element={
             <PrivateRoute>
-              <Log />
+              <Suspense fallback={<Loading></Loading>} key={location.pathname}>
+                <Midjourney />
+              </Suspense>
             </PrivateRoute>
           }
         />
@@ -275,7 +278,9 @@ function App() {
           path='/console/task'
           element={
             <PrivateRoute>
-              <Log />
+              <Suspense fallback={<Loading></Loading>} key={location.pathname}>
+                <Task />
+              </Suspense>
             </PrivateRoute>
           }
         />
