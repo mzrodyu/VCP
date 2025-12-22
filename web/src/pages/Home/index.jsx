@@ -18,7 +18,8 @@ For commercial licensing, please contact support@quantumnous.com
 */
 
 import { IconFile, IconPlay } from '@douyinfe/semi-icons';
-import { Button } from '@douyinfe/semi-ui';
+import { Button, Card } from '@douyinfe/semi-ui';
+import { Bot, Clock, Music, Palette, Shield, Sparkles, Zap } from 'lucide-react';
 import { marked } from 'marked';
 import { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
