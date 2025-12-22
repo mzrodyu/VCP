@@ -33,5 +33,4 @@ jobs:
           push: true
           platforms: linux/amd64
           tags: ghcr.io/mzrodyu/vcp:latest
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          no-cache: true
