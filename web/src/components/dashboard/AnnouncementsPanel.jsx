@@ -17,14 +17,13 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 For commercial licensing, please contact support@quantumnous.com
 */
 
-import React from 'react';
-import { Card, Tag, Timeline, Empty } from '@douyinfe/semi-ui';
+import {
+    IllustrationConstruction,
+    IllustrationConstructionDark,
+} from '@douyinfe/semi-illustrations';
+import { Card, Empty, Tag, Timeline } from '@douyinfe/semi-ui';
 import { Bell } from 'lucide-react';
 import { marked } from 'marked';
-import {
-  IllustrationConstruction,
-  IllustrationConstructionDark,
-} from '@douyinfe/semi-illustrations';
 import ScrollableContainer from '../common/ui/ScrollableContainer';
 
 const AnnouncementsPanel = ({
@@ -37,11 +36,26 @@ const AnnouncementsPanel = ({
   return (
     <Card
       {...CARD_PROPS}
-      className='shadow-sm !rounded-2xl lg:col-span-2'
+      className='!rounded-2xl lg:col-span-2'
+      style={{
+        border: '1px solid #dcfce7',
+        boxShadow: '0 4px 15px rgba(34, 197, 94, 0.1)'
+      }}
       title={
         <div className='flex flex-col lg:flex-row lg:items-center lg:justify-between gap-2 w-full'>
-          <div className='flex items-center gap-2'>
-            <Bell size={16} />
+          <div className='flex items-center gap-2' style={{ color: '#166534', fontWeight: 600 }}>
+            <div 
+              style={{ 
+                background: 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)',
+                padding: '6px',
+                borderRadius: '8px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}
+            >
+              <Bell size={16} color="white" />
+            </div>
             {t('系统公告')}
             <Tag color='white' shape='circle'>
               {t('显示最新20条')}

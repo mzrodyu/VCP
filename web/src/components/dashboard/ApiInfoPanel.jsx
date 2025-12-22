@@ -17,13 +17,13 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 For commercial licensing, please contact support@quantumnous.com
 */
 
-import React from 'react';
-import { Card, Avatar, Tag, Divider, Empty } from '@douyinfe/semi-ui';
-import { Server, Gauge, ExternalLink } from 'lucide-react';
 import {
-  IllustrationConstruction,
-  IllustrationConstructionDark,
+    IllustrationConstruction,
+    IllustrationConstructionDark,
 } from '@douyinfe/semi-illustrations';
+import { Avatar, Card, Divider, Empty, Tag } from '@douyinfe/semi-ui';
+import { ExternalLink, Gauge, Server } from 'lucide-react';
+import React from 'react';
 import ScrollableContainer from '../common/ui/ScrollableContainer';
 
 const ApiInfoPanel = ({
@@ -38,10 +38,26 @@ const ApiInfoPanel = ({
   return (
     <Card
       {...CARD_PROPS}
-      className='bg-gray-50 border-0 !rounded-2xl'
+      className='!rounded-2xl'
+      style={{
+        background: 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)',
+        border: '1px solid #bbf7d0',
+        boxShadow: '0 4px 15px rgba(34, 197, 94, 0.1)'
+      }}
       title={
-        <div className={FLEX_CENTER_GAP2}>
-          <Server size={16} />
+        <div className={FLEX_CENTER_GAP2} style={{ color: '#166534', fontWeight: 600 }}>
+          <div 
+            style={{ 
+              background: 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)',
+              padding: '6px',
+              borderRadius: '8px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
+          >
+            <Server size={16} color="white" />
+          </div>
           {t('API信息')}
         </div>
       }

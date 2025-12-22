@@ -17,10 +17,9 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 For commercial licensing, please contact support@quantumnous.com
 */
 
-import React from 'react';
-import { Card, Tabs, TabPane } from '@douyinfe/semi-ui';
-import { PieChart } from 'lucide-react';
+import { Card, TabPane, Tabs } from '@douyinfe/semi-ui';
 import { VChart } from '@visactor/react-vchart';
+import { PieChart } from 'lucide-react';
 
 const ChartsPanel = ({
   activeChartTab,
@@ -39,16 +38,34 @@ const ChartsPanel = ({
     <Card
       {...CARD_PROPS}
       className={`!rounded-2xl ${hasApiInfoPanel ? 'lg:col-span-3' : ''}`}
+      style={{
+        border: '1px solid #dcfce7',
+        boxShadow: '0 4px 15px rgba(34, 197, 94, 0.1)'
+      }}
       title={
         <div className='flex flex-col lg:flex-row lg:items-center lg:justify-between w-full gap-3'>
-          <div className={FLEX_CENTER_GAP2}>
-            <PieChart size={16} />
+          <div className={FLEX_CENTER_GAP2} style={{ color: '#166534', fontWeight: 600 }}>
+            <div 
+              style={{ 
+                background: 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)',
+                padding: '6px',
+                borderRadius: '8px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}
+            >
+              <PieChart size={16} color="white" />
+            </div>
             {t('模型数据分析')}
           </div>
           <Tabs
-            type='slash'
+            type='button'
             activeKey={activeChartTab}
             onChange={setActiveChartTab}
+            style={{
+              '--semi-color-primary': '#16a34a',
+            }}
           >
             <TabPane tab={<span>{t('消耗分布')}</span>} itemKey='1' />
             <TabPane tab={<span>{t('消耗趋势')}</span>} itemKey='2' />

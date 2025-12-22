@@ -17,21 +17,20 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 For commercial licensing, please contact support@quantumnous.com
 */
 
-import React from 'react';
 import {
-  Card,
-  Button,
-  Spin,
-  Tabs,
-  TabPane,
-  Tag,
-  Empty,
+    IllustrationConstruction,
+    IllustrationConstructionDark,
+} from '@douyinfe/semi-illustrations';
+import {
+    Button,
+    Card,
+    Empty,
+    Spin,
+    TabPane,
+    Tabs,
+    Tag,
 } from '@douyinfe/semi-ui';
 import { Gauge, RefreshCw } from 'lucide-react';
-import {
-  IllustrationConstruction,
-  IllustrationConstructionDark,
-} from '@douyinfe/semi-illustrations';
 import ScrollableContainer from '../common/ui/ScrollableContainer';
 
 const UptimePanel = ({
@@ -49,11 +48,26 @@ const UptimePanel = ({
   return (
     <Card
       {...CARD_PROPS}
-      className='shadow-sm !rounded-2xl lg:col-span-1'
+      className='!rounded-2xl lg:col-span-1'
+      style={{
+        border: '1px solid #dcfce7',
+        boxShadow: '0 4px 15px rgba(34, 197, 94, 0.1)'
+      }}
       title={
         <div className='flex items-center justify-between w-full gap-2'>
-          <div className='flex items-center gap-2'>
-            <Gauge size={16} />
+          <div className='flex items-center gap-2' style={{ color: '#166534', fontWeight: 600 }}>
+            <div 
+              style={{ 
+                background: 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)',
+                padding: '6px',
+                borderRadius: '8px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}
+            >
+              <Gauge size={16} color="white" />
+            </div>
             {t('服务可用性')}
           </div>
           <Button
@@ -61,9 +75,12 @@ const UptimePanel = ({
             onClick={loadUptimeData}
             loading={uptimeLoading}
             size='small'
-            theme='borderless'
-            type='tertiary'
-            className='text-gray-500 hover:text-blue-500 hover:bg-blue-50 !rounded-full'
+            theme='solid'
+            style={{
+              background: 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)',
+              border: 'none',
+              borderRadius: '8px'
+            }}
           />
         </div>
       }

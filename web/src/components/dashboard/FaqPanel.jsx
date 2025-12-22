@@ -17,15 +17,14 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 For commercial licensing, please contact support@quantumnous.com
 */
 
-import React from 'react';
+import { IconMinus, IconPlus } from '@douyinfe/semi-icons';
+import {
+    IllustrationConstruction,
+    IllustrationConstructionDark,
+} from '@douyinfe/semi-illustrations';
 import { Card, Collapse, Empty } from '@douyinfe/semi-ui';
 import { HelpCircle } from 'lucide-react';
-import { IconPlus, IconMinus } from '@douyinfe/semi-icons';
 import { marked } from 'marked';
-import {
-  IllustrationConstruction,
-  IllustrationConstructionDark,
-} from '@douyinfe/semi-illustrations';
 import ScrollableContainer from '../common/ui/ScrollableContainer';
 
 const FaqPanel = ({
@@ -38,10 +37,25 @@ const FaqPanel = ({
   return (
     <Card
       {...CARD_PROPS}
-      className='shadow-sm !rounded-2xl lg:col-span-1'
+      className='!rounded-2xl lg:col-span-1'
+      style={{
+        border: '1px solid #dcfce7',
+        boxShadow: '0 4px 15px rgba(34, 197, 94, 0.1)'
+      }}
       title={
-        <div className={FLEX_CENTER_GAP2}>
-          <HelpCircle size={16} />
+        <div className={FLEX_CENTER_GAP2} style={{ color: '#166534', fontWeight: 600 }}>
+          <div 
+            style={{ 
+              background: 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)',
+              padding: '6px',
+              borderRadius: '8px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
+          >
+            <HelpCircle size={16} color="white" />
+          </div>
           {t('常见问答')}
         </div>
       }
